@@ -1,3 +1,18 @@
-p {
-  background: cornsilk
-}
+p { background: cornsilk }
+ 
+.class1 { color: aqua }
+
+#id1 { color: red }
+
+div p { background-color: tomato }
+
+div + div { background-color: yellowgreen }
+
+div + div + a { color: black }
+
+div { text-align: center; margin: 10px }
+
+.underline { background-color: aqua; text-decoration: underline }
+.overline { background-color: aquamarine; text-decoration: overline }
+.line-through { background-color: azure; text-decoration: line-through }
+.blink { background-color: azure; text-decoration: blink }

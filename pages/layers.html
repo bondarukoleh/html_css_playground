@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Layers</title>
+  <style>
+    div {
+      text-align: center;
+      width: 150px;
+      height: 150px;
+      position: relative;
+      /* position: absolute; */
+      /* position: fixed; */
+    }
+
+    p {
+      white-space: nowrap;
+    }
+
+    pre {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    }
+
+    .green {
+      background-color: greenyellow;
+      margin: 30px;
+      /* z-index: 2; */
+      border: 2px solid black;
+    }
+
+    .red {
+      background-color: red;
+      margin: 15px;
+      /* z-index: 1; */
+      border: 1px dashed black;
+    }
+
+    .blue {
+      background-color: blueviolet;
+      border: 2px solid black;
+    }
+
+    #inner {
+      top: 20px;
+      left: 15px;
+    }
+
+    .topLink {
+      position: fixed;
+      bottom: 50px;
+      right: 30px;
+      background-color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class='green'>
+      <div id='inner' class='blue'>
+        <span><a name='top'>Green text</a></span>
+      </div>
+    </div>
+    <div class='red'>
+      <div>
+        <span>Red text</span>
+      </div>
+    </div>
+    <div class='blue'>
+      <div>
+        <span>Blue text</span>
+      </div>
+    </div>
+  <p>
+    <pre>
+          See me ride out of the sunset
+          On your color TV screen
+          Out for all that I can get
+          If you know what I mean
+          Women to the left of me
+          And women to the right
+          Ain't got no gun
+          Ain't got no knife
+          Don't you start no fight
+          'Cause I'm T.N.T. I'm dynamite
+          T.N.T. and I'll win the fight
+          T.N.T. I'm a power load
+          T.N.T. watch me explode
+          I'm dirty, mean and mighty unclean
+          I'm a wanted man
+          Public enemy number one
+          Understand
+          So lock up your daughter
+          Lock up your wife
+          Lock up your back door
+          And run for your life
+          The man is back in town
+          Don't you mess me 'round
+          'Cause I'm T.N.T. I'm dynamite
+          T.N.T. and I'll win the fight
+          T.N.T. I'm…
+          See me ride out of the sunset
+          On your color TV screen
+          Out for all that I can get
+          If you know what I mean
+          Women to the left of me
+          And women to the right
+          Ain't got no gun
+          Ain't got no knife
+          Don't you start no fight
+          'Cause I'm T.N.T. I'm dynamite
+          T.N.T. and I'll win the fight
+          T.N.T. I'm a power load
+          T.N.T. watch me explode
+          I'm dirty, mean and mighty unclean
+          I'm a wanted man
+          Public enemy number one
+          Understand
+          So lock up your daughter
+          Lock up your wife
+          Lock up your back door
+          And run for your life
+          The man is back in town
+          Don't you mess me 'round
+          'Cause I'm T.N.T. I'm dynamite
+          T.N.T. and I'll win the fight
+          T.N.T. I'm…
+          </pre>
+  </p>
+  <a class="topLink" href="#top">To top</a>
+</body>
+
+</html>
