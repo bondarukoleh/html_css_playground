@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,20 +14,141 @@
     input {
       margin: 5px;
     }
+    pre {
+      white-space:pre-line;
+    }
+    p {
+      float: left;
+      width: 400px;
+      height: 15px;
+      margin: 5px;
+      color: lightcoral;
+      font-weight: bolder;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    #imageInp {
+      width: 30px;
+      height: 30px;
+    }
+    #multiS {
+      margin: 5px;
+      width: 100px;
+    }
+    #OptS {
+      margin: 5px;
+      width: 100px;
+    }
+    #regularSelect {
+      margin: 5px;
+    }
+    fieldset {
+      color: coral;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      font-size: 15px;
+      font-weight: bolder;
+      width: 50%;
+    }
+    textarea {
+      resize: horizontal
+    }
+    label {
+      float: left;
+      width: 150px;
+      margin: 5px;
+    }
+    a {
+      font-weight: bolder;
+      font-family: fantasy;
+    }
+    #colorParagraph {
+      height: 25px;
+    }
   </style>
 </head>
-<body>
-  <div>Enter your login</div>
-  <input type="text" name="inp" value="">
-  <div>Enter your password</div>
-  <input type="password" name="pass" value="">
-  <div>
-    Check some stuff1: <input type="checkbox" name="chek" value=""><br/>
-    Check some stuff2: <input type="checkbox" name="chek" value="" checked="checked">
-  </div>  <br/>
-  <div>
-    Radio some stuff1: <input type="radio" name="rad" value=""><br/>
-    Radio some stuff2: <input type="radio" name="rad" value="" checked="checked">
-  </div>
+
+<body style="background-image:url(../imgs/vector-abstract-forest-landscape.jpg); background-size: cover;">
+  <form id='basicForm' method="get" action="./index.html" target="_self">
+    <label for="userLoginID" accesskey="l">Enter your login:</label>
+    <input title="Enter your login" type="text" name="userLogin" id="userLoginID" value=""> <br>
+    <label for="userPassword" accesskey="p">Enter your password:</label>
+    <input title="Enter your password" type="password" name="userPassword" id="userPassword" value="" maxlength="20">
+    <input type="submit" value="Click to login"><br>
+    <label for="readO" >Read Only Value</label>
+    <input readonly type="text" name="readO" id="readO" value="read only sent to server"> <br>
+    <label for="dis" >Disabled value</label>
+    <input disabled type="text" name="dis" id="dis" value="disabled, doesn't sent"> <br>
+    <div>
+      Check some stuff1: <input type="checkbox" name="someStuff1Checkbox" value="user_Loves_someStuffcheck1"><br />
+      Check some stuff2: <input type="checkbox" name="someStuff2Checkbox" value="user_Loves_someStuffcheck2">
+    </div> <br />
+    <div>
+      Radio some stuff1: <input type="radio" name="someStuff1Radio" value="user_Loves_someStuffradio1"><br />
+      Radio some stuff2: <input type="radio" name="someStuff2Radio" value="user_Loves_someStuffradio2">
+    </div>
+    <input id='resetButton' type="reset" value="Click to reset"> <br>
+    <input type="text" name="textInput" id="textInput" placeholder="Type message..." value=""> <input type="button"
+      value="Click to alert message" onclick="alertMessage()">
+    <input type="hidden" name="someHiddenValue" value="+20percentsToThePriceHaha"> 
+  </form>
+
+  <form id="actionForm" action="">
+    <pre>
+        <input type="submit" value="Click">
+        <input type="button" value="Regular buttton">
+        <p id="colorParagraph">Chosen color</p> <input type="color" name="colorInput" id="colorPicker" value="">
+        <p id="dateParagraph">Chosen date:</p> <input type="date" name="datePicker" id="datePicker">
+        <p id="fileParagraph">Chosen filePath:</p> <input type="file" name="fileInp" id="fileInput">
+        <p id="imageParagraph">Submit by image click</p> <input type="image" src="../imgs/Oh-you-Dog.jpg" alt="" id="imageInp">
+        <p id="rangeParagraph">Range: </p> <input type="range" name="rangeInput" id="rangeInput" min="-10" max="10" step="1">
+        <p id="searchParagraph">Haven't got how to work with it yet :(</p> <input type="search" name="q" id="searchInput" placeholder="Search for someting..."> <button id="forSearch">Search</button>
+    </pre>
+    <fieldset>
+      <legend>Regular selects</legend>
+      <select name="multi" id="multiS" multiple>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select> <br>
+
+      <select name="OptS" id="OptS">
+        <optgroup label="Label for firs group">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </optgroup>
+        <optgroup label="Label for secont group">
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+        </optgroup>
+      </select> <br>
+
+      <legend>Selects with js</legend>
+      <p id="selectParagraph">Selected option:</p>
+      <select id="regularSelect">
+        <option selected='selected' value="-1">Default</option>
+        <option value="Option1">Option1</option>
+        <option value="Option2">Option2</option>
+        <option value="Option3">Option3</option>
+        <option value="Option4">Option4</option>
+        <option value="Option5">Option5</option>
+      </select>
+    </fieldset>
+  </form> <br>
+  <form action="" method="get">
+    <fieldset>
+      <label>Textarea</label> <br>
+      <textarea name="textA" id="textA" cols="70" rows="10" placeholder="Enter your message..."></textarea>
+    </fieldset>
+  </form>
+  <hr style="height: 10px; visibility: hidden">
+  <a href="./layers.html" target="_self" title="To tables">Go back To layers</a>
+  <a href="./site_page.html" target="_self" title="To css">To site page</a>
 </body>
+<script type="text/javascript" src="../scripts/forms.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
 </html>

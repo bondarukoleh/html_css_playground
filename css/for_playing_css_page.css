@@ -16,3 +16,11 @@ div { text-align: center; margin: 10px }
 .overline { background-color: aquamarine; text-decoration: overline }
 .line-through { background-color: azure; text-decoration: line-through }
 .blink { background-color: azure; text-decoration: blink }
+body {
+  background-image: url('../imgs/vector-abstract-forest-landscape.jpg');
+  background-size: cover;
+}
+a {
+  font-weight: bolder;
+  font-family: fantasy;
+}
