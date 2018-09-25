@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Explanation</title>
+  <style>
+    h3 {
+      float: left;
+      margin: 5px;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 5px;
+      padding: 7px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h3>Doctype - </h3>
+    <p> DOCTYPE в хедере - пояснение для браузера к какому типу документ относится.
+      В HTML5 упразднен до <\!DOCTYPE html\>
+    </p>
+
+    <h3>Сharset - </h3>
+    <p>
+      <\meta charset="UTF-8"> в хедере - пояснение для браузера какой набор символов указывать
+        при отображении, если не указан - браузер попытается достать эту инфу с заголовка ответа
+        сервера на запрос страницы. До 5го - надо было писать <\meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </p>
+
+    <h3>Sctipt/Link - </h3>
+    <p>
+        <\script="./myScript.js"> и "<\link rel-"stylesheet" href="./myCss.css"> в хедере - 
+        всё что надо для 5го. До него нужно было указывать type.
+    </p>
+  </div>
+</body>
+
+</html>
