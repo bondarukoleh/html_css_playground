@@ -10,3 +10,11 @@ div {
   width: 50px;
   height: 50px;
 }
+
+.rotateRight {
+  transform: rotate(90deg)
+}
+
+.rotateLeft {
+  transform: rotate(-90deg)
+}
