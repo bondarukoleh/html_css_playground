@@ -14,3 +14,19 @@ function rotateLeft() {
 function rotateRight() {
   picture.classList.toggle('rotateRight')
 }
+
+/* Handle placeholder */
+if (!Modernizr.input.placeholder) {
+  console.log('No placeholder');
+  $('input[placeholder]').focus(function () {
+    if($(this).val() === $(this).attr('placeholder')) {
+      $(this).val('')
+    }
+  });
+  $('input[placeholder]').blur(function () {
+    if (!$(this).val()) {
+      $(this).val($(this).attr('placeholder'))
+    } 
+  });
+}
+

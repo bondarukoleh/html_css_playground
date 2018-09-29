@@ -18,3 +18,8 @@ div {
 .rotateLeft {
   transform: rotate(-90deg)
 }
+
+.clearLabel {
+  display: block;
+  margin: 5px auto;
+}
