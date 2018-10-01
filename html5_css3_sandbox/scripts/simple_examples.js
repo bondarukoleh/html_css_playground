@@ -7,10 +7,14 @@ if (Modernizr.canvas) {
 
 /* Rotation */
 const picture = document.querySelector('#puh')
+const getNumber = /-?\d+/g
 function rotateLeft() {
-  const rotateValue = parseInt(picture.style.transform) + 90
-  picture.style.transform = `rotate(${rotateValue}deg)`
+  (picture.style.transform) ?
+    picture.style.transform = 'rotate(' + (parseInt(picture.style.transform.match(getNumber)[0]) - 90) + 'deg)' :
+    picture.style.transform = 'rotate(-90deg)'
 }
 function rotateRight() {
-  picture.classList.toggle('rotateRight')
+  (picture.style.transform) ?
+    picture.style.transform = 'rotate(' + (parseInt(picture.style.transform.match(getNumber)[0]) + 90) + 'deg)' :
+    picture.style.transform = 'rotate(90deg)'
 }
