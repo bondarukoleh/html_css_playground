@@ -23,3 +23,20 @@ div {
   display: block;
   margin: 5px auto;
 }
+
+#simpleVideoId {
+  width: 350px;
+}
+
+#simpleVideoPlayerId{
+  width: 450px;
+}
+
+canvas {
+  border: 2px solid grey;
+}
+
+#smallPreview {
+  width: 200px;
+  height: 95px;
+}
