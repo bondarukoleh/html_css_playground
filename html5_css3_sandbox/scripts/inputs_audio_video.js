@@ -42,30 +42,31 @@ const playVideoButton = document.querySelector('#playVideoPlayer')
 const pauseVideoButton = document.querySelector('#pauseVideo')
 const secondOfPlayButton = document.querySelector('#secondOfPlaying')
 const volumeOfPlayButton = document.querySelector('#volume')
+videoElem.addEventListener('play', moveVideoRange)
 
 playVideoButton.onclick = () => {
   if (videoElem.paused || videoElem.ended) {
     videoElem.play()
   }
 }
-
 pauseVideoButton.onclick = function () {
   videoElem.pause()
 }
-
 secondOfPlayButton.onchange = function () {
   videoElem.currentTime = this.value
 }
-
 volumeOfPlayButton.onchange = function () {
   videoElem.volume = this.value
+}
+function moveVideoRange() {
+  secondOfPlayButton.value = videoElem.currentTime
+  setTimeout(moveVideoRange, 1000)
 }
 
 /* canvas preview logic */
 const mediumPreviewContext = document.querySelector('#mediumPreview').getContext('2d')
 const smallPreviewContext = document.querySelector('#smallPreview').getContext('2d')
 videoElem.addEventListener('play', draw)
-videoElem.addEventListener('play', moveVideoRange)
 function draw() {
   if (videoElem.paused || videoElem.ended) {
     return;
@@ -74,7 +75,4 @@ function draw() {
   smallPreviewContext.drawImage(videoElem, 0, 0, 300, 150)
   setTimeout(draw, 25)
 }
-function moveVideoRange() {
-  secondOfPlayButton.value = videoElem.currentTime
-  setTimeout(moveVideoRange, 1000)
-}
+
