@@ -1,0 +1,63 @@
+div {
+  margin: 5px;
+}
+
+#multilink {
+  margin: 0;
+}
+
+#smallLogo {
+  width: 50px;
+  height: 50px;
+}
+
+.rotateRight {
+  transform: rotate(90deg)
+}
+
+.rotateLeft {
+  transform: rotate(-90deg)
+}
+
+.clearLabel {
+  display: block;
+  margin: 5px auto;
+}
+
+#simpleVideoId {
+  width: 350px;
+}
+
+#simpleVideoPlayerId{
+  width: 450px;
+}
+
+canvas {
+  border: 2px solid grey;
+}
+
+#smallPreview {
+  width: 200px;
+  height: 95px;
+}
+
+#border {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid gray;
+  position: relative;
+  display: inline-flex;
+  background:darkgray;
+}
+
+#border * {
+  padding: 2px;
+}
+
+hr {
+  margin: 5px;
+}
+
+html { 
+  background: url('../imgs/back.png') no-repeat center center fixed;
+}
