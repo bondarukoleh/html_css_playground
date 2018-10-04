@@ -4,10 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../css/microdata_geolocation.css">
   <title>Document</title>
 </head>
 <body>
-  
+  <p itemscope itemtype="https://schema.org/Person">itemscope and itemprop - microdata for search engin: -
+     <span itemprop="name">Olezhka</span> </p>
+
+  <p>
+      dragstart - вызывается в самом начале переноса перетаскиваемого элемента.<br>
+      dragend - вызывается в конце события перетаскивания - как успешного, так и отмененного.<br>
+      dragenter - происходит в момент когда перетаскиваемый объект попадает в область целевого элемента.<br>
+      dragleave - происходит когда перетаскиваемый элемент покидает область целевого элемента.<br>
+      dragover - происходит когда перетаскиваемый элемент находиться над целевым элементом.<br>
+      drop - вызывается, когда событие перетаскивания завершается отпусканием элемента над целевым элементом.<br>
+  </p>
+  <div id="dagAndDropDiv">
+    <div class="source" id="source1" data-source1data="source1InnerData" draggable="true">Some text in source1</div>
+    <div class="source" id="source2" data-source2data="source2InnerData" draggable="true">Some text in source2</div>
+    <div class="target" id="targetDiv">Some text in taret div</div>
+  </div>
 </body>
-<script src="../scripts/simple_examples.js"></script>
+<script src="../scripts/microdata_geolocation.js"></script>
 </html>
