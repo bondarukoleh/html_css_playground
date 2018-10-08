@@ -22,10 +22,19 @@ div {
   background-color: cadetblue;
   width: 600px;
   height: 450px;
+  padding: 5px;
 }
 
-#wtf {
-  background-color: cadetblue;
-  width: 600px;
-  height: 450px;
+.dragovered {
+  background-color: darkolivegreen;
+}
+
+#loading {
+  width: 30px;
+  height: 30px;
+  visibility: hidden;
+}
+
+.innerGet {
+  vertical-align: middle;
 }
