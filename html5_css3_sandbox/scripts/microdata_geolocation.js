@@ -75,23 +75,23 @@ const geolocationUl = document.querySelector('#navGeoLocUL')
 const geolocationDiv = document.querySelector('#geolocationDiv')
 const getLocationResult = document.querySelector('#getLocationResult')
 
-function handleErrorCode(err){
-  const text = null
+function handleErrorCode(err) {
+  let text = null
   switch (err.code) {
     case 0:
-    text = `Something went wrong during getting your location: ${err.message}`
+      text = `Something went wrong during getting your location: ${err.message}`
       break;
     case 1:
-    text = `User prohibit his location: ${err.message}` 
+      text = `User prohibits to know about his location: ${err.message}`
       break;
     case 2:
-    text = `Cannot get your location: ${err.message}`
+      text = `Cannot get your location: ${err.message}`
       break;
     case 3:
-    text = `Timeout over ${err.message}`
+      text = `Timeout over ${err.message}`
       break;
     default:
-    text = `Something very interisting happened. We don't know what is it ${err.message}` 
+      text = `Something very interisting happened. We don't know what is it ${err.message}`
       break;
   }
   return text;
@@ -102,16 +102,17 @@ navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude, accur
   document.querySelector('#longitude').innerText = `Longitude: ${longitude}`
   document.querySelector('#accuracy').innerText = `Accuracy: ${accuracy}`
 }, err => {
+  console.log('Something went wrong with getting location. Error:')
   console.log(err)
   geolocationDiv.removeChild(geolocationUl)
   const errorP = document.createElement('p')
-  errorP.innerText =  handleErrorCode(err)
+  errorP.innerText = handleErrorCode(err)
   geolocationDiv.appendChild(errorP)
 })
 
 const getLockByButton = document.querySelector('#getLockByButton')
 const loading = document.querySelector('#loading')
-document.querySelector('#getLockByButton').onclick = function(){
+document.querySelector('#getLockByButton').onclick = function () {
   showLoadingSpin()
   const additionSetting = {
     enableHighAccuracy: true,
@@ -119,10 +120,9 @@ document.querySelector('#getLockByButton').onclick = function(){
     maximumAge: 30000
   }
   setTimeout(() => navigator
-  .geolocation.getCurrentPosition(handleLocation, handleError, additionSetting), 2000)
-  
-  function handleLocation({coords: { latitude, longitude, accuracy }}){
-    console.log('object');
+    .geolocation.getCurrentPosition(handleLocation, handleError, additionSetting), 2000)
+
+  function handleLocation({ coords: { latitude, longitude, accuracy } }) {
     const divEl = document.createElement('div')
     divEl.innerHTML = `<span>
     "Latitude - ${latitude}"; 
@@ -132,9 +132,9 @@ document.querySelector('#getLockByButton').onclick = function(){
     getLocationResult.appendChild(divEl)
   }
 
-  function handleError(err){
+  function handleError(err) {
     const errorP = document.createElement('p')
-    errorP.innerText =  handleErrorCode(err)
+    errorP.innerText = handleErrorCode(err)
     getLocationResult.appendChild(errorP)
   }
 }
@@ -143,3 +143,28 @@ function showLoadingSpin() {
   loading.style.visibility = 'visible'
   setTimeout(() => loading.style.visibility = 'hidden', 2000)
 }
+
+/*--------- google map ------------*/
+// They want enable billing, I don't want to do that.
+navigator
+  .geolocation.getCurrentPosition(({ coords: { latitude, longitude, accuracy } }) => {
+    document.getElementById('accuracyP').innerText = `Accuracy of your position is - ${accuracy}`
+    const position = new google.maps.LatLng(latitude, longitude);
+    const options = {
+      zoom: 15,
+      center: position,
+      mapTypeId: google.maps.mapTypeId.ROADMAP
+    }
+    const map = new google.maps.Map(document.getElementById('map'), options)
+    const marker = new google.maps.marker({
+      position: position,
+      map: map,
+      title: 'You are here.'
+    })
+
+    const infoWindow = new google.maps.infoWindow({
+      content: `Probably it's your position.`
+    })
+
+    google.maps.event.addEventListener(marker, 'click', () => infoWindow.open(map, marker))
+  })
