@@ -29,6 +29,18 @@ line1Context.save();
 line1Context.translate(20, 5);
 drawRomb({context: line1Context, lineWidth: 4});
 
+/*--------------quardicCurveTo bezierCurveTo------------*/
+const line2 = document.querySelector('#line2')
+const line2Context = line2.getContext('2d')
+line2Context.lineWidth = 3
+line2Context.moveTo(5, 100) /* start point, where we start */
+line2Context.quadraticCurveTo(50, 0 /* control point where we pull */, 100, 100 /* end point of start point */)
+line2Context.stroke()
+
+line2Context.moveTo(115, 100) /* start point, where we start */
+line2Context.bezierCurveTo(160, 90,/*1st control point to pull */ 260, 0, /* 2nd control point */250, 100/* end point*/)
+line2Context.stroke()
+
 /*--------------- circle smile ------------------------*/
 const circles = document.querySelector('#cirles')
 const circlesContext = circles.getContext('2d')
@@ -42,3 +54,5 @@ circlesContext.moveTo(35,  35)
 circlesContext.arc(35, 35, 25, 0, Math.PI)
 circlesContext.closePath()
 circlesContext.stroke()
+
+/*------------ img -------------------- */
