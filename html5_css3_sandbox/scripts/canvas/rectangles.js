@@ -1,6 +1,8 @@
+function getContext(locator) {
+  return document.querySelector(locator).getContext('2d')
+}
 /*--------------- rect ------------------------*/
-const rectangl1 = document.querySelector('#rectangl1')
-const rec1Context = rectangl1.getContext('2d')
+const rec1Context = getContext('#rectangl1')
 rec1Context.fillStyle='rgb(200,0,0)';
 rec1Context.fillRect(10, 10, 150, 110);
 rec1Context.fillStyle='rgb(0, 0, 200, 0.5)';
@@ -10,8 +12,7 @@ rec1Context.lineWidth=3;
 rec1Context.strokeRect(35, 35, 60, 60);
 
 /*--------------- rombs ------------------------*/
-const line1 = document.querySelector('#line1')
-const line1Context = line1.getContext('2d')
+const line1Context = getContext('#line1')
 function drawRomb ({context, lineWidth}) {
   context.lineWidth=lineWidth;
   context.lineJoin='bevel';
@@ -30,8 +31,7 @@ line1Context.translate(20, 5);
 drawRomb({context: line1Context, lineWidth: 4});
 
 /*--------------quardicCurveTo bezierCurveTo------------*/
-const line2 = document.querySelector('#line2')
-const line2Context = line2.getContext('2d')
+const line2Context = getContext('#line2')
 line2Context.lineWidth = 3
 line2Context.moveTo(5, 100) /* start point, where we start */
 line2Context.quadraticCurveTo(50, 0 /* control point where we pull */, 100, 100 /* end point of start point */)
@@ -42,8 +42,7 @@ line2Context.bezierCurveTo(160, 90,/*1st control point to pull */ 260, 0, /* 2nd
 line2Context.stroke()
 
 /*--------------- circle smile ------------------------*/
-const circles = document.querySelector('#cirles')
-const circlesContext = circles.getContext('2d')
+const circlesContext = getContext('#cirles')
 circlesContext.beginPath()
 circlesContext.arc(35, 35, 30, 0, Math.PI*2)
 circlesContext.moveTo(25,  25)
@@ -53,6 +52,15 @@ circlesContext.arc(45, 25, 5, 0, Math.PI*2)
 circlesContext.moveTo(35,  35)
 circlesContext.arc(35, 35, 25, 0, Math.PI)
 circlesContext.closePath()
+circlesContext.moveTo(150, 30);
+circlesContext.arcTo(150,160,50,0,20);
+circlesContext.lineTo(113,43);
+circlesContext.arcTo(113,5,140,25,19);
+circlesContext.lineTo(143,85);
 circlesContext.stroke()
 
 /*------------ img -------------------- */
+const img1Context = getContext('#img1')
+const img = new Image(50, 50)
+img1Context.drawImage(img, 10, 10);
+img.src = 'https://mdn.mozillademos.org/files/5395/backdrop.png'
