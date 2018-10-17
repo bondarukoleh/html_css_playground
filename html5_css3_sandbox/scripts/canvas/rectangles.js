@@ -68,7 +68,7 @@ img.onload = function(){
   const tempCanvasContext = tempCanvas.getContext("2d")
   tempCanvas.width = 20;
   tempCanvas.height = 20;
-  tempCanvasContext.drawImage(img, 0, 0, img.width, img.height, 0, 0, tempCanvas.width, tempCanvas.height)
+  tempCanvasContext.drawImage(img, 0, 0, img.width, img.height, 0, 0, tempCanvas.width, tempCanvasContext.canvas.height)
   img1Context.fillStyle = img1Context.createPattern(tempCanvas, 'repeat')
   img1Context.fillRect(150, 10, 140, 135)
 }
@@ -83,9 +83,12 @@ lineGrad.addColorStop(1, 'lightgreen')
 gradient1Context.fillStyle = lineGrad
 gradient1Context.fillRect(5, 5, 140, 140)
 
-const radGrad = gradient1Context.createRadialGradient(220, 70, 20, 220, 70, 50)
-radGrad.addColorStop(0, 'red')
+const radGrad = gradient1Context.createRadialGradient(225, 78, 20, 225, 78, 70)
+radGrad.addColorStop(0, 'orange')
 radGrad.addColorStop(0.5, 'white')
-radGrad.addColorStop(1, 'orange')
+radGrad.addColorStop(1, 'red')
 gradient1Context.fillStyle = radGrad
-gradient1Context.fillRect(155, 5, 140, 140)
+gradient1Context.fillRect(150, 5, 145, 140)
+gradient1Context.fillRect(150, 5, 145, 140)
+
+/* --------------- tranformation ------------ */
