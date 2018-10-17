@@ -61,6 +61,31 @@ circlesContext.stroke()
 
 /*------------ img -------------------- */
 const img1Context = getContext('#img1')
-const img = new Image(50, 50)
-img1Context.drawImage(img, 10, 10);
-img.src = 'https://mdn.mozillademos.org/files/5395/backdrop.png'
+const img = new Image()
+img.onload = function(){
+  img1Context.drawImage(img, 10, 10);
+  const tempCanvas = document.createElement('canvas')
+  const tempCanvasContext = tempCanvas.getContext("2d")
+  tempCanvas.width = 20;
+  tempCanvas.height = 20;
+  tempCanvasContext.drawImage(img, 0, 0, img.width, img.height, 0, 0, tempCanvas.width, tempCanvas.height)
+  img1Context.fillStyle = img1Context.createPattern(tempCanvas, 'repeat')
+  img1Context.fillRect(150, 10, 140, 135)
+}
+img.src = '../../imgs/html1.PNG'
+
+/*------------ gradients -------------------- */
+const gradient1Context = getContext('#gradient1')
+const lineGrad = gradient1Context.createLinearGradient(20, 0, 0, 150)
+lineGrad.addColorStop(0, 'Blue')
+lineGrad.addColorStop(0.5, 'white')
+lineGrad.addColorStop(1, 'lightgreen')
+gradient1Context.fillStyle = lineGrad
+gradient1Context.fillRect(5, 5, 140, 140)
+
+const radGrad = gradient1Context.createRadialGradient(220, 70, 20, 220, 70, 50)
+radGrad.addColorStop(0, 'red')
+radGrad.addColorStop(0.5, 'white')
+radGrad.addColorStop(1, 'orange')
+gradient1Context.fillStyle = radGrad
+gradient1Context.fillRect(155, 5, 140, 140)
