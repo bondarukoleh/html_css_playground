@@ -1,5 +1,8 @@
+function $(locator) {
+  return document.querySelector(locator)
+}
 function getContext(locator) {
-  return document.querySelector(locator).getContext('2d')
+  return $(locator).getContext('2d')
 }
 /*--------------- rect ------------------------*/
 const rec1Context = getContext('#rectangl1')
@@ -92,3 +95,28 @@ gradient1Context.fillRect(150, 5, 145, 140)
 gradient1Context.fillRect(150, 5, 145, 140)
 
 /* --------------- tranformation ------------ */
+function drawP(){
+  const canv = $('#transrormation')
+  const transrormationContext = getContext('#transrormation')
+  const img = new Image()
+  function drawImage(){
+    transrormationContext.clearRect(0, 0, canv.width, canv.height)
+    transrormationContext.drawImage(img, 85, 5);
+  }
+  img.onload = drawImage
+  img.src = '../../imgs/html1.PNG'
+  
+  
+  canv.addEventListener('click', function(e){
+    transrormationContext.clearRect(0, 0, canv.width, canv.height)
+    transrormationContext.save()
+    transrormationContext.transform(0.8, -0.5, 0.8, 0.5, 0, 0)
+    transrormationContext.drawImage(img, 85, 5);
+    transrormationContext.restore()
+  })
+
+  canv.addEventListener('mousedown', function(e){ 
+     e.which === 3 && drawImage()
+  })
+}
+drawP()
