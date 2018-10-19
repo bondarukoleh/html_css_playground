@@ -99,24 +99,41 @@ function drawP(){
   const canv = $('#transrormation')
   const transrormationContext = getContext('#transrormation')
   const img = new Image()
-  function drawImage(){
-    transrormationContext.clearRect(0, 0, canv.width, canv.height)
-    transrormationContext.drawImage(img, 85, 5);
+  function draw(){
+    // transrormationContext.clearRect(0, 0, canv.width, canv.height)
+  /* a (m11) Horizontal scaling.
+     b (m12) Horizontal skewing.
+     c (m21) Vertical skewing.
+     d (m22) Vertical scaling.
+     e (dx) Horizontal moving.
+     f (dy) Vertical moving. */
+    // transrormationContext.transform(0.3, -0.3, 0, 1, 0, 0)
+    transrormationContext.drawImage(img, 5, 5);
+    transrormationContext.save()
+    // transrormationContext.transform(0.5, -0.3, 0, 1, 0, 0)
+    // transrormationContext.drawImage(img, 5, 5);
+    // transrormationContext.transform(0.7, -0.3, 0, 1, 0, 0)
+    // transrormationContext.drawImage(img, 5, 5);
+    transrormationContext.transform(1, 0, 0, 1, 0, 0)
+    transrormationContext.drawImage(img, 15, 15);
+    transrormationContext.restore()
+    // transrormationContext.transform(0.3, -0.3, 0, 1, 0, 0)
+    // transrormationContext.drawImage(img, 55, 25);
   }
-  img.onload = drawImage
+  img.onload = draw
   img.src = '../../imgs/html1.PNG'
   
   
-  canv.addEventListener('click', function(e){
-    transrormationContext.clearRect(0, 0, canv.width, canv.height)
-    transrormationContext.save()
-    transrormationContext.transform(0.8, -0.5, 0.8, 0.5, 0, 0)
-    transrormationContext.drawImage(img, 85, 5);
-    transrormationContext.restore()
-  })
+  // canv.addEventListener('click', function(e){
+  //   transrormationContext.clearRect(0, 0, canv.width, canv.height)
+  //   transrormationContext.save()
+  //   transrormationContext.transform(0.8, -0.5, 0.8, 0.5, 0, 0)
+  //   transrormationContext.drawImage(img, 85, 5);
+  //   transrormationContext.restore()
+  // })
 
-  canv.addEventListener('mousedown', function(e){ 
-     e.which === 3 && drawImage()
-  })
+  // canv.addEventListener('mousedown', function(e){ 
+  //    e.which === 3 && drawImage()
+  // })
 }
 drawP()
