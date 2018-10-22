@@ -95,45 +95,50 @@ gradient1Context.fillRect(150, 5, 145, 140)
 gradient1Context.fillRect(150, 5, 145, 140)
 
 /* --------------- tranformation ------------ */
-function drawP(){
+{
   const canv = $('#transrormation')
   const transrormationContext = getContext('#transrormation')
   const img = new Image()
+  Array.prototype.forEach.call(document.querySelectorAll('#transf_constols input'),
+  function(input){ input.addEventListener('change', draw)})
   function draw(){
-    // transrormationContext.clearRect(0, 0, canv.width, canv.height)
-  /* a (m11) Horizontal scaling.
-     b (m12) Horizontal skewing.
-     c (m21) Vertical skewing.
-     d (m22) Vertical scaling.
-     e (dx) Horizontal moving.
-     f (dy) Vertical moving. */
-    // transrormationContext.transform(0.3, -0.3, 0, 1, 0, 0)
-    transrormationContext.drawImage(img, 5, 5);
+    transrormationContext.clearRect(0, 0, canv.width, canv.height)
     transrormationContext.save()
-    // transrormationContext.transform(0.5, -0.3, 0, 1, 0, 0)
-    // transrormationContext.drawImage(img, 5, 5);
-    // transrormationContext.transform(0.7, -0.3, 0, 1, 0, 0)
-    // transrormationContext.drawImage(img, 5, 5);
-    transrormationContext.transform(1, 0, 0, 1, 0, 0)
-    transrormationContext.drawImage(img, 15, 15);
+    transrormationContext.translate(5, 5)
+    transrormationContext.transform(
+      $('#horizontal_scaling').value,
+      $('#horizontal_skewing').value,
+      $('#vertical_scaling').value,
+      $('#vertical_skewing').value,
+      $('#horizontal_moving').value,
+      $('#vertical_moving').value)
+    transrormationContext.drawImage(img, 5, 5);
     transrormationContext.restore()
-    // transrormationContext.transform(0.3, -0.3, 0, 1, 0, 0)
-    // transrormationContext.drawImage(img, 55, 25);
   }
   img.onload = draw
   img.src = '../../imgs/html1.PNG'
-  
-  
-  // canv.addEventListener('click', function(e){
-  //   transrormationContext.clearRect(0, 0, canv.width, canv.height)
-  //   transrormationContext.save()
-  //   transrormationContext.transform(0.8, -0.5, 0.8, 0.5, 0, 0)
-  //   transrormationContext.drawImage(img, 85, 5);
-  //   transrormationContext.restore()
-  // })
-
-  // canv.addEventListener('mousedown', function(e){ 
-  //    e.which === 3 && drawImage()
-  // })
 }
-drawP()
+
+/*------------------ text------------- */
+{
+  function draw(){
+    const canv = $('#text1')
+    const context = getContext('#text1')
+    context.moveTo(0, 20)
+    context.lineTo(canv.width, 20)
+    context.stroke()
+  
+    context.font = 'bold 24px Segoe UI'
+    /* 'top | hanging | middle | alphabetic | ideographic | bottom' */
+    context.textBaseline='alphabetic';
+    const text = 'Hello HTML5'
+    const textWidth = context.measureText(text);
+    console.log(textWidth)
+    context.fillText(text, 150, 20)
+
+    context.font="20px Georgia";
+    context.textBaseline='middle';
+    context.fillText("Hello World!", (canv.width - textWidth.width) - 120, 20);
+  }
+  window.addEventListener('load', draw, true)
+}
