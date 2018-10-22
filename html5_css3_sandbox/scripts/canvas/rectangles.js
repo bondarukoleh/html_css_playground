@@ -1,8 +1,11 @@
 function $(locator) {
   return document.querySelector(locator)
 }
-function getContext(locator) {
-  return $(locator).getContext('2d')
+function getContext(locator, element) {
+  return (locator) ? $(locator).getContext('2d') : element.getContext('2d')
+}
+function createElem(type) {
+  return document.createElement(type)
 }
 /*--------------- rect ------------------------*/
 const rec1Context = getContext('#rectangl1')
@@ -133,12 +136,89 @@ gradient1Context.fillRect(150, 5, 145, 140)
     context.textBaseline='alphabetic';
     const text = 'Hello HTML5'
     const textWidth = context.measureText(text);
-    console.log(textWidth)
     context.fillText(text, 150, 20)
 
     context.font="20px Georgia";
     context.textBaseline='middle';
-    context.fillText("Hello World!", (canv.width - textWidth.width) - 120, 20);
+    context.fillText("Hello World!", (canv.width - textWidth.width ) - 120, 20);
+
+    context.font="bold 25px Georgia";
+    context.fillStyle = 'blue'
+    context.textBaseline='bottom';
+    context.shadowColor='rgba(0, 0, 0, 0.2)';
+    context.shadowOffsetX = 15; 
+    context.shadowOffsetY = 10;
+    context.shadowBlur = 1;
+    context.fillText("Hello World!", (canv.width - textWidth.width ) /2, 70);
   }
   window.addEventListener('load', draw, true)
+}
+
+{
+  function draw(){
+    let reset = $('#reset')
+    let tempCanv = $('#paint')
+    let tempContx =  getContext('#paint')
+    let started = false;
+    tempCanv.addEventListener('mousemove', moveHandler, false)
+
+    function moveHandler(e){
+      (!started) ? (function(){
+        tempContx.beginPath()
+        tempContx.moveTo(e.offsetX, e.offsetY)
+        started = true
+      })() : 
+      (function(){
+        tempContx.lineTo(e.offsetX, e.offsetY)
+        tempContx.stroke()
+      })()
+    }
+
+    reset.onclick = function(){
+      const paindDiv = $('#paindDiv')
+      paindDiv.removeChild(tempCanv)
+      tempCanv = createElem('canvas')
+      tempCanv.width = 300
+      tempCanv.height = 150
+      tempCanv.style.backgroundColor = 'rgb(220, 255, 253)'
+      tempContx = getContext(null, tempCanv)
+      paindDiv.appendChild(tempCanv)
+      tempCanv.addEventListener('mousemove', moveHandler, false)
+    }
+  }
+  window.addEventListener('load', draw, false)
+}
+
+{
+  function draw(){
+    const reset = $('#reset2')
+    const tempCanv = $('#paint2')
+    const tempContx =  getContext('#paint2')
+    let started = false;
+    tempCanv.addEventListener('mousedown', mousedownHandler, false)
+    tempCanv.addEventListener('mousemove', mousemoveHandler, false)
+    tempCanv.addEventListener('mouseup', mouseupHandler, false)
+
+    function mousedownHandler(e){
+        tempContx.beginPath()
+        tempContx.moveTo(e.offsetX, e.offsetY)
+        started = true
+    }
+
+    function mousemoveHandler(e){
+      (started) && (function(){
+        tempContx.lineTo(e.offsetX, e.offsetY)
+        tempContx.stroke()
+      })()
+    }
+
+    function mouseupHandler(e){
+        started = false
+    }
+
+    reset.onclick = function(){
+      tempContx.clearRect(0, 0, tempCanv.width, tempCanv.height)
+    }
+  }
+  window.addEventListener('load', draw, false)
 }
