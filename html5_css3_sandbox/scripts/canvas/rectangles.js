@@ -222,3 +222,49 @@ gradient1Context.fillRect(150, 5, 145, 140)
   }
   window.addEventListener('load', draw, false)
 }
+
+{
+  const animation = $('#animation1')
+  const context = getContext('#animation1')
+  const start = new Date().getTime() / 1000
+  let val = 0;
+  console.log('start');
+  console.log(start);
+  function drawRecr(){
+    val+=10
+    if(val < 100){
+      context.beginPath()
+      context.rect(val, 15, 30, 30)
+      context.fillStyle = 'green'
+      context.fill()
+      context.stroke()
+      window.requestAnimationFrame(drawRecr)
+    }
+  }
+
+  window.requestAnimationFrame(drawRecr)
+  // drawRecr({ x: , y: 10, width: 30, height: 30 }, context)
+  // const startRectOpts = {
+  //   x: 0,
+  //   y: 15,
+  //   width: 30,
+  //   height: 30
+  // }
+
+
+  // function animate(rectOpts, canvasElem, context, startTime){
+  //   const time = (new Date().getTime()) - startTime
+  //   const lineSpeed = 50
+  //   const newX = lineSpeed * time / 1000
+  //   if(newX < (canvasElem.width - rectOpts.width)){
+  //     rectOpts.x = newX
+  //   }
+  //   context.clearRect(0, 0, canvasElem.width, canvasElem.height)
+  //   drawRecr(rectOpts, context)
+  //   window.requestAnimationFrame(function(){
+  //     animate(rectOpts, canvasElem, context, startTime)
+  //   })
+  // }
+
+  // animate(startRectOpts, animation, context, new Date().getTime())
+}
