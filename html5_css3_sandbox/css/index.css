@@ -12,3 +12,7 @@ p {
 input {
   margin: 5px;
 }
+
+html { 
+  background: url('../imgs/back.png') no-repeat center center fixed;
+}

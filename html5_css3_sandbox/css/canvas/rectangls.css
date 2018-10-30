@@ -41,3 +41,7 @@
 #animation1 {
   background-color: rgb(248, 220, 255);
 }
+
+html { 
+  background: url('../../imgs/back.png') no-repeat center center fixed;
+}

@@ -1,0 +1,16 @@
+html { 
+  background: url('../imgs/back.png') no-repeat center center fixed;
+}
+
+#sessionStorageDiv {
+  border: 1px solid;
+  display: inline-block
+}
+
+#sessionStorageDiv * {
+  margin: 5px;
+}
+
+#sessionStorageDiv input {
+  display: block;
+} 
