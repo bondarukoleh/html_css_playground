@@ -41,13 +41,13 @@ function createElem(type) {
       existingData.removeChild(existingData.firstChild)
     }
     Object.entries(window.localStorage).forEach(([key, value]) => {
-      const p =  document.createElement('p')
+      const p = createElem('p')
       p.innerText = `Local key: "${key}"; value: "${value}"`
       existingData.appendChild(p)
     });
 
     Object.entries(window.sessionStorage).forEach(([key, value]) => {
-      const p =  document.createElement('p')
+      const p = createElem('p')
       p.innerText = `Session key: "${key}"; value: "${value}"`
       existingData.appendChild(p)
     });
@@ -57,6 +57,7 @@ function createElem(type) {
     while(existingData.firstChild){
       existingData.removeChild(existingData.firstChild)
     }
+    /* We could do it like this: 
     Object.keys(window.localStorage).forEach(key => {
       if(window.localStorage[key] && key.includes('myKey')){
         window.localStorage.removeItem(key)
@@ -67,6 +68,8 @@ function createElem(type) {
       if(window.sessionStorage[key] && key.includes('myKey')){
         window.sessionStorage.removeItem(key)
       }
-    });
+    }); But there is a easier way: */
+    window.localStorage.clear()
+    window.sessionStorage.clear()
   })
 }
