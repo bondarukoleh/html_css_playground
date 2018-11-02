@@ -4,6 +4,14 @@ function $(locator) {
 function createElem(type) {
   return document.createElement(type)
 }
+function isJson(str) {
+  try {
+      JSON.parse(str);
+  } catch (e) {
+      return false;
+  }
+  return true;
+}
 
 { /* check storages */
   let localP = $('#local')
@@ -24,15 +32,23 @@ function createElem(type) {
   }
 
   $('#setToLocal').addEventListener('click', _ => {
+    const simpleObj = {
+      a: 'localObjectData'
+    }
     window.localStorage.myKey1 = 'local data1'
     window.localStorage.setItem('myKey2', 'local data2')
     window.localStorage['myKey3'] = 'local data3'
+    window.localStorage.localObj = JSON.stringify(simpleObj)
   })
 
   $('#setToSession').addEventListener('click', _ => {
+    const simpleObj = {
+      b: 'sessionObjectData'
+    }
     window.sessionStorage.myKey1 = 'session data1'
     window.sessionStorage.setItem('myKey2', 'session data2')
     window.sessionStorage['myKey3'] = 'session data3'
+    window.sessionStorage.sessionObj = JSON.stringify(simpleObj)
   })
 
 
