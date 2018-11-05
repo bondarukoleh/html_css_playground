@@ -78,7 +78,7 @@ img.onload = function () {
   img1Context.fillStyle = img1Context.createPattern(tempCanvas, 'repeat')
   img1Context.fillRect(150, 10, 140, 135)
 }
-img.src = '../../imgs/html1.PNG'
+img.src = '../imgs/html1.PNG'
 
 /*------------ gradients -------------------- */
 const gradient1Context = getContext('#gradient1')
@@ -119,7 +119,7 @@ gradient1Context.fillRect(150, 5, 145, 140)
     transrormationContext.restore()
   }
   img.onload = draw
-  img.src = '../../imgs/html1.PNG'
+  img.src = '../imgs/html1.PNG'
 }
 
 /*------------------ text------------- */

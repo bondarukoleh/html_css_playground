@@ -1,0 +1,12 @@
+CACHE MANIFEST
+# Browser updates cache if manifest file updated
+# CACHE - ceched pages
+CAHCE:
+offline.htm
+styles.css
+offlineTest.htm
+error.htm
+
+# NETWORK - pages always asked from server
+NETWORK:
+online.htm

@@ -89,3 +89,13 @@ function isJson(str) {
     window.sessionStorage.clear()
   })
 }
+
+/* Webworkers */
+{
+    const workerDiv = $('#webWorker')
+    const button = $('#workerButt')
+    const worker = new Worker('/html5_css3_sandbox/scripts/subWorker.js')
+    button.addEventListener('click', _ => worker.postMessage('Start'))
+    worker.addEventListener('message', e => workerDiv.innerHTML += `Data came from webWorker: ${e.data} <br />`)
+    worker.addEventListener('error', e => workerDiv.innerHTML += `Error in webWorker: ${e.message} <br />`)
+}

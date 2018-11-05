@@ -7,7 +7,7 @@ html {
   display: inline-block
 }
 
-#sessionStorageDiv * {
+* {
   margin: 5px;
 }
 
