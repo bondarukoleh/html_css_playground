@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="../imgs/html1.PNG" type="image/x-icon">
+  <title>Document</title>
+  <style>
+    html {
+      background: url('../imgs/back.png') no-repeat center center fixed;
+      margin: 2px;
+    }
+    ul > li {
+      border: solid 1px;
+    }
+    h5 + p {
+      font-family: 'Times New Roman', Times, serif
+    }
+    li ~ a {
+      color: red
+    }
+    input[required] {
+      color: yellowgreen
+    }
+    input[type=submit] {
+      color: blue
+    }
+    #pdf {
+      background: url('../imgs/pdf.png') 100% 50% no-repeat;
+      padding-right: 15px;
+    }
+    #twit {
+      background: url('../imgs/twitter.png') 100% 50% no-repeat;
+      padding-right: 15px;
+    }
+    div  {
+      width: 200px;
+      height: 100px;
+      background-repeat: no-repeat;
+      margin: 5px; 
+    }
+    #back div{
+      border: solid 1px black;
+      background-image: url('../imgs/html1.png');
+      border: solid gray 20px;
+    }
+    #firstDiv {
+      background-size: 125px 80px;
+    }
+    #secondDiv {
+      background-size: 50% 50%;
+    }
+    #thirdDiv{
+      background-size: cover;
+    }
+    #forthDiv{
+      background-size: contain;
+    }
+    #fifthDiv{
+      background-position: left, top;
+      background-size: 50px 90px, 30% 20%;
+    }
+    #div6{
+      background-origin: border-box;
+    }
+    #div7{
+      background-origin: padding-box;
+    }
+    #div8{
+      background-origin: content-box;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+  </ul>
+
+  <h5>Header</h5>
+  <p>paragraph</p>
+  <h5>Header</h5>
+  <p>paragraph</p>
+
+  <ul>
+    <li>InnerLink 1<a id="twit" href="">link</a></li>
+    <p>some p</p>
+    <a href="" id="pdf">siblin link</a>
+    <h5>some header</h5>
+  </ul>
+
+  <input type="button" required value="buttonValue">
+  <input type="submit" value="submit(DoesNothing)">
+
+  <div id="back">
+    <div id="firstDiv">
+      not quite fit
+    </div>
+    <div id="secondDiv">
+      Quoter
+    </div>
+    <div id="thirdDiv">
+      cover
+    </div>
+    <div id="forthDiv">
+      contain
+    </div>
+    <div id="fifthDiv">
+      two backs
+    </div>
+    <div id="div6">
+      background-origin: border-box;
+    </div>
+    <div id="div7">
+     background-origin: padding-box;
+    </div>
+    <div id="div8">
+      background-origin: content-box;
+    </div>
+  </div>
+
+</body>
+
+</html>
