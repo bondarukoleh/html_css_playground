@@ -35,14 +35,14 @@
       background: url('../imgs/twitter.png') 100% 50% no-repeat;
       padding-right: 15px;
     }
-    div  {
+    #back{
+      display: flexbox;
+    }
+    #back div{
       width: 200px;
       height: 100px;
       background-repeat: no-repeat;
       margin: 5px; 
-    }
-    #back div{
-      border: solid 1px black;
       background-image: url('../imgs/html1.png');
       border: solid gray 20px;
     }
@@ -58,7 +58,8 @@
     #forthDiv{
       background-size: contain;
     }
-    #fifthDiv{
+    #fifthDiv.twoBacks{
+      background-image: url(../imgs/html1.png), url(../imgs/html1.png);
       background-position: left, top;
       background-size: 50px 90px, 30% 20%;
     }
@@ -68,8 +69,77 @@
     #div7{
       background-origin: padding-box;
     }
-    #div8{
+    #div8[style="padding: 15px"]{
       background-origin: content-box;
+      box-sizing: border-box;
+      width: 240px;
+    }
+    div.shadows > div{
+      background-repeat: no-repeat;
+      float: left;
+      margin: 10px;
+      width: 120px;
+      height: 180px;
+    }
+    .rounds{
+      margin: 10px;
+      background-color: bisque;
+      width: 30%;
+    }
+    .rounds > div{
+      margin: 10px;
+    }
+    .shadows > div{
+      margin: 10px;
+    }
+    .flex {
+      display: -moz-box;
+      display: -webkit-box;
+      display: flexbox;
+      margin: 10px;
+      border: 2px solid;
+      width: 250px
+    }
+    .flex > .item {
+      width: 50px;
+      height: 50px;
+      background-color: tomato;
+      margin: 5px;
+      box-orient: horisontal;
+    }
+    .flexVertical {
+      margin: 10px;
+      display: flexbox;
+      border: 2px solid;
+      width: 250px;
+      height: 220px;
+      -moz-box-orient: vertical;
+      -webkit-box-orient: vertical;
+      box-orient: vertical;
+    }
+    .flexVertical > .item {
+      width: 50px;
+      height: 50px;
+      background-color: tomato;
+      margin: 5px;
+    }
+    .flexAlign {
+      margin: 10px;
+      display: -moz-box;
+      display: -webkit-box;
+      display: flexbox;
+      border: 2px solid;
+      width: 250px;
+      height: 220px;
+      -moz-box-align: end;
+      -webkit-box-align: end;
+      box-align: end;
+    }
+    .flexAlign > div {
+      width: 20px;
+      height: 20px;
+      background-color: tomato;
+      margin: 5px;
     }
   </style>
 </head>
@@ -108,20 +178,55 @@
     <div id="forthDiv">
       contain
     </div>
-    <div id="fifthDiv">
+    <div id="fifthDiv" class="twoBacks">
       two backs
     </div>
     <div id="div6">
       background-origin: border-box;
     </div>
     <div id="div7">
-     background-origin: padding-box;
+      background-origin: padding-box;
     </div>
-    <div id="div8">
+    <div style="padding: 15px" id="div8">
       background-origin: content-box;
     </div>
   </div>
+  <div class="shadows" style="border: solid 1px; width: 20%; height: 200px; background-image: url('../imgs/html1.png');">
+    <div style="background-color: rgba(83, 240, 10, 0.411);">rgba(83, 240, 10, 0.411)</div>
+    <div style="opacity: 0.4; background-color:blueviolet">opacity 0.4;</div>
+  </div>
 
+  <div class="rounds">
+    <div style="border-radius: 10px; border: solid 5px;">border-radius: 5px</div>
+    <div style="border-top-right-radius: 20px; border: solid 5px;">border-top-right-radius: 20px</div>
+    <div style="border-radius: 20px 5px 3px; border: solid 5px; height: 80px">border-radius: 20px 5px 3px;</div>
+  </div>
+
+  <div class="shadows" style="height: 210px;">
+    Shadows
+    <div style="box-shadow: 10px 5px; border: solid 2px;">box-shadow: 10px 10px;</div>
+    <div style="box-shadow: 0px 0px 10px; border: solid 2px;">box-shadow: 0px 0px 10px;</div>
+    <div style="box-shadow: 0px 0px 25px 3px inset; border: solid 2px;">box-shadow: 0px 0px 25px 3px inset;</div>
+  </div>
+
+  <div class="flex">
+    <p> horisontal</p>
+    <div class="item">a</div>
+    <div class="item">b</div>
+    <div class="item">c</div>
+  </div>
+  <div class="flexVertical">
+    <p> vertical</p>
+    <div class="item">a</div>
+    <div class="item">b</div>
+    <div class="item">c</div>
+  </div>
+  <div class="flexAlign">
+      -webkit-box-align: end;
+    <div style="background-color: #00ff90;">a</div>
+    <div style="background-color: #0094ff">b</div>
+    <div style="background-color: #b200ff">c</div>
+  </div>
 </body>
 
 </html>
