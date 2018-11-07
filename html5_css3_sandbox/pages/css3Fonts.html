@@ -9,9 +9,11 @@
   <title>Css 3 font features</title>
   <style>
     @import url('https://fonts.googleapis.com/css?family=Kumar+One+Outline');
+
     html {
       background: url('../imgs/back.png') no-repeat center center fixed;
     }
+
     * {
       margin: 5px;
     }
@@ -97,8 +99,36 @@
       column-gap: 30px;
       column-rule: 2px solid black;
     }
-    #afterP::after { content: '"AfterWord"' }
-    #beforeP::before { content: '"BeforeWord"' }
+
+    #afterP::after {
+      content: '"AfterWord"';
+    }
+
+    #beforeP::before {
+      content: '"BeforeWord"';
+    }
+
+    body{
+      counter-reset: sectionCounter 0;
+    }
+
+    h4{
+      counter-reset: subSectionCounter 0;
+    }
+    h4::before {
+      counter-increment: sectionCounter;
+      content:  counter(sectionCounter) "- number from css counter-reset ";
+    }
+    h5::before {
+      counter-increment: subSectionCounter;
+      content: " " counter(subSectionCounter) "- number from css counter-reset ";
+    }
+    a::after {
+      content: ". attr(href) css rule: " attr(href);
+    }
+    a::before {
+      content: "img added by css: " url('../imgs/pdf.png');
+    }
   </style>
 </head>
 
@@ -112,7 +142,7 @@
   <div id="break">word-wrap: break-word; Whery_long_word_will_be_broken</div>
 
   <div id="paper">
-    <h3 class="paperTitle">News Papiren</h3> 
+    <h3 class="paperTitle">News Papiren</h3>
     <hr style="border-bottom: 1px solid black">
     <section id="papirenContent">
       <b>column-count: 3;</b>
@@ -126,25 +156,40 @@
       possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem.
       Investigationes demonstraverunt
       lectores legere me lius quod ii legunt saepius.
-    </section> 
+    </section>
     <hr style="border-bottom: 1px solid black">
     <section id="papirenContent2">
-        <b>columns: 250px auto; column-gap: 30px;</b>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-        dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-        lobortis nisl ut aliquip
-        ex ea commodo consequat.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
-        vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
-        luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-        Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer
-        possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem.
-        Investigationes demonstraverunt
-        lectores legere me lius quod ii legunt saepius.
-      </section> 
-      <hr style="border-bottom: 1px solid black">
+      <b>columns: 250px auto; column-gap: 30px;</b>
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
+      dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+      lobortis nisl ut aliquip
+      ex ea commodo consequat.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
+      vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
+      luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+      Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer
+      possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem.
+      Investigationes demonstraverunt
+      lectores legere me lius quod ii legunt saepius.
+    </section>
+    <hr style="border-bottom: 1px solid black">
 
-      <p id="afterP">Word added by ::after - </p>
-      <p id="beforeP"> - word added by ::before</p>
+    <p id="afterP" style="border: solid 1px; width: fit-content;">Word added by ::after - </p>
+    <p id="beforeP" style="border: solid 1px; width: fit-content;"> - word added by ::before</p>
+
+    <h4>Section</h4>
+    <h5>Subsection</h5>
+    <h5>Subsection</h5>
+    <h5>Subsection</h5>
+    <h4>Section</h4>
+    <h5>Subsection</h5>
+    <h5>Subsection</h5>
+    <h5>Subsection</h5>
+
+    <div>
+      <a style="display: -webkit-box; -webkit-box-orient: vertical;" href="http://www.someSite1.com">link 1</a>
+      <a style="display: -webkit-box; -webkit-box-orient: vertical;" href="http://www.someSite2.com">link 2</a>
+    </div>
+    
   </div>
 </body>
 
