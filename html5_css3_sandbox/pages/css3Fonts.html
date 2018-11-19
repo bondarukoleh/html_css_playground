@@ -108,28 +108,90 @@
       content: '"BeforeWord"';
     }
 
-    body{
+    body {
       counter-reset: sectionCounter 0;
     }
 
-    h4{
+    h4 {
       counter-reset: subSectionCounter 0;
     }
+
     h4::before {
       counter-increment: sectionCounter;
-      content:  counter(sectionCounter) "- number from css counter-reset ";
+      content: counter(sectionCounter) "- number from css counter-reset ";
     }
+
     h5::before {
       counter-increment: subSectionCounter;
       content: " " counter(subSectionCounter) "- number from css counter-reset ";
     }
+
     a::after {
       content: ". attr(href) css rule: " attr(href);
     }
+
     a::before {
       content: "img added by css: " url('../imgs/pdf.png');
     }
+
+    .hoverImage {
+      text-align: center;
+      width: 170px;
+      height: 70px;
+    }
+
+    .hoverImage::before {
+      content: '';
+      border-radius: 25px;
+      display: flex;
+      height: 25px;
+      width: 25px;
+      background: url('../imgs/quotationmark.png') -3px -3px #ddd;
+      -moz-transition: background-color 350ms;
+      -o-transition: background-color 350ms;
+      -webkit-transition: background-color 350ms;
+      transition: background-color 350ms;
+    }
+
+    .hoverImage::after {
+      display: flex;
+      border-radius: 25px;
+      height: 25px;
+      width: 25px;
+      content: '';
+      background: url('../imgs/quotationmark.png') -3px -3px #ddd;
+      -moz-transition: background-color 350ms;
+      -o-transition: background-color 350ms;
+      -webkit-transition: background-color 350ms;
+      transition: background-color 350ms;
+      margin-left: auto;
+    }
+
+    .hoverImage:hover:after,
+    .hoverImage:hover:before {
+      background-color: black;
+    }
+
+    .tricks::first-line {
+      color: brown;
+    }
+
+    .tricks::selection {
+      color: aqua;
+    }
+
+    .tricks::first-letter {
+      color: chartreuse;
+    }
+   
   </style>
+  <!--[if IE]>
+    <style type="text/css">
+      .chromeIf {
+        color: green;
+      }
+    </style>
+  <![endif]-->
 </head>
 
 <body>
@@ -146,30 +208,24 @@
     <hr style="border-bottom: 1px solid black">
     <section id="papirenContent">
       <b>column-count: 3;</b>
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-      dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-      lobortis nisl ut aliquip
-      ex ea commodo consequat.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
-      vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
-      luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-      Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer
-      possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem.
-      Investigationes demonstraverunt
-      lectores legere me lius quod ii legunt saepius.
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+      aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+      ut aliquip ex ea commodo consequat.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
+      vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
+      zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue
+      nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis
+      in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
     </section>
     <hr style="border-bottom: 1px solid black">
     <section id="papirenContent2">
       <b>columns: 250px auto; column-gap: 30px;</b>
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-      dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
-      lobortis nisl ut aliquip
-      ex ea commodo consequat.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
-      vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
-      luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-      Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer
-      possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem.
-      Investigationes demonstraverunt
-      lectores legere me lius quod ii legunt saepius.
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
+      aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+      ut aliquip ex ea commodo consequat.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat,
+      vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum
+      zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue
+      nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis
+      in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.
     </section>
     <hr style="border-bottom: 1px solid black">
 
@@ -189,7 +245,14 @@
       <a style="display: -webkit-box; -webkit-box-orient: vertical;" href="http://www.someSite1.com">link 1</a>
       <a style="display: -webkit-box; -webkit-box-orient: vertical;" href="http://www.someSite2.com">link 2</a>
     </div>
-    
+
+    <div class="section">
+      <p class="hoverImage">hovered logic by css</p>
+    </div>
+
+    <div class="tricks" style="width:75px">First line. Select line.</div>
+
+    <div class="chromeIf">This text should be green only in IE, but conditial coments not working > 10 IE</div>
   </div>
 </body>
 
