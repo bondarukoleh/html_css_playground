@@ -17,6 +17,46 @@
   #defolt input:default {
     background-color: red;
   }
+
+  #disabled textarea:disabled {
+    background-color: red;
+  }
+
+  #enabled #GreenIfCheckedButton:enabled {
+    background-color: chartreuse;
+  }
+
+  #empty input:empty {
+    background-color: brown;
+  }
+
+  #firstLastOfType span:first-of-type {
+    background-color: brown;
+  }
+  #firstLastOfType span:last-of-type {
+    background-color: yellowgreen;
+  }
+  #linksInDiv a:first-child {
+    background-color: slateblue;
+  }
+  #linksInDiv a:last-child {
+    background-color: blueviolet;
+  }
+
+  #indeterminate input:indeterminate + span {
+    background-color: yellowgreen;
+  }
+
+  #valid input:valid {
+    background-color: rgb(157, 240, 157);
+  }
+  #valid input:invalid {
+    background-color: red;
+  }
+
+   #not :not(span) {
+    background-color: red;
+  }
   </style>
 </head>
 
@@ -38,6 +78,74 @@
     </form>
   </div>
 
+  <div id="disabled">
+    :disabled
+    <textarea disabled name="" id="" cols="10" rows="2">disabled area</textarea>
+  </div>
+
+  <div id="enabled">
+    :enabled
+    <input type="checkbox" name="" id="checkboxToEnable">
+    <input type="button" value="GreenIfChecked" id="GreenIfCheckedButton" disabled>
+  </div>
+
+  <div id="empty">
+    :empty
+    <input type="text" value="">
+  </div>
+
+  <div id="firstLastOfType" style="border: solid 1px; width: fit-content;">
+    :first-of-type & :last-of-type & first-child & last-child
+    <br><span>first p</span><br>
+    <span>second p</span><br>
+    <span>third p</span>
+    <div style="border: solid 1px; width: fit-content; margin: 2px;">
+      Innder div
+      <br><span>first p</span><br>
+      <span>second p</span><br>
+      <span>third p</span>
+    </div>
+    <div id="linksInDiv" style="border: solid 1px; width: fit-content; margin: 2px;">
+      <a href="">first child Link1</a><br>
+      <a href="">Link1</a><br>
+      <a href="">last child Link1</a>
+    </div>
+  </div>
+
+  <div id="indeterminate">
+    :indeterminate
+    <input type="checkbox" value="" id="indeterminateCheckbox">
+    <span>indeterminate checkbox</span>
+  </div>
+
+  <div id="valid">
+    :valid
+    :invalid
+    <input type="email" placeholder="valid - green, invalid - red" id="emailInput">
+  </div>
+
+  <div id="not">
+      :not
+      <span>This is span</span>
+      <a href="">This is not a span</a>
+      <b>This is not a span either</b>
+    </div>
 </body>
+
+<script>
+  /*-----------color button if checkbox checked--------------*/
+  {
+    document.querySelector('#checkboxToEnable').addEventListener('click', e => {
+      document.querySelector('#GreenIfCheckedButton').disabled
+        ? document.querySelector('#GreenIfCheckedButton').disabled = false
+        : document.querySelector('#GreenIfCheckedButton').disabled = true
+    })
+  }
+  /*-----------indeterminate Checkbox--------------*/
+  {
+    document.querySelector('#indeterminateCheckbox').indeterminate = true;
+  }
+
+</script>
 
 </html>
