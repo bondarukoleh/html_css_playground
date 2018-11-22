@@ -134,6 +134,48 @@
     -moz-appearance: button;
     appearance: button;
   }
+
+  #linear {
+    width: 300px;
+    height: 100px;
+    background: -webkit-linear-gradient(top, green, white) 
+  }
+  #linear2 {
+    width: 300px;
+    height: 100px;
+    background: -webkit-linear-gradient(120deg, green, white) 
+  }
+  #linear3 {
+    width: 300px;
+    height: 100px;
+    background: -webkit-linear-gradient(120deg, green 0%, white 60%, blueviolet 100%)
+  }
+
+  #radial {
+    width: 200px;
+    height: 200px;
+    background: -webkit-radial-gradient(circle, green 0%, white 60%, blueviolet 100%)
+  }
+
+  #radial1 {
+    width: 300px;
+    height: 100px;
+    background: -webkit-radial-gradient(30% 20%, circle, yellow 0%, blue 60%, black 100%)
+  }
+  #repeatingLinear {
+    width: 300px;
+    height: 100px;
+    background: -webkit-repeating-linear-gradient(120deg, green 20px, blue 60px, black 100px)
+  }
+  #repeatingRadial {
+    width: 300px;
+    height: 100px;
+    background: -webkit-repeating-radial-gradient(ellipse, green 20px, blue 60px, black 100px);
+  }
+  span.text {
+    color: aliceblue;
+    font-weight: bold;
+  }
   </style>
 </head>
 
@@ -309,8 +351,15 @@
   </div>
 
   <div id="asButton" class="border">This div appearence:button</div>
-</body>
 
+  <div id="linear">linear-gradient(top, green, white)</div>
+  <div id="linear2">linear-gradient(120deg, green, white)</div>
+  <div id="linear3">linear-gradient(120deg, green 0%, white 60%, blueviolet 100%)</div>
+  <div id="radial">radial-gradient(circle, green 0%, white 60%, blueviolet 100%)</div>
+  <div id="radial1"><span class="text">radial-gradient(30% 20%, circle, yellow 0%, blue 60%, black 100%)</span></div>
+  <div id="repeatingLinear"><span class="text">repeating-linear-gradient(120deg, green 20px, blue 60px, black 100px)</span></div>
+  <div id="repeatingRadial"><span class="text">repeating-radial-gradient(ellipse, green 20px, blue 60px, black 100px)</span></div>
+</body>
 <script>
   /*-----------color button if checkbox checked--------------*/
   {
