@@ -11,6 +11,17 @@
     html {
     background: url('../imgs/back.png') no-repeat center center fixed;
   }
+  * {
+    margin: 2px;
+  }
+  .border {
+    border: solid 1px;
+    width: fit-content;
+  }
+  mark {
+    background-color: red;
+  } 
+
   #checked input:checked + span {
     font-weight: bold;
   }
@@ -54,8 +65,74 @@
     background-color: red;
   }
 
-   #not :not(span) {
+  #not :not(span) {
     background-color: red;
+  }
+
+  #nthChild :nth-child(odd) {
+    background-color: rosybrown;
+  }
+  #nthChild :nth-child(even) {
+    background-color: peachpuff;
+  }
+
+  #nthChild2 p:nth-child(2) {
+    background-color: orange;
+  }
+  #nthChild2 p:nth-child(3n+1) {
+    background-color: lightgreen;
+  }
+  #nthChild2 p:nth-last-child(1) {
+    background-color: plum;
+  }
+
+  #nthOFType p:nth-of-type(2){
+    background-color: plum;
+  }
+
+  #nthChild3 p:nth-child(2){
+    background-color: plum;
+  }
+
+  #onlyOFType span:only-of-type{
+    background-color: plum;
+  }
+
+  #onlyChild span:only-child{
+    background-color: plum;
+  }
+
+  #requiredOptional :optional{
+    background-color: plum;
+  }
+  #requiredOptional :required{
+    background-color: lightpink;
+  }
+
+  #readonlyReadWrite :read-only{
+    background-color: cyan;
+  }
+  #readonlyReadWrite :read-write{
+    background-color: aquamarine;
+  }
+
+  #checkboxAsButton input[type="checkbox"]{
+    background-image: url(switch.png);
+    height: 26px;
+    width: 32px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+  }
+  #checkboxAsButton input[type="checkbox"]:checked{
+    background-position: 0 -26px;
+  }
+
+  #asButton {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
   }
   </style>
 </head>
@@ -94,7 +171,7 @@
     <input type="text" value="">
   </div>
 
-  <div id="firstLastOfType" style="border: solid 1px; width: fit-content;">
+  <div id="firstLastOfType" class="border">
     :first-of-type & :last-of-type & first-child & last-child
     <br><span>first p</span><br>
     <span>second p</span><br>
@@ -105,7 +182,7 @@
       <span>second p</span><br>
       <span>third p</span>
     </div>
-    <div id="linksInDiv" style="border: solid 1px; width: fit-content; margin: 2px;">
+    <div id="linksInDiv" class="border">
       <a href="">first child Link1</a><br>
       <a href="">Link1</a><br>
       <a href="">last child Link1</a>
@@ -125,11 +202,113 @@
   </div>
 
   <div id="not">
-      :not
-      <span>This is span</span>
-      <a href="">This is not a span</a>
-      <b>This is not a span either</b>
+    :not
+    <span>This is span</span>
+    <a href="">This is not a span</a>
+    <b>This is not a span either</b>
+  </div>
+
+  <div id="nthChild" class="border">
+    :nth-child(odd) & :nth-child(even)
+    <p>odd</p>
+    <p>even</p>
+    <p>odd</p>
+    <p>even</p>
+  </div>
+
+  <div class="border">
+    :nth-child("number")<br>
+    :nth-child(3n+1): <br>
+    n - counter that increases starts with 0.<br>
+    3 * 0 + 1 = 1<br>
+    3 * 1 + 1 = 4<br>
+    3 * 2 + 1 = 7<br>
+    So the rule maches <mark>1, 4, 7</mark> elements <br>
+    :nth-last-child - same as :nth-child but count from end
+    <div id="nthChild2" class="border">
+      <p>1</p>
+      <p>:nth-child(2)</p>
+      <p>3</p>
+      <p>4</p>
+      <p>5</p>
+      <p>6</p>
+      <p>7</p>
+      <p>8</p>
+      <p>:nth-last-child(1)</p>
     </div>
+  </div>
+
+  <div class="border">
+    :nth-of-type(2) & :nth-child(2)<br>
+    p:nth-of-type(2):<br>
+    second paragraph in container, other elements count - doesn't matter<br>
+    p:nth-child(2):<br>
+    second element by number and only if it is paragraph<br>
+    <mark>p:nth-of-type(2)</mark>
+    <div id="nthOFType" class="border">
+      <header>header</header>
+      <span>span</span>
+      <p>paragraph</p>
+      <p>paragraph2</p>
+    </div>
+    <mark>p:nth-child(2)</mark>
+    <div id="nthChild3" class="border">
+      <header>header</header>
+      <p>paragraph (if it would be span - didn't worked)</p>
+      <span>span</span>
+      <p>paragraph</p>
+    </div>
+  </div>
+
+  <div class="border">
+    :only-of-type<br>
+    rule match only if there is one type of element in container<br>
+    <mark>span:only-of-type</mark>
+    <div id="onlyOFType" class="border">
+      <header>header</header>
+      <span>span (if it would be another span - didn't worked)</span>
+      <p>paragraph</p>
+      <p>paragraph2</p>
+    </div>
+    :only-child<br>
+    rule match only if there is one child element in container<br>
+    <mark>span:only-child</mark>
+    <div id="onlyChild" class="border">
+      <span>span (if it would be another element - didn't worked)</span>
+    </div>
+  </div>
+
+  <div class="border">
+    :optional<br>
+    rule match if element without required attribute<br>
+    :required<br>
+    if element without required attribute<br>
+
+    <div id="requiredOptional" class="border">
+      <input type="text" placeholder="required" required>
+      <input type="text" placeholder="without required">
+      <input type="text" placeholder="required" required>
+    </div>
+    :read-only<br>
+    if element has readonly attribute<br>
+    :read-write<br>
+    if element without readonly attribute<br>
+    <div id="readonlyReadWrite" class="border">
+      <input type="text" placeholder="readonly" readonly>
+      <input type="text" placeholder="Yuo can write here">
+      <input type="text" placeholder="readonly" readonly>
+    </div>
+  </div>
+
+  <div class="border">
+    <div id="checkboxAsButton" class="border">
+      <input type="checkbox"><span>cool checkbox</span><br>
+      <input type="checkbox"><span>cool checkbox</span><br>
+      <input type="checkbox"><span>cool checkbox</span><br>
+    </div>
+  </div>
+
+  <div id="asButton" class="border">This div appearence:button</div>
 </body>
 
 <script>
