@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="../imgs/html1.PNG" type="image/x-icon">
+  <title>Transformation</title>
+</head>
+<style>
+  html {
+    background: url('../imgs/back.png') no-repeat center center fixed;
+  }
+  * {
+    margin: 5px;
+  }
+
+  #smoothWidth {
+    width: 300px;
+    height: 50px;
+    border: 2px solid;
+    transition: color 1s, width 4s, background-color 2s;
+  }
+  #smoothWidth:hover {
+    width: 400px;
+    color: chartreuse;
+    background-color: cadetblue;
+  }
+  #smoothWidth:hover::after {
+    content: ' Transition: color 3s, width 5s, background-color 2s;'
+  }
+
+  .transitionExampleImage {
+    width: 650px;
+    height: 300px;
+  }
+  .transformExampleImage {
+    width: 400px;
+    height: 450px;
+  }
+  .translateImg {
+    width: 200px;
+    height: 250px;
+  }
+  .translateImg3D {
+    padding: 3px;
+    border: 1px solid;
+    height: 250px;
+  }
+
+  #transitionSpeed {
+    width: 300px;
+    height: 50px;
+    border: 2px solid;
+    transition: all 2s ease-in;
+  }
+  #transitionSpeed:hover {
+    width: 500px;
+    height: 150px;
+    background-image: url('../imgs/loading.gif')
+  }
+  #transitionSpeed:hover::after {
+    content: ' Transition: all 2s ease-in;'
+  }
+
+  #menu {
+    list-style: none;
+    padding: 0px;
+  }
+  #menu li {
+    padding: 10px;
+    text-align: center;
+    background-color: aquamarine;
+    width: 200px;
+    height: 20px;
+    box-shadow: 2px 2px 2px; 
+    border-radius: 4px;
+    transition: 500ms linear;
+  }
+  #menu li:hover{
+    width: 230px;
+    background-color: chartreuse;
+  }
+
+  #translate1 {
+    transition: 500ms linear;
+  }
+  #translate1:hover {
+    -webkit-transform: translate(50px, 10px);
+    transform: translate(50px, 10px);
+  }
+
+  #translate2 {
+    transition: 500ms linear;
+  }
+  #translate2:hover {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  #translate3 {
+    transition: 500ms linear;
+  }
+  #translate3:hover {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  
+  #translate4 {
+    transition: 500ms linear;
+  }
+  #translate4:hover {
+    -webkit-transform: skew(50deg, 20deg);
+    transform: skew(50deg, 20deg);
+  }
+
+  #translateXDiv{
+    border: 1px solid;
+    width: fit-content;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+  #translateX {
+    transition: 500ms linear;
+  }
+  #translateX:hover {
+    -webkit-transform: translateX(50px);
+  }
+  #translateY {
+    transition: 500ms linear;
+  }
+  #translateY:hover {
+    -webkit-transform: translateY(50px);
+  }
+  #translateZ {
+    transition: 500ms linear;
+  }
+  #translateZ:hover {
+    -webkit-transform: perspective(200px) translateZ(50px);
+  }
+
+  #rotateX {
+    transition: 500ms linear;
+  }
+  #rotateX:hover {
+    -webkit-transform: perspective(200px) rotateX(50deg);
+  }
+  #rotateY {
+    transition: 500ms linear;
+  }
+  #rotateY:hover {
+    -webkit-transform: perspective(200px) rotateY(50deg);
+  }
+  #rotateZ {
+    transition: 500ms linear;
+  }
+  #rotateZ:hover {
+    -webkit-transform: perspective(200px) rotateZ(50deg);
+  }
+  
+  /*=====================================*/
+  .card {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
+  .back, .front {
+    position: absolute;
+    width: 272px;
+    height: 380px;
+    -moz-transition: all .8s;
+    -o-transition: all .8s;
+    -webkit-transition: all .8s;
+    transition: all .8s;
+  }
+
+  .back {
+    background-image: url('../imgs/back.jpg');
+  }
+  .front {
+    background-image: url('../imgs/front.jpg');    
+    -moz-transform: rotate3d(0,1,0, 180deg);
+    -ms-transform: rotate3d(0,1,0, 180deg);
+    -o-transform: rotate3d(0,1,0, 180deg);
+    -webkit-transform: rotate3d(0,1,0, 180deg);
+    transform: rotate3d(0,1,0, 180deg);
+  }
+
+  .card:hover .back {
+    -moz-transform: rotate3d(0,1,0, 180deg);
+    -ms-transform: rotate3d(0,1,0, 180deg);
+    -o-transform: rotate3d(0,1,0, 180deg);
+    -webkit-transform: rotate3d(0,1,0, 180deg);
+    transform: rotate3d(0,1,0, 180deg);
+  }
+
+  .card:hover .front {
+    -moz-transform: rotate3d(0,1,0, 0deg);
+    -ms-transform: rotate3d(0,1,0, 0deg);
+    -o-transform: rotate3d(0,1,0, 0deg);
+    -webkit-transform: rotate3d(0,1,0, 0deg);
+    transform: rotate3d(0,1,0, 0deg);
+  }
+
+  .backface .back, .backface .front {
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .border {
+    border: solid 1px;
+    width: fit-content;
+  }
+
+  @-webkit-keyframes moveLeft{
+    from {
+      margin-left: 3px;
+    }
+    to {
+      margin-left: 150px;
+    }
+  }
+
+  #simpleAnimation {
+    background-color: chartreuse;
+    -webkit-animation: moveLeft 3s 3 alternate;
+    -webkit-animation-fill-mode: forwards;
+  }
+
+  @-webkit-keyframes moveCircle{
+    0% {
+      margin-left: 3px;
+    }
+    25% {
+      margin-left: 150px;
+    }
+    50% {
+      margin-left: 100px;
+    }
+    100% {
+      margin-left: 3px;
+    }
+  }
+
+  #simpleAnimationCircle {
+    border: 2px #000 solid;
+    background-color: chocolate;
+    -webkit-animation: moveCircle 3s infinite;
+  }
+
+  #simpleAnimationCircle {
+    border: 2px #000 solid;
+    background-color: chocolate;
+    -webkit-animation: moveCircle 3s infinite;
+}
+
+#filters div {
+    width: 600px;
+    height: 389px;
+    padding: 10px;
+    margin: 10px;
+    color: red;
+    background-image: url(../imgs/photo.jpg);
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+div.class1 {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%); /* grayscale (оттенки серого) - конвертирует цвет в ч/б */
+    filter: grayscale(100%); /* grayscale (оттенки серого) - конвертирует цвет в ч/б */
+}
+
+div.class2 {
+    -webkit-filter: grayscale(50%);
+    filter: grayscale(50%);
+}
+
+div.class3 {
+    -webkit-filter: sepia(100%);
+    filter: sepia(100%); /* сепия */
+}
+
+div.class4 {
+    -webkit-filter: sepia(100%) grayscale(50%);
+    filter: sepia(100%) grayscale(50%);
+}
+
+div.class5 {
+    -webkit-filter: saturate(3);
+    filter: saturate(3); /* насыщенность */
+}
+
+div.class6 {
+    -webkit-filter: blur(2px);
+    filter: blur(2px); /* Задаем радиус размытости */
+}
+
+div.class7 {
+    -webkit-filter: contrast(200%);
+    filter: contrast(200%); /* изменяет контрастность изображения */
+}
+
+div.class8 {
+    -webkit-filter: brightness(2);
+    filter: brightness(2); /* Изменяет яркость изображения */
+}
+
+div.class9 {
+    -webkit-filter: hue-rotate(270deg);
+    filter: hue-rotate(270deg); /* определяет на сколько должен измениться данный цвет в цветовом круге от красного до фиолетового */
+}
+
+div.class10 {
+    -webkit-filter: invert(100%);
+    filter: invert(100%); /* Инвертация цвета */
+}
+
+div.class11 {
+    -webkit-filter: opacity(0.5);
+    filter: opacity(0.5); /* прозрачность элемента, то же что и свойство opacity но фильтры поддерживают аппаратное ускорение, поэтому данный подход даст большую производительность чем свойство */
+}
+
+</style>
+
+<body>
+
+  <div id="smoothWidth">Hover pointer here.</div>
+  <details id="transExample">
+    <summary>Transition explanation image.</summary>
+    <img src="../imgs/transition.PNG" class="transitionExampleImage">
+    <img src="../imgs/transSpeed.PNG" class="transitionExampleImage">
+  </details>
+
+  <input type="button" value="Start animation by js" id="startAnimation">
+  <div id="transitionSpeed">Hover pointer here. ease-in speed.</div>
+  <ul id="menu">
+    <li>Menu item 1</li>
+    <li>Menu item 1</li>
+  </ul>
+
+  <details id="transformHint">
+    <summary>Transformation hints</summary>
+    <img src="../imgs/trnsform.PNG" class="transformExampleImage">
+  </details>
+
+  <div>
+    <img id="translate1" class="translateImg" src="../imgs/front.jpg">
+    <img id="translate2" class="translateImg" src="../imgs/front.jpg">
+    <img id="translate3" class="translateImg" src="../imgs/front.jpg">
+    <img id="translate4" class="translateImg" src="../imgs/front.jpg">
+  </div>
+  translateX, translateY, translateZ, rotateX, rotateY, rotateZ
+  <div id="translateXDiv">
+    <img id="translateX" class="translateImg3D" src="../imgs/front.jpg">
+    <img id="translateY" class="translateImg3D" src="../imgs/front.jpg">
+    <img id="translateZ" class="translateImg3D" src="../imgs/front.jpg">
+    <img id="rotateX" class="translateImg3D" src="../imgs/front.jpg">
+    <img id="rotateY" class="translateImg3D" src="../imgs/front.jpg">
+    <img id="rotateZ" class="translateImg3D" src="../imgs/front.jpg">
+  </div>
+
+  <details id="animationHint">
+    <summary>Animation hints</summary>
+    <img src="../imgs/animation.PNG" class="transitionExampleImage">
+  </details>
+
+  <div class="border" id="simpleAnimation">-webkit-animation: moveLeft 3s 3 alternate;
+    -webkit-animation-fill-mode: forwards;</div>
+  <div class="border" id="simpleAnimationCircle"> -webkit-animation: moveCircle 3s infinite;</div>
+
+  <div id="filters">
+    <div>Original</div>
+
+    <div class="class1">
+        grayscale (100%)
+    </div>
+
+    <div class="class2">
+        grayscale(50%)
+    </div>
+    <div class="class3">
+        sepia(100%)
+    </div>
+    <div class="class4">
+        sepia(100%) grayscale(50%)
+    </div>
+    <div class="class5">
+        saturate(3)
+    </div>
+    <div class="class6">
+        blur(2px)
+    </div>
+    <div class="class7">
+        contrast(200%)
+    </div>
+    <div class="class8">
+        brightness(2)
+    </div>
+    <div class="class9">
+        hue-rotate(270deg)
+    </div>
+    <div class="class10">
+        invert(100%)
+    </div>
+    <div class="class11">
+        opacity(0.5)
+    </div>
+  </div>
+
+  <div class="card backface">
+    <div class="back"></div>
+    <div class="front"></div>
+  </div>
+</body>
+<script>
+  {
+    changedState = false;
+    document.querySelector('#startAnimation').addEventListener('click', _ => {
+      const el = document.querySelector('#transitionSpeed')
+      if (changedState) {
+        el.style.width = '300px'
+        changedState = false;
+      } else {
+        el.style.width = '500px'
+        changedState = true;
+      }
+    })
+  }
+</script>
+
+</html>
