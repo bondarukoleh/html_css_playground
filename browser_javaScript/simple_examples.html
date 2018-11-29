@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="../html5_css3_sandbox/imgs/html1.PNG" type="image/x-icon">
+  <title>Simple examples</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  /*recursion*/
+  {
+    function rec(counter) {
+      document.write(`<p style="color:green">Current counter - ${counter}</p>`)
+      counter > 0 && rec(--counter)
+      document.write(`<p style="color:red">Current counter - ${counter}</p>`)
+    }
+    rec(3)
+  }
+  /*factorial*/
+  {
+    function fac(num) {
+      if (num <= 1) { return 1 }
+      return num * fac(num - 1)
+    }
+    document.write(`<p>factorial of 4! - ${fac(4)}</p>`)
+  }
+  /*delete*/
+  {
+    function del() {
+      arr = [1, 2, 3]
+      const index = prompt('What to delete')
+      delete arr[index]
+      document.write(arr.join(', '))
+    }
+  }
+/*with*/
+  {
+    const a = {asd: 'property from with', ghj: '123'}
+    with(a){
+      document.write(asd)
+      document.write(ghj)
+    }
+  }
+
+</script>
+
+</html>
