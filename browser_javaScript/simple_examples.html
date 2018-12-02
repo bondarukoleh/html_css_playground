@@ -7,20 +7,80 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" href="../html5_css3_sandbox/imgs/html1.PNG" type="image/x-icon">
   <title>Simple examples</title>
+  <script>function $ (selector) {return document.querySelector(selector)  }</script>
 </head>
 
+
 <body>
+  <script src='./scripts/script_example.js'></script>
+  <input type="button" value="js from onclick" onclick="alert('js from onclick')">
+  <input type="button" value="js from onclick but different" onclick="handlerAlert()">
+  <a href="javascript:alert('js from href')">Js from href and javascript: type</a>
+  <ul id="windowProps">Window:
+    <li>navigator</li>
+    <li>location</li>
+    <li>frames[]</li>
+    <li>history</li>
+    <li>screen</li>
+    <li>document: <ul>
+        <li>forms[]</li>
+        <li>links[]</li>
+        <li>etc.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p id="bg">document.bgColor - </p>
+  <script>$('#bg').innerText +=  `" ${document.bgColor} "`</script>
+  <p id="cook">document.cookie - </p>
+  <script>$('#cook').innerText += `" ${document.cookie} "`</script>
+  <p id="mod">document.lastModified - </p>
+  <script>$('#mod').innerText += `" ${document.lastModified} "`</script>
+  <p id="location">document.location (same as URL) - </p>
+  <script>$('#location').innerText += `" ${document.location} "`</script>
+  <p id="URL">document.URL - </p>
+  <script>$('#URL').innerText += `" ${document.URL} "`</script>
+  <p id="referrer">document.referrer (where link to this doc available) - </p>
+  <script>$('#referrer').innerText += `" ${document.referrer} "`</script>
+  <p id="title">document.title - </p>
+  <script>$('#title').innerText += `" ${document.title} "`</script>
+  <p id="in">This text contains code: <span>some span</span> and <code>some code</code> </p>
+  <p id='innerhtml'>document.innerHTML - </p>
+  <script>$('#innerhtml').innerText += `" ${$('#in').innerHTML} "`</script>
+  <p id='innerText'>document.innerText - </p>
+  <script>$('#innerText').innerText += `" ${$('#in').innerText} "`</script>
+  <script>
+    window.onload = function (){
+      $('#onload').innerText += `"Hello from onload, even decleared before element"`
+    }
+  </script>
+  <p id='onload'>js from window onload - </p>
+  <p id='childNodes'>document.childNodes - </p>
+  <script>
+  Array.prototype.forEach.call($('#windowProps').childNodes, element => {
+    $('#childNodes').innerHTML += `child - ${element}, nodeType - ${element.nodeType} <br>`  
+  });
+  </script>
+  <p id='children'>document.children - </p>
+  <script>
+  Array.prototype.forEach.call($('#windowProps').children, element => {
+    $('#children').innerHTML += `child - ${element} <br>`  
+  });
+  </script>
+  <p>So remember! Child - it's node, no matter text, or it's new line, or anything.<br>
+    Be carefull use "firstElementChild" instead of firstChild, etc. 
+  </p>
 
 </body>
 <script>
   /*recursion*/
   {
-    function rec(counter) {
-      document.write(`<p style="color:green">Current counter - ${counter}</p>`)
-      counter > 0 && rec(--counter)
-      document.write(`<p style="color:red">Current counter - ${counter}</p>`)
-    }
-    rec(3)
+    // function rec(counter) {
+    // document.write(`<p style="color:green">Current counter - ${counter}</p>`)
+    // counter > 0 && rec(--counter)
+    // document.write(`<p style="color:red">Current counter - ${counter}</p>`)
+    // }
+    // rec(3)
   }
   /*factorial*/
   {
@@ -28,7 +88,7 @@
       if (num <= 1) { return 1 }
       return num * fac(num - 1)
     }
-    document.write(`<p>factorial of 4! - ${fac(4)}</p>`)
+    // document.write(`<p>factorial of 4! - ${fac(4)}</p>`)
   }
   /*delete*/
   {
@@ -36,17 +96,46 @@
       arr = [1, 2, 3]
       const index = prompt('What to delete')
       delete arr[index]
-      document.write(arr.join(', '))
+      // document.write(arr.join(', '))
     }
   }
-/*with*/
+  /*with*/
   {
-    const a = {asd: 'property from with', ghj: '123'}
-    with(a){
-      document.write(asd)
-      document.write(ghj)
+    const a = { asd: 'property from with', ghj: '123' }
+    with (a) {
+      // document.write(asd)
+      // document.write(ghj)
     }
   }
+  //string
+  {
+    /*when we use "" - literal to create string - JS automaticaly makes an string object from String
+    constructor, to make all methods from String available, but on next row - object is dead, 
+    unavailable, because we didn't save it anywhere.
+    
+    If we create variable from String constructor - we properly create object from String and
+    save it. 
+    
+    That's why we can create a variable in string object from String, and can't get a variable
+    from literal var. */
+    const literal = 'firstString'
+    literal.literalVar = 'literalVar'
+    // console.log(literal.literalVar) // => undefined
+
+    const stringVar = new String('secondString')
+    stringVar.stringVariable = 'stringVar'
+    // console.log(stringVar.stringVariable) // => stringVar    
+
+    /* valueOf -> like toString, presentation of object in value, it used when we try
+    to compare objects */
+    function A(value) { this.some = value }
+    A.prototype.valueOf = function () { return this.some }
+    let a = new A(10)
+    let b = new A(5)
+    // console.log(a > b) //true
+    // console.log(a === b) //false
+  }
+  const handlerAlert = () => alert(`I'm from script tag, called by function name from onclick`)
 
 </script>
 
