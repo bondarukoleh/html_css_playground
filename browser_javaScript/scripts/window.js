@@ -21,5 +21,4 @@ function getWindowPosition(){
   const splitedBy3Digits = string.split(objectRegexp) // [ 'la1la', 'lala', 'd' ]
   const almostSameAsmatch = objectRegexp.exec(string) //[ '123', index: 5, input: 'la1la123lala654d', groups: undefined ]
   const boolMatch = objectRegexp.test(string) //true
-
 }
