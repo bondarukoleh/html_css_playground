@@ -13,10 +13,122 @@
       margin: 2px;
     }
   </style>
+  <script>function $(selector) { return document.querySelector(selector) }</script>
+  <script src="./scripts/window.js"></script>
 </head>
 
 <body>
+  <form id='basicForm' method="get" action="./window.html" target="_self">
+    <label for="userLoginID" accesskey="l">Enter your login:</label>
+    <input title="Enter your login" type="text" name="userLogin" id="userLoginID" value=""> <br>
+    <label for="userPassword" accesskey="p">Enter your password:</label>
+    <input title="Enter your password" type="password" name="userPassword" id="userPassword" value="" maxlength="20"><br>
+    <input type="submit" value="Click to see document.location.search">
+  </form>
 
+  <ul id="location">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+
+  <script>
+    {
+      const list = $('#location').querySelectorAll('li')
+      list[0].innerText = `document.location - ${document.location}`
+      list[1].innerText = `document.location.protocol - ${document.location.protocol}`
+      list[2].innerText = `document.location.pathname - ${document.location.pathname}`
+      list[3].innerText = `document.location.host - ${document.location.host}`
+      list[4].innerText = `document.location.search - ${document.location.search}`
+    }    
+  </script>
+
+  <ul id="navigator">
+    Navigator object:
+  </ul>
+  <script>
+    const list = $('#navigator')
+    for (const key in navigator) {
+      let a = document.createElement('li')
+      a.innerText = `Key - ${key}; Value - ${navigator[key]}`
+      list.appendChild(a)
+    }
+  </script>
+
+  <div id="windowPosition">
+    Window position:
+  </div>
+  <script>
+    {
+      const div = $('#windowPosition')
+      const position = getWindowPosition()
+      for (const key in position) {
+        let subDiv = document.createElement('div')
+        subDiv.innerHTML = `${key} - ${position[key]} <br>`
+        div.appendChild(subDiv)
+      }
+    }
+  </script>
+
+  <input id="openPage" type="button" value="Open new page">
+  <input id="closePage" type="button" value="Close new page">
+  <script>
+    {
+      let page = null;
+      $('#openPage').onclick = function () {
+        page = window.open('./newPage.html', 'New Title', 'width=600,height=400,status=yes,resizable=no')
+      }
+      $('#closePage').onclick = function () {
+        page.close()
+      }
+    }
+  </script>
+
+  <div>
+    <pre>
+      // Метасимволы.
+      // \w (word) Любой алфавитно-цифровой символ в верхнем и нижнем регистре и символ подчеркивания(тоже самое, что и [a-zA-Z0-9_]).
+      // \W (not word) Любой символ не являющийся подчеркиванием и не относящийся к алфавитно-цифровым
+      // \s (spaced charachter) любой пробельный символ (тоже самое, что [\r\n\f\v\t])
+      // \S (not spaced charachter) Любой не пробельный символ (тоже самое, что [^\r\n\f\v\t])
+      // \d (digit) любая цифра (digit)
+      // \D (not digit) любой не цифровой символ (тоже самое, что [^0-9])
+      // \v (вертикальная табуляция)
+      // \t (табуляция)
+      // \r (перевод каретки)
+      // \n (перевод строки)
+      // \f (перевод страницы)
+
+      // Наборы символов
+      // [RrGgBb] - Соответствие указанным символам
+      // [a-z] Соответствие символам английского алфавита в нижнем регистре
+      // [0-9] Соответствие указанным цифрам
+      // [^0-9] Соответствие с чем угодно кроме цифр заданного диапазона
+
+      // Квантификатор (Кванторы - сколько раз символ может встречаться)
+      // + Один или несколько символов - [abc]+ -> aabbcccbbaas
+      // * ноль и более символов - [abc]\d* -> ac || ac1 || a1234
+      // ? ноль или одно вхождение - http[s]? -> http || https
+
+      // Интервалы
+      // {3} точное количество совпадений - \d{3} -> 123
+      // {2,3} диапазон - \d{3, 5} -> 1234
+      // {3,} не менее - \d{2,} -> >= 12 
+      // {,3}  не более - \d{,2} -> <= 12
+
+      // Якорные символы
+      // ^ Начало строки - ^\d{3} -> '123test'
+      // $ Конец строки - \d{3}$ -> 'test123'
+      // \b соответствует границе слова  - \b\d{3}\b -> 'la 123 la'
+
+      // Флаги
+      // i выполнение поиска не чувствительного к регистру.
+      // g выполнение глобального поиска.
+      // m многострочный режим.
+    </pre>
+  </div>
 </body>
 
 </html>
