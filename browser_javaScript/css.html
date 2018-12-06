@@ -7,10 +7,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" href="../html5_css3_sandbox/imgs/html1.PNG" type="image/x-icon">
   <title>Css</title>
+  <script>function $(selector) { return document.querySelector(selector) }</script>
   <style>
     html {
       background: url('../../html5_css3_sandbox/imgs/back.png') no-repeat center center fixed;
       margin: 2px;
+    }
+
+    body {
+      height: 2000px;
     }
 
     .border {
@@ -21,9 +26,16 @@
       width: fit-content;
     }
 
+    #father {
+      top: 50px;
+      left: 50px;
+      width: 600px;
+      height: 100px;
+    }
+
     #abs {
       position: absolute;
-      top: 35px;
+      top: 30px;
       left: 100px;
     }
 
@@ -32,16 +44,50 @@
       left: 50px;
       position: fixed;
     }
+
+    #relF {
+      width: 400px;
+      height: 50px;
+    }
+
+    #rel {
+      position: relative;
+      top: 5px;
+      left: 15px;
+      border: dashed 2px blue;
+    }
+
+    #listDisplay div {
+      width: 30px;
+      height: 15px;
+      background-color: greenyellow;
+      margin: 3px;
+    }
+
+    #visability {
+      visibility: hidden;
+    }
+
+    #display {
+      display: none;
+    }
+
+    #cannotGetStyle {
+      background-color: aquamarine
+    }
+
+    #canGetStyle {
+      background-color: beige
+    }
   </style>
 </head>
 
 <body>
-  3 types of css from "link" in header, from "style" in header, and from "style" attribute of element.
-  <div id="father" class="border" class="fit">
-    father <br>
-    father <br>
-    father <br>
-    father <br>
+  <div id="father" class="border">
+    father
+    father
+    father
+    father
     <div id="abs" class="border">
       Absolute.
       Элемент перестаёт позиционироваться относительно своих дочерних элементов
@@ -49,76 +95,45 @@
     <div id="fix" class="border">
       fixed. Относительно окна браузера
     </div>
-    <div id='rel' class="border">
-        related. Относительно элемента родителя
-      </div>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
-    father <br>
+
   </div>
+  <div id="relF" class="border">
+    <div id='rel' class="fit">
+      related. Относительно элемента родителя
+    </div>
+  </div>
+  <span>visibility: hidden, display: none</span>
+  <div id="listDisplay">
+    <div>1</div>
+    <div id="visability">2</div>
+    <div id="display">3</div>
+    <div>4</div>
+    <div>5</div>
+  </div>
+  <div id="cannotGetStyle">
+    element.style.backgroundcolor нельзя вычислить если оно не задано через js <br>
+    или не прописано html style attribute
+    Если оно задано через css computed style - мы его не получим
+    <script>$('#cannotGetStyle').innerText += ` backgroundColor - ${$('#cannotGetStyle').style.backgroundColor}`</script>
+  </div>
+  <div id="canGetStyle">
+    window.getComputedStyle(elem, 'pseudoClass') solves it <br>
+    <script>$('#canGetStyle').innerText += ` backgroundColor - ${window.getComputedStyle($('#cannotGetStyle')).backgroundColor}`</script>
+  </div>
+
+  <script>
+    const animDiv = document.createElement('div')
+    animDiv.style.backgroundColor = 'green'
+    animDiv.style.width = '20px'
+    animDiv.style.height = '20px'
+    document.body.appendChild(animDiv)
+    let marg = 0;
+    const interval = setInterval(function () {
+      marg++
+      animDiv.style.marginLeft = `${marg}px`
+    }, 50)
+    setTimeout(clearInterval, 10000, interval)
+  </script>
 </body>
 
 </html>
