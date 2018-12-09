@@ -11,9 +11,20 @@
       background: url('../../html5_css3_sandbox/imgs/back.png') no-repeat center center fixed;
       margin: 2px;
     }
+    .border{
+      border: solid 2px;
+      width: fit-content;
+      padding: 3px;
+    }
   </style>
 </head>
 <body>
-  
+  <div class="border">
+    if event lisener returns boolean -> browser doesn't executing default action
+    that tied to element
+    <a href="some_site" title="to go somewhere" onclick="return confirm('Do you realy wanna do this?')">to go somewhere</a>
+    <script>function conf(){return confirm('Do you realy wanna do this?')}</script>
+    <a href="some_site2" title="to go somewhere" onclick="conf">to go somewhere2</a>
+  </div>
 </body>
 </html>
