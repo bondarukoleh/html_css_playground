@@ -1,30 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" href="../html5_css3_sandbox/imgs/html1.PNG" type="image/x-icon">
   <title>Events</title>
+  <script>function $(selector) { return document.querySelector(selector) }</script>
   <style>
     html {
       background: url('../../html5_css3_sandbox/imgs/back.png') no-repeat center center fixed;
-      margin: 2px;
     }
-    .border{
+    * {
+      margin: 10px;
+    }
+    .border {
       border: solid 2px;
       width: fit-content;
       padding: 3px;
     }
+    #first {
+      width: 600px;
+      height: 300px;
+    }
+    #second {
+      width: 400px;
+      height: 200px;
+    }
+    #thrird {
+      width: 300px;
+      height: 100px;
+    }
+    #first, #second, #thrird {
+      padding: 50px;
+    }
+
+    #first1 {
+      width: 600px;
+      height: 300px;
+    }
+    #second1 {
+      width: 400px;
+      height: 200px;
+    }
+    #thrird1 {
+      width: 300px;
+      height: 100px;
+    }
+    #first1, #second1, #thrird1 {
+      padding: 50px;
+    }
+    #rect p {
+      width: 30px;
+      height: 30px;
+      background-color: aquamarine;
+      float: left;
+      margin: 5px;
+    }
   </style>
 </head>
+
 <body>
   <div class="border">
     if event lisener returns boolean -> browser doesn't executing default action
     that tied to element
     <a href="some_site" title="to go somewhere" onclick="return confirm('Do you realy wanna do this?')">to go somewhere</a>
-    <script>function conf(){return confirm('Do you realy wanna do this?')}</script>
+    <script>function conf() { return confirm('Do you realy wanna do this?') }</script>
     <a href="some_site2" title="to go somewhere" onclick="conf">to go somewhere2</a>
   </div>
+
+  <div>
+    <input type="button" value="ClickToAlert" id="butnToAlert">
+    <input type="button" value="ClickToRemoveListener" id="butnToremAlert">
+    <script>
+      function makealert() { alert('La la') }
+      $('#butnToAlert').addEventListener('click', makealert, false)
+      $('#butnToremAlert').addEventListener('click', () => {
+        $('#butnToAlert').removeEventListener('click', makealert, false)
+      })
+    </script>
+  </div>
+  <p>
+    EventListener has "type", function "Handler", capture "Boolean". <br>
+    Capture true: event handle fires in first phase, when event moves from top to bottom (element).<br>
+    Capture false: event handle fires in third phase, when event moves from bottom (element) to top.<br>
+  </p>
+
+  <div id="first" class="border">
+    First
+    <div id="second" class="border">
+      Second
+      <div id="thrird" class="border">
+        Third
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    const tonel = true;
+    const first = $('#first')
+    const second = $('#second')
+    const thrird = $('#thrird')
+    first.addEventListener('click', function () {
+      this.style.backgroundColor = 'red'
+      alert('first click event fired')
+    }, tonel)
+    second.addEventListener('click', function () {
+      this.style.backgroundColor = 'yellow'
+      alert('second click event fired')
+    }, tonel)
+    thrird.addEventListener('click', function () {
+      this.style.backgroundColor = 'green'
+      alert('thrird click event fired')
+    }, tonel)
+  </script>
+
+  <form id="formPrevent" action="./events.html" method="get">
+    <input type="text" id="noValArea">
+    <input type="submit" value="IfNoValuePreventDefault">
+  </form>
+  <script>
+    $('#formPrevent').addEventListener('submit', function(e){
+      if($('#noValArea').value.length === 0){
+        alert('Input some value')
+        e.preventDefault()
+      }
+    })
+  </script>
+
+<div id="first1" class="border">
+    First
+    <div id="second1" class="border">
+      Second
+      <div id="thrird1" class="border">
+        Third
+      </div>
+    </div>
+  </div>
+  <script>
+      const tonel1 = false;
+      const first1 = $('#first1')
+      const second1 = $('#second1')
+      const thrird1 = $('#thrird1')
+      first1.addEventListener('click', function (e) {
+        this.style.backgroundColor = 'red'
+        alert('first click event fired')
+        e.stopPropagation()
+      }, tonel1)
+      second1.addEventListener('click', function (e) {
+        this.style.backgroundColor = 'yellow'
+        alert('second click event fired')
+        e.stopPropagation()
+      }, tonel1)
+      thrird1.addEventListener('click', function (e) {
+        this.style.backgroundColor = 'green'
+        alert('thrird click event fired')
+        e.stopPropagation()
+      }, tonel1)
+    </script>
+    <input type="text" id="ifNotZero" placeholder="Only zerovs allowed">
+    <script>
+    $('#ifNotZero').addEventListener('keypress', (e) => {
+      if(String.fromCharCode(e.charCode) !== '0'){
+        e.preventDefault()
+      }
+    }, false)
+    </script>
+
+    <div id="rect">
+      <p></p>
+      <p></p>
+      <p></p>
+    </div>
+    <script>
+    const rects = $('#rect').querySelectorAll('p')
+    Array.prototype.forEach.call(rects, (rect) => {
+      rect.addEventListener('click', (e) => e.target.style.backgroundColor = 'red')
+    })
+    </script>
 </body>
+
 </html>
