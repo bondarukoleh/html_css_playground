@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="../html5_css3_sandbox/imgs/html1.PNG" type="image/x-icon">
+  <title>Events 2</title>
+  <script>function $(selector) { return document.querySelector(selector) }</script>
+  <style>
+    html {
+      background: url('../../html5_css3_sandbox/imgs/back.png') no-repeat center center fixed;
+    }
+    * {
+      margin: 10px;
+    }
+    .border {
+      border: solid 2px;
+      width: fit-content;
+      padding: 3px;
+    }
+    #outputDiv {
+            background-color: #ceffff;
+            height:100px;
+            width:100px;
+        }
+  </style>
+</head>
+
+<body>
+  <input type="button" value="ShowEvent" id="ShowEvent">
+  <script>
+    $('#ShowEvent').addEventListener('click', function hand(e) {
+      let message = "type = " + e.type + "\n";
+      message += "target = " + e.target + "\n";
+      message += "currentTarget = " + e.currentTarget + "\n";
+      message += "eventPhase = " + e.eventPhase + "\n";
+      message += "timeStamp = " + e.timeStamp + "\n";
+      message += "bubbles = " + e.bubbles + "\n";
+      message += "cancelable = " + e.cancelable + "\n";
+      alert(message);
+    })
+  </script>
+
+  <div id="outputDiv"></div>
+  <p id="output"></p>
+  <script>
+    $('#outputDiv').addEventListener('mousemove', function hand(e) {
+      let message = "type: " + e.type + "<br />";                    // тип события.
+      message += "clientX:" + e.clientX + "<br />";               // координаты мыши относительно окна.
+      message += "clientY:" + e.clientY + "<br />";               // координаты мыши относительно окна.
+      message += "offsetX:" + e.offsetX + "<br />";               // координаты относительно элемента в котором произошло событие.
+      message += "offsetY:" + e.offsetY + "<br />";               // координаты относительно элемента в котором произошло событие.
+      message += "altKey:" + e.altKey + "<br />";                 // true если зажата клавиша Alt
+      message += "ctrlKey:" + e.ctrlKey + "<br />";               // true если зажата клавиша Ctrl
+      message += "shiftKey:" + e.shiftKey + "<br />";             // true если зажата клавиша Shift
+      document.getElementById("output").innerHTML = message;
+    })
+  </script>
+
+  <div>
+    <p>Shift, alt, ctrl button - you can get a keyCode from them and from "keydown", "keyup" event. <br>
+      Letters - has charCode, and you can get it from "keypress" event.<br>
+      <span id="let">Letter button presed, charCode from keypress - </span> <br>
+      <span id="work">Work button presed, keyCode from keydown - </span><br>
+      <span id="work2">Work button presed, keyCode from keyup - </span>
+    </p>
+  </div>
+  <script>
+    document.body.addEventListener('keydown', (e) => {
+      $('#work').innerText = `Work button presed, keyCode from keydown - ${e.keyCode}`
+    })
+    document.body.addEventListener('keypress', (e) => {
+      $('#let').innerText = `Letter button presed, charCode from keypress - ${e.charCode}. String.fromcharCode - ${String.fromCharCode(e.charCode)}`
+    })
+    document.body.addEventListener('keyup', (e) => {
+      $('#work2').innerText = `Work button presed, keyCode from keyup - ${e.keyCode}`
+    })
+  </script>
+
+  <script>
+    window.addEventListener('beforeunload', (event) => {
+      event.returnValue = `Are you sure you want to leave?`;
+    });
+  </script>
+</body>
+
+</html>
