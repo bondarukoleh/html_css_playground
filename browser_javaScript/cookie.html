@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="../html5_css3_sandbox/imgs/html1.PNG" type="image/x-icon">
+  <title>Cookie</title>
+  <script>function $(selector) { return document.querySelector(selector) }</script>
+  <style>
+    html {
+      background: url('../../html5_css3_sandbox/imgs/back.png') no-repeat center center fixed;
+      margin: 2px;
+    }
+
+    body {
+      height: 2000px;
+    }
+  </style>
+</head>
+
+<body>
+  <form>
+    <input type="text" id="cookieName" placeholder="Name" pattern="[a-zA-Z]+" title="Letters allowed" required>
+    <input type="text" id="cookieValue" placeholder="Value" data-pattern="[a-z]+" title="Letters allowed" required>
+    <input type="text" id="cookieExpaires" placeholder="Expires in ms" pattern="[0-9]+" title="Digits allowed" required>
+    <input type="submit" value="Set Cookie" id="set">
+    <input type="button" value="Read All Cookie" id="getAll">
+  </form>
+
+  <script>
+    const decode = (val) => decodeURIComponent(val)
+    const encode = (val) => encodeURIComponent(val)
+
+    function getAllCookie() {
+      const cookie = document.cookie.split(';')
+      const cookies = cookie.reduce((acc, keyValuePair, i) => {
+        const key = decode(keyValuePair.split('=')[0].trim())
+        const value = decode(keyValuePair.split('=')[1].trim())
+        acc += `${i}: key = ${key}, value = ${value}; \n`
+        return acc
+      }, '');
+      alert(cookies)
+    }
+
+    function setCookie() {
+      const today = new Date().getTime()
+      document.cookie = `${encode($('#cookieName').value)}=${encode($('#cookieValue').value)};max-age=${today + $('#cookieExpaires').value}`
+    }
+
+    window.onload = function () {
+      $('#set').addEventListener('click', setCookie)
+      $('#getAll').addEventListener('click', getAllCookie)
+    }
+
+  </script>
+
+</body>
+
+</html>
