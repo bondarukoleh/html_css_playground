@@ -51,6 +51,42 @@
     </defs>
     <ellipse cx="200" cy="70" rx="85" ry="55" fill="url(#grad1)" />
   </svg>
+  <div id="chartContainer"></div>
+  <script>
+    window.addEventListener("load", function () {
+      var chart = createChart({
+        columns: [30, 6, 88, 91, 2, 45, 100, 150, 200],
+        columnSTyle: { width: 600, height: 300 }, color: 'green'
+      });
+      var container = document.getElementById("chartContainer");
+      container.appendChild(chart);
+    });
+    function createChart({ columns, columnSTyle, color }) {
+      const chart = document.createElementNS("http://www.w3.org/2000/svg", 'svg') // set attribute ns
+      Object.entries(columnSTyle).forEach(([key, value]) => chart.style[key] = value)
+
+      const firstColunm = columns[0]
+      const maxColumn = columns.find(num => num > firstColunm)
+      const scale = columnSTyle.height / maxColumn
+      const columnWidth = Math.floor(columnSTyle.width / columns.length)
+
+      columns.forEach((elem, i) => {
+        const column = document.createElementNS("http://www.w3.org/2000/svg", 'rect')
+        const columnHeight = elem * scale;
+        column.setAttribute("height", columnHeight + "px");
+        column.setAttribute("width", columnWidth - 4 + "px");
+        column.setAttribute("y", columnSTyle.height - columnHeight);
+        column.setAttribute("x", columnWidth * i);
+        column.style.fill = color;
+        column.addEventListener("mouseover", onOver);
+        column.addEventListener("mouseout", onOut);
+        chart.appendChild(column);
+      });
+      function onOver() { this.style.fill = "red"; }
+      function onOut() { this.style.fill = color; }
+      return chart
+    }
+  </script>
 </body>
 
 </html>
