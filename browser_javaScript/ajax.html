@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax</title>
+  <link rel="icon" href="../html5_css3_sandbox/imgs/html1.PNG" type="image/x-icon">
+  <style>
+    html {
+      background: url('../html5_css3_sandbox/imgs/back.png') no-repeat center center fixed;
+      margin: 2px;
+    }
+    #load{
+      width: 30px;
+      height: 30px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="button" id="ajaxButton" value="Make Ajax request" title="Make Ajax request">
+  <img src='../html5_css3_sandbox/imgs/loading.gif' id="load">
+  <div id="fromAjax"></div>
+  <script>
+    const hideLoad = () => document.querySelector('#load').style.display = 'none'
+    const showLoad = () => document.querySelector('#load').style.display = 'block'
+    document.querySelector('#ajaxButton').addEventListener('click', () => {
+      const timer = setTimeout(() => {
+        alert('Aborted')
+        xhr.abort()
+      }, 3000)
+      const xhr = new XMLHttpRequest()
+      xhr.open('GET', './justTag.html')
+      xhr.setRequestHeader('Content-Type', 'application-json')
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          clearTimeout(timer)
+          hideLoad()
+          document.querySelector('#fromAjax').innerHTML += xhr.response
+        }
+      }
+      xhr.send() //for post xhr.sent('key=value&key2=value2')
+      showLoad()
+    })
+  </script>
+
+
+</body>
+
+</html>
