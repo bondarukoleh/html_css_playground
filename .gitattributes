@@ -1,0 +1,6 @@
+* text=auto
+
+# -text -merge -diff
+*.gif binary
+*.jpg binary
+*.png binary
