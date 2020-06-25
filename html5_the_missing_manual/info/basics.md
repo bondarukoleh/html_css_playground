@@ -29,9 +29,9 @@ on new browsers. By the same token, new features may be added to HTML at any tim
     do the other road - and failed.
 3. `Be Practical` - Changes should have a practical purpose.
 
-The HTML5 standard doesn’t require e.g. closed </p> tag, since browsers know to close all open elements at the end of the
-document. Or you can not provide a "title" or "html" tags. The use of the <html>, <head>, and <body> elements is simply a
-matter of style. But better to do everything right.
+The HTML5 standard doesn’t require e.g. closed &lt;/p&gt; tag, since browsers know to close all open elements at the end
+of the document. Or you can not provide a "title" or "html" tags. The use of the &lt;html&gt;, &lt;head&gt;, and
+&lt;body&gt; elements is simply a matter of style. But better to do everything right.
 
 ```The HTML5 Doctype```
 The first line of every HTML5 document is a special code called the `doctype`. The doctype clearly indicates the standard
@@ -194,13 +194,15 @@ an XML document, and if that process fails they give up on the rest of the docum
 
 ##### HTML5’s Element Family
 Some elements were added, extended, some of them are not welcome by any decent HTML5 validator.
+```html
 <big>, <center>, <font>, <tt>, <strike>, <iframe>, <acronym> (use <abbr> ), <applet> (<object> is preferred).
-<b> same as <strong>, <i> italic same as <em> emphasis. \ 
-•  Use <strong> for text that has strong importance. This is text that needs to stand out from its surroundings.
-•  Use <b> for text that should be presented in bold but doesn’t have greater importance. This could include keywords,
+<b> same as <strong>, <i> italic same as <em> emphasis.
+```
+•  Use &lt;strong&gt; for text that has strong importance. This is text that needs to stand out from its surroundings.
+•  Use &lt;b&gt; for text that should be presented in bold but doesn’t have greater importance. This could include keywords,
  product names, and anything else that would be bold in print.
-•  Use <em> for text that has emphatic stress—in other words, text that would have a different inflection if read out loud.
-•  Use <i> for text that should be presented in italics but doesn’t have extra emphasis. This could include foreign 
+•  Use &lt;em&gt; for text that has emphatic stress—in other words, text that would have a different inflection if read out loud.
+•  Use &lt;i&gt; for text that should be presented in italics but doesn’t have extra emphasis. This could include foreign 
 words, technical terms, and anything else that you’d set in italics in print.
 ```html
 <strong>Breaking news!</strong> There's a sale on <i>leche quemada</i> candy at the <b>El Azul</b> restaurant.
@@ -211,7 +213,8 @@ Before HTML5 allowed holding text and image, now it allows anything and everythi
 acceptable to stuff entire paragraphs in there, along with lists, images, and so on.
 
 Some elements standardized:
-<embed>, <wbr> to browser know where you can break a word (opposite to <nobr> which is obsolete, better use nowrap in css).
+&lt;embed&gt;, &lt;wbr&gt; to browser know where you can break a word (opposite to &lt;nobr&gt; which is obsolete, better use
+ nowrap in css).
 
 ##### Using HTML5 Today
 HTML5 features won't work at IE browsers before IE10. Some things will help you: polyfills and fallback to some 
