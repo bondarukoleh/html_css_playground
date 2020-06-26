@@ -327,5 +327,5 @@ What’s the point of adding a heading that you can’t see?
  - First, all <header> elements require some level of heading inside, just to satisfy the rules of HTML5.
  - This design makes the page more accessible for people who are navigating it with screen readers. 
  - It establishes a heading structure that you can use in the rest of the page. That’s a fancy way of saying that if 
-you start with an <h1> for your website header, you may decide to use <h2> elements to title the other sections of
+you start with an < h1 > for your website header, you may decide to use < h2 > elements to title the other sections of
 the page (like “Articles” and “About Us” in the sidebar).
