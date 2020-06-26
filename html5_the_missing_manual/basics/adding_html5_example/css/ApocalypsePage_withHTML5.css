@@ -1,0 +1,103 @@
+﻿body {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, sans-serif;
+  max-width: 800px;
+}
+/* Format the <div> that represents the header (as a blue, bordered box). */
+header {
+  background-color: #7695FE;
+  border: thin #336699 solid;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+/* Format any <h1> headings in the header <div> (that's the article title). */
+header h1 {
+  margin: 0px;
+  color: white;
+  font-size: xx-large;
+}
+/* Format the subtitle in the header <div>. */
+header .Teaser {
+  margin: 0px;
+  font-weight: bold;
+}
+/* Format the byline in the header <div>. */
+header .Byline {
+  font-style: italic;
+  font-size: small;
+  margin: 0px;
+}
+
+.Content {
+  font-size: medium;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  padding-top: 20px;
+  padding-bottom: 5px;
+  padding-left: 50px;
+  padding-right: 50px;
+  line-height: 120%;
+}
+
+.Content .LeadIn {
+  font-weight: bold;
+  font-size: large;
+  font-variant: small-caps;
+}
+
+.Content h2 {
+  color: #24486C;
+  margin-bottom: 2px;
+  font-size: medium;
+}
+
+.Content p {
+  margin-top: 0px;
+}
+
+/* Format the floating figure box. */
+.FloatFigure {
+float: left;
+margin-left: 0px;
+margin-top: 0px;
+margin-right: 20px;
+margin-bottom: 0px;
+}
+
+/* Format the figure caption text. */
+.FloatFigure figcaption {
+max-width: 200px;
+font-size: small;
+font-style: italic;
+margin-bottom: 5px;
+}
+
+footer {
+  text-align: center;
+  font-size: x-small;	
+}
+
+footer .Disclaimer {
+  font-style: italic;
+}
+
+footer p {
+  margin: 3px;
+}
+
+.PullQuote {
+float: right;
+max-width: 300px;
+border-top: thin black solid;
+border-bottom: thick black solid;
+font-size: 30px;
+line-height: 130%;
+font-style: italic;
+padding-top: 5px;
+padding-bottom: 5px;
+margin-left: 15px;
+margin-bottom: 10px;
+}
+
+article, aside, figure, figcaption, footer, header, main, nav, section, summary {
+    display: block;
+}

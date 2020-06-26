@@ -217,7 +217,115 @@ Some elements standardized:
  nowrap in css).
 
 ##### Using HTML5 Today
-HTML5 features won't work at IE browsers before IE10. Some things will help you: polyfills and fallback to some 
-different implementation. 
+HTML5 features won't work at IE browsers before IE10. Some things will help you: warn your user, make a polyfill or
+silently fallback to some different implementation. 
 To check either you can or not use some feature:
 [Can I use](http://caniuse.com)
+[Browser usage statistic](http://gs.statcounter.com)
+[To warn your user.](http://modernizr.com)
+[Polyfills](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills)
+
+#### Structuring Pages with Semantic Elements
+Web developers use the same set of elements to build today’s modern sites that they used to build 10 years ago.
+Humble < div > (division) — is the cornerstone of nearly every modern web page. \
+Using < div > elements, you can slice an HTML document into headers, side panels, navigation bars, etc. Add different CSS
+formatting, turn these sections into bordered boxes or shaded columns, and place each one exactly where it belongs.
+This < div >-and-style technique is straightforward, powerful, and flexible, but it’s not transparent.
+
+##### Introducing the Semantic Elements
+To improve the structure of your web pages, you need HTML5’s semantic elements. \
+These elements give extra meaning to the content they hold. For example, the new < time > element flags for some date
+or time in your web page, it doesn't have any build-in formatting, and browser doesn't even care about it, but with css
+you can add all date elements some style, which is convenient.
+```html
+Registration begins on <time>2014-11-25</time>.
+```
+There are other semantic like < nav > element identifies a set of navigation link or < footer > element wraps the footer,
+and so on. \
+Why to use elements that don't do anything at all: \
+•  `Easier editing and maintenance`. Better understanding of the overall layout, various sections without look at css.
+Structural information in the markup. Easier when you need to edit the page months later, and someone else to revise it. \
+•  `Accessibility`. Modern web design should be accessible, pages that people can navigate using screen readers and
+other assistive tools. \
+•  `Search-engine optimization` Search engines like Google use powerful search bots—automated programs that crawl the
+Web and fetch every page they can to scan your content and index it in their search databases. The better Google 
+understands your site, the better the chance that it can match a web searcher’s query to your content, and the better
+the chance that your website will turn up in someone’s search results. Search bots check for some of HTML5’s semantic
+elements to collect more information about the pages they’re indexing. \
+•  `Future features.` New browsers and web editing tools are sure to take advantage of semantic elements. For quick 
+navigation and so on.
+
+##### Retrofitting a Traditional HTML Page
+In a well-written, traditional HTML page, most of the work is farmed out to the style sheet using the < div > and 
+< span > containers. The < span > lets you format snippets of text inside another element. The < div > allows you to
+format entire sections of content, and it establishes the overall structure of the page. \
+Page has structure: Header box, Firs-level heading, By line, Lead-in, Second-level heading, Footer.
+ 
+`Page Structure with HTML5`
+The < div > is a cornerstone, but it is faceless. It doesn’t provide any information about the page.
+When you (or a browser, or a design tool, or a screen reader, or a search bot) come across a < div >, you don’t know
+the purpose of that section. \
+To improve this situation in HTML5, you can replace some of your < div > elements with more descriptive semantic
+elements. The semantic elements behave exactly like < div > elements: They group a block of markup, they don’t do
+anything on their own, and they give you a styling hook that lets you apply formatting. So you can easily change
+< div class="Header" > to < header class="Header" >. Nothing will change, but it looks redundant. So better to change
+css sheet and make it just < header >. < article > is other nice tag, for search engines it's like a non-existing 
+"content" tag.
+
+`Adding a Figure with <figure>`
+The HTML5 specification suggests that you think of them much like figures in a book, meaning a picture that’s separate
+from the text, yet referred to in the text. Not just regular image. Generally, you let figures float, means you put them
+in the nearest convenient spot alongside your text, rather than lock them in place next to a specific word or element.
+The difference with faceless < div > that your figure markup is now perfectly clear. < figcaption > isn’t limited to
+text — you can use any HTML elements that make sense. Other possibilities include links and tiny icons. Also figcaption
+can substitute the alt="" attribute for img. 
+
+`Adding a Sidebar with <aside>`
+The new < aside > element represents content that is some kind related to the text that surrounds it. \
+e.g. you can use an < aside > to introduce a related topic or to expand on a point that’s raised in the main document.
+for a block of ads, some related content links, or quote.
+
+`Browser Compatibility for the Semantic Elements`
+To support semantic tags, browser simply needs to treat them like an ordinary < div > element.
+When a browser meets an element it doesn’t recognize, it treats it as an inline element.
+But most of HTML5’s semantic elements (except <time> and couple more) are block elements, which means the browser is 
+supposed to render them on a separate line, with a little bit of space between them and the preceding and following
+elements. \
+But if browser, which knows nothing about new HTML5 blocks element will smash them together as inline elements. Whitch is
+why we need to explain to the browser that these are block elements
+```html
+article, aside, figure, figcaption, footer, header, main, nav, section, summary {
+    display: block;
+}
+``` 
+This style sheet rule won’t take effect for browsers that already recognize HTML5, because the display property is
+already set to block. And it won’t affect any style rules you already use to format these elements.
+
+`Using the HTML5 Shiv`
+Previous hack is for most browsers. This one for IE 8 and older.
+Old versions of IE introduce a second challenge: They refuse to apply style sheet formatting to elements they don’t
+recognize. You can trick IE into recognizing a foreign element by registering it with a JavaScript command.
+For example, here’s a script block that gives IE the ability to recognize and style the < header > element:
+```html
+<script>
+    document.createElement('header')
+</script>
+```
+So you can find a patch for html5 elements somewhere online or do it by yourself. Modernizr - has this fix in it.
+
+`Designing a Site with the Semantic Elements`
+Header \
+Pages can have more than one < header > element and often will, even though these headers play different roles on the
+page. 
+```html
+<header class="SiteHeader">
+    <img src="media/site_logo.png" alt="Apocalypse Today">
+    <h1 style="display:none">Apocalypse Today</h1>
+</header>
+```
+What’s the point of adding a heading that you can’t see?
+ - First, all <header> elements require some level of heading inside, just to satisfy the rules of HTML5.
+ - This design makes the page more accessible for people who are navigating it with screen readers. 
+ - It establishes a heading structure that you can use in the rest of the page. That’s a fancy way of saying that if 
+you start with an <h1> for your website header, you may decide to use <h2> elements to title the other sections of
+the page (like “Articles” and “About Us” in the sidebar).
