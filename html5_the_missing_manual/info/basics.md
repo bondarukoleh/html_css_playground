@@ -289,10 +289,10 @@ for a block of ads, some related content links, or quote.
 To support semantic tags, browser simply needs to treat them like an ordinary < div > element.
 When a browser meets an element it doesn’t recognize, it treats it as an inline element.
 But most of HTML5’s semantic elements (except <time> and couple more) are block elements, which means the browser is 
-supposed to render them on a separate line, with a little bit of space between them and the preceding and following
+supposed to render them on a separate line, with a little of space between them and the preceding and following
 elements. \
-But if browser, which knows nothing about new HTML5 blocks element will smash them together as inline elements. Whitch is
-why we need to explain to the browser that these are block elements
+But if browser, which knows nothing about new HTML5 blocks element will smash them together as inline elements. Which is
+why we need to explain to the browser that these are block elements:
 ```html
 article, aside, figure, figcaption, footer, header, main, nav, section, summary {
     display: block;
@@ -329,3 +329,24 @@ What’s the point of adding a heading that you can’t see?
  - It establishes a heading structure that you can use in the rest of the page. That’s a fancy way of saying that if 
 you start with an < h1 > for your website header, you may decide to use < h2 > elements to title the other sections of
 the page (like “Articles” and “About Us” in the sidebar).
+
+##### Navigation Links with <nav>
+In a traditional HTML website, some side block with navigation or ads you’d wrap in a < div >. In HTML5, you almost 
+always rely on < aside > and < nav >. \
+The < aside > element can be used to mark up a piece of related content, quotes or, for create an entirely separate
+section of the page—one that’s offset from the main flow.
+The < nav > element wraps a block of links, that point to topics on the page, or to other pages. Most pages will have
+multiple < nav > sections in them. Not all links need a < nav > section, it’s generally reserved for the largest section.
+
+Also, good one is < section > element, more specific than a < div > — it’s suitable for any block of content that starts
+with a heading.
+
+##### Deeper into Sections
+If you have a titled block of content, and the other semantic elements aren’t appropriate, then the < section > element
+is generally a better choice than < div >.
+So what goes in a typical section:
+•  Small content blocks, displayed alongside the main page, like the “About Us” paragraph in the apocalyptic website.
+•  Self-contained content, can’t really be described as an article, like a customer billing record or a product listing.
+•  Groups of content — for example, a collection of articles on a news site.
+•  A portion of a longer document. e.g. Sometimes you’ll use sections in this way to ensure a correct outline for your
+document, as explained in the next section.
