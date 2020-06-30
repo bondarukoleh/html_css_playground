@@ -360,3 +360,20 @@ element.
     <p>If you can see this content, the section is expanded</p>
 </details>
 ```
+
+##### Deeper into Footers
+•  Fixed positioning, so the footer is always attached to the bottom of the browser
+•  A close button
+•  A partially transparent background
+•  Animation, so the footer springs or slides into view.
+
+##### Identifying the Main Content with <main>
+< main > that identifies a web page’s primary content. the main content is the entire article, not including the website
+header, sidebar, or footer.
+You can’t put the < main > element inside the < article > element (or in any other semantic element). That’s because
+the < main > is meant to hold the page’s full main content. It’s not meant to indicate a portion of content. For this
+reason, unlike the other semantic elements, the < main > element can be used only once in a page. Useful for 
+screen readers.
+
+#### The HTML5 Outlining System
+##### How to View an Outline

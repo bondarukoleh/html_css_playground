@@ -132,3 +132,13 @@ aside.NavSidebar img {
   margin-top: 10px;
   border: white solid 4px;
 }
+
+#FatFooter {
+  position: fixed;
+  bottom: 0px;
+  height: 145px;
+  width: 100%;
+  background: #ECD672;
+  border-top: thin solid black;
+  font-size: small;
+}
