@@ -349,4 +349,14 @@ So what goes in a typical section:
 •  Self-contained content, can’t really be described as an article, like a customer billing record or a product listing.
 •  Groups of content — for example, a collection of articles on a news site.
 •  A portion of a longer document. e.g. Sometimes you’ll use sections in this way to ensure a correct outline for your
-document, as explained in the next section.
+document.
+
+##### Collapsible Boxes with <details> and <summary>
+The idea is that you wrap your collapsible section in a < details > element and wrap the heading inside in a < summary >
+element.
+```html
+<details>
+    <summary>Section #1</summary>
+    <p>If you can see this content, the section is expanded</p>
+</details>
+```
