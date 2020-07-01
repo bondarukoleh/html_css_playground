@@ -15,20 +15,105 @@
 <i>Italic</i>
 <em>emphasis</em>
 <address>
-Mail to:
-<a href="mailto:jsolo@mysite.com">John Solo</a>,
-<a href="mailto:lcheng@mysite.com">Lisa Cheng</a>, and
-<a href="mailto:rpavane@mysite.com">Ryan Pavane</a>.
+    Mail to:
+    <a href="mailto:jsolo@mysite.com">John Solo</a>,
+    <a href="mailto:lcheng@mysite.com">Lisa Cheng</a>, and
+    <a href="mailto:rpavane@mysite.com">Ryan Pavane</a>.
 </address>
 <p>Charles Dickens wrote <cite>A Tale of Two Cities</cite>.</p>
 <hr>
 <small>&lt small &gt Small text</small>
 <div>
-    Registration begins on <time>2014-11-25</time>.
+    Registration begins on
+    <time>2014-11-25</time>
+    .
 </div>
 <details>
-    <summary>Section #1</summary>
-    <p>If you can see this content, the section is expanded</p>
+    <summary>article #1</summary>
+    <p>If you can see this content, the article is expanded</p>
 </details>
+<article>
+    Outline:
+    <h1>h1</h1>
+    <h2>h2</h2>
+    <h3>h3</h3>
+    <h3>h3</h3>
+    <h2>h2</h2>
+    <article>
+        <h2>article h2</h2>
+    </article>
+    <section>
+        <article>
+            <aside>
+                <h3>article aside h3</h3>
+                <h4>article aside h4</h4>
+                <h5>article aside h5</h5>
+            </aside>
+            <article>
+                <h3>article article h3</h3>
+                <h4>article article h4</h4>
+                <article>
+                    <h5>article article article h5</h5>
+                    <h6>article article article h6</h6>
+                </article>
+            </article>
+            <h3>article h3</h3>
+            <h3>article h3</h3>
+        </article>
+    </section>
+
+</article>
+<article>
+    <h5>top h5</h5>
+    <article>
+        <h1>h1 under h5</h1>
+    </article>
+    <article>
+        <h2>article top h2</h2>
+        <h2>article h2 under top h2</h2>
+        <h3>article h3 under h2</h3>
+        <article>
+            <h4>article article top h4</h4>
+        </article>
+    </article>
+</article>
+
+<div>
+    <p>Keep the format YYYY-MM-DD</p>
+    Start at
+    <time>2020-01-01</time>
+    The party starts
+    <time datetime="2014-03-21">March 21<sup>st</sup></time>
+    Parties start every night at
+    <time datetime="16:30">4:30 p.m.</time>
+    .
+    <p>The party starts
+        <time datetime="2014-03-21 16:30">March 21<sup>st</sup>at 4:30 p.m.</time>
+    </p>
+    <p>The party starts
+        <time datetime="2014-03-21 16:30-05:00">March 21<sup>st</sup>at 4:30 p.m.</time>
+    </p>
+</div>
+
+<form action="#" id="bmiCalculator">
+    <label for="feet inches">Height:</label>
+    <input name="feet" placeholder="feet"><br>
+    <input name="inches" placeholder="inches"><br>
+    <label for="pounds">Weight:</label>
+    <input name="pounds" placeholder="pounds"><br>
+</form>
+<p>Your BMI:
+    <output id="result" form="bmiCalculator" for="feet inches pounds"></output>
+</p>
+<p>In 2009, Facebook made a bold grab to own everyone's content,
+    <em>forever</em>. This is the text they put in their terms of service:</p>
+<blockquote>You hereby grant Facebook an <mark>irrevocable, perpetual,
+    non-exclusive, transferable, fully paid, worldwide license</mark> (with the
+    right to sublicense) to <mark>use, copy, publish</mark>, stream, store,
+    retain, publicly perform or display, transmit, scan, reformat, modify, edit,
+    frame, translate, excerpt, adapt, create derivative works and distribute
+    (through multiple tiers), <mark>any user content you post</mark>
+</blockquote>
+
 </body>
 </html>

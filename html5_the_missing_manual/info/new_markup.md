@@ -160,11 +160,11 @@ Attributes with no values are also allowed.
 ```
 `HTML5 Validation`
 Such things can be spotted:
-•  Missing mandatory elements (for example, the <title> element)
+•  Missing mandatory elements (for example, the < title > element)
 •  A start tag without a matching end tag
 •  Incorrectly nested tags
-•  Tags with missing attributes (for example, an <img> element without the src attribute)
-•  Elements or content in the wrong place (for example, text that’s placed directly in the <head> section)
+•  Tags with missing attributes (for example, an < img > element without the src attribute)
+•  Elements or content in the wrong place (for example, text that’s placed directly in the < head > section)
 There is [online validator](http://validator.w3.org/#validate_by_input)
 
 `The Return of XHTML`
@@ -230,7 +230,9 @@ Web developers use the same set of elements to build today’s modern sites that
 Humble < div > (division) — is the cornerstone of nearly every modern web page. \
 Using < div > elements, you can slice an HTML document into headers, side panels, navigation bars, etc. Add different CSS
 formatting, turn these sections into bordered boxes or shaded columns, and place each one exactly where it belongs.
-This < div >-and-style technique is straightforward, powerful, and flexible, but it’s not transparent.
+This < div > - and style technique is straightforward, powerful, and flexible, but it’s not transparent.
+With their help, you can give your pages a clean, logical structure and prepare for a future of browsers, search engines,
+ and assistive devices.
 
 ##### Introducing the Semantic Elements
 To improve the structure of your web pages, you need HTML5’s semantic elements. \
@@ -369,11 +371,108 @@ element.
 
 ##### Identifying the Main Content with <main>
 < main > that identifies a web page’s primary content. the main content is the entire article, not including the website
-header, sidebar, or footer.
+header, sidebar, or footer. \
 You can’t put the < main > element inside the < article > element (or in any other semantic element). That’s because
 the < main > is meant to hold the page’s full main content. It’s not meant to indicate a portion of content. For this
 reason, unlike the other semantic elements, the < main > element can be used only once in a page. Useful for 
 screen readers.
 
 #### The HTML5 Outlining System
-##### How to View an Outline
+How to View an Outline \
+You can check the headers of your page with [Online HTML outliner](http://gsnedders.html5.org/outliner)
+
+##### Sectioning Elements
+`<article>, <aside>, <nav>, and <section>`.
+If a page that contains two sectioning < article > elements, this page has three outlines — the outline of the overall
+page and one nested outline for each article.
+Sectioning is a great help with `syndication` and `aggregation` two examples of the fine art of taking content from one
+web page and injecting it into another. There could be a problem if you add some peaces from another site, e.g. your
+article with h4 is contain an article from another site, where header is h2, in HTML5, it has a logical outline system.
+In this outline system, each section element has the biggest headers, all smaller is subitems, and same for inner
+section elements.
+So you can face this outline if you have mess with headers:
+```text
+1. h1
+    1. h2
+        1. h3
+        2. h3
+    2. h2
+    3. article h2
+    4. aside h3
+        1. aside h4
+            1. aside h5
+    5. section h3
+        1. section h4
+        2. section section h5
+            1. section section h6
+    6. h3
+    7. h3
+```
+HTML5 outline system automatically creates a new section every time it finds a numbered heading element 
+(like h1, h2 etc.), unless that element is already at the top of a section. \
+As you can see with inserted different section elements page outlined with "h2" same level as "aside h3" or "section h3".
+It happens because algorithm closes "2. h2" section and starts a new one on the same level "4. aside h3".
+It's not nice. To fix that you can play around with sections and put them in separate sections. Which will fix the 
+logical grouping sections. 
+```text
+1. top h5
+    1. h1 under h5 (html automatically created a section here, and putted it in one line with h5)
+    2. section top h2 (since this header in the top of the section - it is under the h1, without section - it would be 
+        sub element of h1)
+    3. section h2 under top h2
+```
+So after you put section in section outline will move left.
+Sections mixed with regular divs - behave differently, keep this in mind.
+
+#### Writing More Meaningful Markup
+So articles, sections, main - it's about page structure. Here we'll add text-level information.
+
+`Dates and Times with <time>`
+```html
+    Start at <time>2020-01-01</time>
+    The party starts <time datetime="2014-03-21">March 21<sup>st</sup></time>
+    Parties start every night at <time datetime="16:30">4:30 p.m.</time>.
+    The party starts <time datetime="2014-03-21 16:30">March 21<sup>st</sup>at 4:30 p.m.</time>
+```
+When combining dates and times, you may choose to tack a time zone offset. e.g. New York is in the Eastern time zone,
+which is known as UTC-5:00. To indicate 4:30 p.m. in New York, you’d use this markup:
+```html
+The party starts <time datetime="2014-03-21 16:30-05:00">March 21<sup>st</sup>at 4:30 p.m.</time>.
+```
+We can use "pubdate" in "time" tag if your date corresponds to the publication date of the current content.
+```html
+Published on <time datetime="2014-03-21" pubdate>March 31, 2014</time>.
+```
+
+`JavaScript Calculations with <output>`
+< output > is a placeholder that your code can use to show a piece of calculated information. e.g. you can put results
+of some calculation there.
+```html
+<p>Your result is: <output id="result"></output></p>
+```
+
+`Highlighted Text with <mark>`
+The < mark > element represents a section of text that’s highlighted for reference.
+
+`Other Standards That Boost Semantics`
+ARIA (Accessible Rich Internet Applications)
+RDFa (Resource Description Framework)
+Microformats
+Microdata
+Outdated crap.
+
+`How Search Engines Use Metadata`
+Search engine optimization (SEO). SEO is the art of making your website more visible in a search engine, making it turn
+up more often in a results page, helping it get a better ranking for certain keywords. \
+Google Rich Snippets \
+Google uses the term rich snippets to lump together RDFa, microformats, and microdata. \
+Enhanced Search Results \ 
+To see how Google’s rich snippets feature works - [Structured Data Testing Tool](https://search.google.com/structured-data/testing-tool) \
+Google interested in contact details, business listings, recipes, reviews. \
+You can check [schema](https://schema.org/) for google engine tags. \
+Possible problems with google:
+•  The semantic data doesn’t represent the main content.
+•  The semantic data is hidden. Google won’t use any content that’s hidden via CSS.
+•  Your website uses just a little semantic data. 
+Via this metadata google can search news, books, maps, videos, etc.
+
