@@ -61,14 +61,61 @@ To use this technique, you simply need to add a few new pseudo-classes. Your opt
 •   ```required and optional```, which apply styles to fields based on whether they use the required attribute.
 •   ```valid and invalid```, which apply styles to controls based on whether they contain mistakes.
 •   ```in-range and out-of-range```, controls that use the min and max attributes to limit numbers to a range.
-and mutch more
+and mutch more.
+
 ```html
 input:required:invalid {
     background-color:red;
 }
 ```
-with regex. Field empty - because of required - it will show the "Please fill field", if filled wrong, and 
+With regex. Field empty - because of required - it will show the "Please fill field", if filled wrong, and 
 submit pressed - will show "Please follow the requested format" and out title message. Great.
 ```html
 <input id="someData" required pattern="[A-Z]{3}-[0-9]{3}"><br>
 ```
+We can add custom validation via JS.
+```html
+<input id="someData" oninput="validate(this)"><br>
+```
+```js
+const validate = (input) => input.value.length > 20 && input.setCustomValidity("Too short value");
+```
+Form also have onsubmit, function predicate that will return true or false depend on validation result.
+Just like many more events. \
+A Few more Input Attributes:
+ - Set ```spellcheck``` to false to recommend the browser not spellcheck a field, or true to recommend that it does.
+ - Set ```autocomplete``` to off to recommend that the browser not offer autocomplete suggestions.
+ - ```autocorrect``` and ```autocapitalize```. Use these attributes to control automatic correction.
+ - ```multiple``` add the to the <select> element to create multiple-selection input. e.g. a few files to upload at once.
+ 
+##### New elements
+If a browser runs into an < input > element with a type that it doesn’t recognize, it treats it like a regular text box.
+With new types of inputs browser can be smarter
+•   Offer different input suggestions for different fields. 
+•   Restrict potential errors. Ignore letters when you type in a number text box.
+•   Perform validation. Browsers can perform more sophisticated checks when you click a submit button.
+```html
+<input id="weight" type="number" min="50" max="1000" step="0.1" value="160"><br>
+<!--will sagest you the value -->
+<datalist id="datalistID">
+        <option value="A">A</option>
+        <option value="B">B</option>
+</datalist>
+<input type="text" id="valueFromList" list="datalistID">
+```
+
+The < progress > and < meter > \
+`<progress>` element indicates how far a task has progressed. The `<meter>` element indicates a value within a known
+range. It looks similar to the progress element, it doesn’t pulse.
+```html
+<!--without a value - is in process, and state always changing. Interesting feature-->
+<progress></progress>
+<progress value="0.25"></progress>
+<meter value="150" max="200"></meter>
+```
+You can put some fallback content inside the < progress > element, like:
+```html
+<progress value="0.25">25%</progress>
+```
+Just remember that the fallback content won’t appear in browsers that do support the < progress > element.
+contenteditable attribute - when you can edit value of the element.

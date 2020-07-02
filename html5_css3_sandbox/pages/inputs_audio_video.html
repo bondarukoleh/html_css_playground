@@ -2,137 +2,153 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="../css/inputs_audio_video.css">
-  <link rel="icon" href="../imgs/html1.PNG" type="image/x-icon">
-  <title>Examples</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/inputs_audio_video.css">
+    <link rel="icon" href="../imgs/html1.PNG" type="image/x-icon">
+    <title>Examples</title>
 </head>
 
 <body>
-  <div id="simpleExamples">
-    <p>Mark tag. <mark>Marks</mark> text, looks like you were lookig for <mark>it</mark>.</p>
+<div id="simpleExamples">
+    <p>Mark tag.
+        <mark>Marks</mark>
+        text, looks like you were lookig for
+        <mark>it</mark>
+        .
+    </p>
     <hr>
     <p>abbr tag. For explanation tooltip for some text. Like
-      <abbr title="HTML level - 'GOD like'">HLGL</abbr></p>
+        <abbr title="HTML level - 'GOD like'">HLGL</abbr></p>
     <hr>
     <p>With HTML5 we can put several objects inside link <\a> tag, and thay will point to same
         href</p>
     <a id="multilink" href="#">
-      <p>Header inside link is a link</p>
-      <img id="smallLogo" src="../imgs/html1.PNG" alt="Html5" title="And image inside link is a link">
+        <p>Header inside link is a link</p>
+        <img id="smallLogo" src="../imgs/html1.PNG" alt="Html5" title="And image inside link is a link">
     </a>
     <hr>
     <details>
-      <summary>Detaist tag, supported by chrome and FF</summary>
-      <p>Anything that you like can be here</p>
-      <ul>
-        <li>A</li>
-        <li>B</li>
-        <li>C <img src="../imgs/figure.jpg"></li>
-      </ul>
+        <summary>Detaist tag, supported by chrome and FF</summary>
+        <p>Anything that you like can be here</p>
+        <ul>
+            <li>A</li>
+            <li>B</li>
+            <li>C <img src="../imgs/figure.jpg"></li>
+        </ul>
     </details>
     <hr>
     <ol start=7 reversed>
-      <li>New tag "Start" and "reversed" and "li"'s "value" attribute in ol.</li>
-      <li>As you can see it started from 7,</li>
-      <li value="someValueInLi">And go in reversed order.</li>
+        <li>New tag "Start" and "reversed" and "li"'s "value" attribute in ol.</li>
+        <li>As you can see it started from 7,</li>
+        <li value="someValueInLi">And go in reversed order.</li>
     </ol>
     <hr>
     <div contenteditable>
-      Some editable content. "contenteditable" - it's a new attribute of some tag's.
+        Some editable content. "contenteditable" - it's a new attribute of some tag's.
     </div>
     <hr>
     <div id="modernizerResults">
-      Trying to use modernizer lybrary. Can we use canvas in this browser? -
+        Trying to use modernizer lybrary. Can we use canvas in this browser? -
     </div>
     <hr>
     <div>
-      Tag "contentxmenu" should gave ability to add some custom options in menu that invoucs
-      by clicking mouse right button. <mark>Supported by FF.</mark> In FF right click on picture gives you ability to
-      rotate it.
-      <img id="puh" src="../imgs/figure.jpg" alt="puh" contextmenu="rotateMenu">
-      <menu type="context" id="rotateMenu">
-        <menuitem icon="../imgs/object-rotate-left.png" onclick="rotateLeft()">Left rotation
-        </menuitem>
-        <menuitem icon="../imgs/object-rotate-right.png" onclick="rotateRight()">Right rotation
-        </menuitem>++
-      </menu>
+        Tag "contentxmenu" should gave ability to add some custom options in menu that invoucs
+        by clicking mouse right button.
+        <mark>Supported by FF.</mark>
+        In FF right click on picture gives you ability to
+        rotate it.
+        <img id="puh" src="../imgs/figure.jpg" alt="puh" contextmenu="rotateMenu">
+        <menu type="context" id="rotateMenu">
+            <menuitem icon="../imgs/object-rotate-left.png" onclick="rotateLeft()">Left rotation
+            </menuitem>
+            <menuitem icon="../imgs/object-rotate-right.png" onclick="rotateRight()">Right rotation
+            </menuitem>
+            ++
+        </menu>
     </div>
     <hr>
     Hidden text - <span hidden>Hah, not visible.</span>
     <hr>
-    If you click <label for="inputForLabel"><mark>this label</mark></label> - input became active
+    If you click <label for="inputForLabel">
+    <mark>this label</mark>
+</label> - input became active
     <input type="text" id="inputForLabel">
     <hr>
     <form id="labelsBlock" action="">
-      <label class="clearLabel">Email: <input type="email" name="email"></label>
-      <label class="clearLabel">Url: <input type="url" name="url"></label>
-      <label class="clearLabel">Tel (test by mobile): <input type="tel" name="tel"></label>
-      <label class="clearLabel">Datetime: <input type="datetime" name="datetime"></label>
-      <label class="clearLabel">Date: <input type="date" name="date" min="2000-01-01" max="2100-01-01"></label>
-      <label class="clearLabel">Time: <input type="time" name="time" min="08:00" max="18:00"></label>
-      <label class="clearLabel">Text: <input type="text" name="text"></label>
-      <label class="clearLabel">Number: <input type="number" name="number" min="0" max="10" step="2" value="6"></label>
-      <label class="clearLabel">ValueFromList (you can search from list a value): <input type="text" name="valueFromList"
-          list="datalistID"></label>
-      <datalist id="datalistID">
-        <option value="A">A</option>
-        <option value="A1">A1</option>
-        <option value="B">B</option>
-        <option value="B1">B1</option>
-      </datalist>
-      <input type="submit">
-      <hr>
-      <label class="clearLabel"> Audio, controls, /*autoplay*/. If browser doesn't know about audio tag -
-        he will saw this tag like simpl div, and show link to manual instead of audio controls.<audio controls
-          /*autoplay*/> <!-- First source that can be palyed will be used -->
-          <source src="../audio/betkhoven-lunnaja-sonata.mp3">
-          <source src="../audio/Moonlight.ogg">
-          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio" title="To audio manual">Your
-            browser doesn't support audio</a>
-        </audio></label>
-      <hr>
-      <div id="playMusicDiv">
-        <label class="clearLabel">Audio without controls
-          <audio id="musicWithoutControls" src="../audio/betkhoven-lunnaja-sonata.mp3"></audio></label>
-        <input type="button" id="playMusic" value="Play">
-        <input type="button" id="minuteOfPlay" value="To 1 minute of playing">
-      </div>
-      <hr>
-      <div id="videoControlsDiv">
-        <label class="clearLabel">Simple video
-          <video controls src="../video/ENOUGH.mp4" id="simpleVideoId"></video>
-        </label>
-      </div>
-      <hr>
-      <div id="videoDiv">
-        <label class="clearLabel" for="simpleVideoPlayerId">Super video player</label>
-        <video src="../video/ENOUGH.mp4" id="simpleVideoPlayerId"></video> <br>
-        <div id="border">
-            <input type="button" id="playVideoPlayer" value="Play">
-            <label for="secondOfPlaying">Video range:</label>
-            <input type="range" id="secondOfPlaying" value="0" min="0" max="142.293333" step="1">
-            <input type="button" id="pauseVideo" value="Pause">
-            <label for="volume">Volume:</label>
-            <input type="range" id="volume" value="0.5" min="0" max="1.0" step="0.1">
+        <label class="clearLabel">Email: <input type="email" name="email"></label>
+        <label class="clearLabel">Url: <input type="url" name="url"></label>
+        <label class="clearLabel">Tel (test by mobile): <input type="tel" name="tel"></label>
+        <label class="clearLabel">Datetime: <input type="datetime" name="datetime"></label>
+        <label class="clearLabel">Date: <input type="date" name="date" min="2000-01-01" max="2100-01-01"></label>
+        <label class="clearLabel">Time: <input type="time" name="time" min="08:00" max="18:00"></label>
+        <label class="clearLabel">Text: <input type="text" name="text"></label>
+        <label class="clearLabel">Number: <input type="number" name="number" min="0" max="10" step="2"
+                                                 value="6"></label>
+        <label class="clearLabel" for="valueFromList">ValueFromList (you can search from list a value): </label>
+        <input type="text" id="valueFromList" list="datalistID">
+        <datalist id="datalistID">
+            <option value="A">A</option>
+            <option value="A1">A1</option>
+            <option value="B">B</option>
+            <option value="B1">B1</option>
+        </datalist>
+        <input type="submit">
+        <hr>
+        <label class="clearLabel"> Audio, controls, autoplay. If browser doesn't know about audio tag -
+            he will saw this tag like simple div, and show link to manual instead of audio controls.
+             <audio controls >
+               <!--  autoplay -->
+                <!-- First source that can be played will be used-->
+            <source src="../audio/betkhoven-lunnaja-sonata.mp3">
+<!--            <source src="../audio/Moonlight.ogg">-->
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio" title="To audio manual">Your
+                browser doesn't support audio</a>
+            </audio></label>
+        <hr>
+        <div id="playMusicDiv">
+            <label class="clearLabel">Audio without controls
+                <audio id="musicWithoutControls" src="../audio/betkhoven-lunnaja-sonata.mp3"></audio>
+            </label>
+            <input type="button" id="playMusic" value="Play">
+            <input type="button" id="minuteOfPlay" value="To 1 minute of playing">
         </div>
-      </div>
+        <hr>
+        <div id="videoControlsDiv">
+            <label class="clearLabel">Simple video
+                <video controls src="../video/ENOUGH.mp4" id="simpleVideoId"></video>
+            </label>
+        </div>
+        <hr>
+        <div id="videoDiv">
+            <label class="clearLabel" for="simpleVideoPlayerId">Super video player</label>
+            <video src="../video/ENOUGH.mp4" id="simpleVideoPlayerId"></video>
+            <br>
+            <div id="border">
+                <input type="button" id="playVideoPlayer" value="Play">
+                <label for="secondOfPlaying">Video range:</label>
+                <input type="range" id="secondOfPlaying" value="0" min="0" max="142.293333" step="1">
+                <input type="button" id="pauseVideo" value="Pause">
+                <label for="volume">Volume:</label>
+                <input type="range" id="volume" value="0.5" min="0" max="1.0" step="0.1">
+            </div>
+        </div>
     </form>
     <hr>
     <div id="canvasVideoDiv">
-      <label class="clearLabel">Canvas video preview:</label>
-      <canvas id="mediumPreview"></canvas>
-      <canvas id="smallPreview"></canvas>
+        <label class="clearLabel">Canvas video preview:</label>
+        <canvas id="mediumPreview"></canvas>
+        <canvas id="smallPreview"></canvas>
     </div>
     <hr>
     <label class="clearLabel">iframe:</label>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/B65crveP9WY"></iframe>
     <hr>
     <label class="clearLabel">object:</label>
-    <object data="https://www.youtube.com/embed/B65crveP9WY" width="560" height="315"></object> -->
-  </div>
+    <object data="https://www.youtube.com/embed/B65crveP9WY" width="560" height="315"></object>
+    -->
+</div>
 </body>
 <script src="../scripts/modernizr-custom.js" type="text/javascript"></script>
 <script src="../scripts/inputs_audio_video.js"></script>
