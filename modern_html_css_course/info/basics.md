@@ -97,3 +97,29 @@ We could use tags like
 <kbd>Ctr + R. Kbd - keyboard input</kbd>
 <code>const a = _ => "something"</code>
 ```
+
+`Dev tools`
+Ctr + "+" - to make it bigger.
+
+`Font`
+When it's a few fonts that listed.
+```css
+font-family: "Times New Roman", Times, serif;
+```
+Means it tries to find "Times New Roman", if it can't find it - it'll try Times, and so on. Sans serif - nice one. \
+We can find some in [Google fonts](https://fonts.google.com/)
+
+`CSS units`
+```Absolute``` \
+cm - centimeters
+mm - millimeters
+in - inches
+px - pixels (1px = 1/96th of 1in)
+pt - points (1pt = 1/72th of 1in)
+pc - Picas picas (1pc = 12pt)
+```Relative``` \
+% - To parent element
+em - To font-size of parent element (if parent font-size is 16px - 1em child will be 16px, 1.2em - 19.2px)
+rem - To font-size of root element (same but for root. 16px - is default rem.)
+vw - To 1% of viewport width
+vh - To 1% of viewport height
