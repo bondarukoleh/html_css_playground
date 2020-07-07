@@ -105,6 +105,8 @@ Ctr + "+" - to make it bigger.
 When it's a few fonts that listed.
 ```css
 font-family: "Times New Roman", Times, serif;
+font-style: italic;
+font-weight: bold;
 ```
 Means it tries to find "Times New Roman", if it can't find it - it'll try Times, and so on. Sans serif - nice one. \
 We can find some in [Google fonts](https://fonts.google.com/)
@@ -123,3 +125,31 @@ em - To font-size of parent element (if parent font-size is 16px - 1em child wil
 rem - To font-size of root element (same but for root. 16px - is default rem.)
 vw - To 1% of viewport width
 vh - To 1% of viewport height
+
+`Colors`
+```css
+/* Color - name */
+color: red;
+/* Color - rgb()/rgba() red, blue, green, alpha - opacity. Values all zeros - black, all 255 - white, 
+alpha from 0.0 (fully transparent) and 1.0 (fully opaque) */
+color: rgb(55, 25, 125);
+/* Color-hexadecimal, base 16. 4 or 6 value. Numbers from 0-9, letters from A-F. #000000 - black, #ffffff - white
+It's same RGB color, first two ff - is for Red, and so on.
+*/
+color: #FF00AA;
+/*if you have same values for each color - you can cut it to 3 */
+color: #F0A;
+```
+We can check colors [here](https://www.color-hex.com/)
+
+
+`Images`
+.png - can be transparent, .jpg - cannot. \
+Same stuff you can do with background. Combine everything in one line.
+```css
+/* background-image: url("../media/stars.jpg");
+  background-repeat: no-repeat;
+  background-position: 20px 20px;
+  background-size: cover; */
+  background: url("../media/stars.jpg") no-repeat 20px 20px/cover;
+```

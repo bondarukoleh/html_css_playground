@@ -34,3 +34,44 @@ article p {
   font-weight: bold;
   font-style: italic;
 }
+
+#color_1 {
+  color: red;
+}
+
+#color_2 {
+  color: rgba(100, 120, 20, 0.3);
+}
+
+#color_3 {
+  color: #9901ff;
+}
+
+
+#box_1 {
+  background: seagreen;
+  border: 3px solid black;
+  border-top-left-radius: 20px;
+}
+
+#box_2 {
+  background: deepskyblue;
+  border: 3px solid black;
+  border-radius: 20px;;
+}
+
+#box_3 {
+  color: #ccc;
+  /* background-image: url("../media/stars.jpg");
+  background-repeat: no-repeat;
+  background-position: 20px 20px;
+  background-size: cover; */
+  background: url("../media/stars.jpg") no-repeat 20px 20px/cover;
+  width: 600px;
+  height: 300px;
+}
+
+#box_4 {
+  background: url("../media/leaf.png") no-repeat center center;
+  background-attachment: fixed;
+}
