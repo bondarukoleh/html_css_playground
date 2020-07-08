@@ -173,4 +173,9 @@ To be more responsive, instead of static width: 100px we can use max-width: 100p
 
 `floats`
 Before css grids and flex-boxes, float was used a lot. You shouldn't use it now. \
-Sometimes clear:both divs is useful to clear previous float properties.
+```clear``` - thing that you want to use with floats. Floats:left - says the element to float, be on the top level (my
+opinion) of the layout, and be on the left side of it. Other elements just moved under floated element, but text cannot
+be under floated element. This is weird, I know. Clear - gives you ability to avoid floating objects, means no matter 
+where this float element is - element with clear is ignoring it and all rules goes from start. \
+
+Float lifts elements on the same level, tnd they act like inline element, not block.

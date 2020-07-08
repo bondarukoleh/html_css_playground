@@ -9,6 +9,7 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
             line-height: 1.3em;
+            background-image: url("../media/stars.jpg");
         }
 
         .container {
@@ -17,7 +18,7 @@
         }
 
         .box {
-            background: lightblue;
+            opacity: 0.7;
             border: 2px solid black;
             margin-bottom: 15px;
             padding: 10px;
@@ -28,19 +29,34 @@
             text-align: center;
         }
 
+        #box-1 {
+            background-color: aqua;
+        }
+
         #box-2 {
+            background-color: lightcoral;
             float: left;
             width: 68%;
         }
 
         #box-3 {
-            float: right;
+            background-color: lightgreen;
+            float: left;
             width: 30%;
         }
 
-        .clear {
-            border: 2px solid red;
+        #box-4 {
+            background-color: lightsteelblue;
             clear: both;
+            float: left;
+            width: 30%;
+        }
+
+        
+        #box-5 {
+            background-color: lightpink;
+            float: left;
+            width: 30%;
         }
     </style>
 </head>
@@ -62,9 +78,13 @@
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis eius iste nobis facere sapiente ea
                 illum dolores corporis error quas.</p>
         </div>
-        <div class="clear"></div>
         <div id="box-4" class="box">
             <h3>Header 4</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis eius iste nobis facere sapiente ea
+                illum dolores corporis error quas.</p>
+        </div>
+        <div id="box-5" class="box">
+            <h3>Header 5</h3>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis eius iste nobis facere sapiente ea
                 illum dolores corporis error quas.</p>
         </div>
