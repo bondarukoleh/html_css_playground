@@ -153,3 +153,24 @@ Same stuff you can do with background. Combine everything in one line.
   background-size: cover; */
   background: url("../media/stars.jpg") no-repeat 20px 20px/cover;
 ```
+
+`margin padding`
+If you add width 100px and padding 10px, then real width will be 120 px. If you don't want that you'll need box-sizing: border-box. \
+
+In Css overriding same as in JS, last read property overrides previous one. \
+
+All the stuff in css:
+```css
+padding: 10px; /*All sides*/
+padding: 10px 5px; /*top bottom - 10, right left - 5*/
+padding: 10px 5px 15px; /*top - 10, right left - 5 bottom - 15*/
+padding: 10px 5px 15px 20px; /*top - 10, right - 5 left - 15 bottom - 20*/
+```
+
+Margin: auto, means browser add same indent from both sides pushing element to middle. \
+To be more responsive, instead of static width: 100px we can use max-width: 100px, means if screen will be less than \
+100px - browser will try automatically show all content.
+
+`floats`
+Before css grids and flex-boxes, float was used a lot. You shouldn't use it now. \
+Sometimes clear:both divs is useful to clear previous float properties.
