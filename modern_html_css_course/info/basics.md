@@ -171,6 +171,11 @@ Margin: auto, means browser add same indent from both sides pushing element to m
 To be more responsive, instead of static width: 100px we can use max-width: 100px, means if screen will be less than \
 100px - browser will try automatically show all content.
 
+`Box-sizing, outline`
+Outline responsible for behavior out of the element boarder. outline-offset also a interesting one.
+Box-sizing gives you ability to keep element width and height keep strict to size that you have set. Without adding
+margin and padding or border-width.
+
 `floats`
 Before css grids and flex-boxes, float was used a lot. You shouldn't use it now. \
 ```clear``` - thing that you want to use with floats. Floats:left - says the element to float, be on the top level (my
