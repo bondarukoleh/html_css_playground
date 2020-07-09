@@ -227,3 +227,40 @@ z-index - layers of page. You can also use negative even numbers.
 The viewport is the user's visible area of a web page.
 The viewport varies with the device, and will be smaller on a mobile phone than on a computer screen.
 Before tablets and mobile phones, web pages were designed only for computer screens, and it was common for web pages to have a static design and a fixed size.
+
+`Visibility`
+```css
+/*removes from DOM*/
+display: none;
+/*Hide, but element still takes place*/
+Visibility: hidden;
+```
+
+`CSS priority`
+1. !important after CSS properties.
+2. Specificity of CSS rule selectors.
+```text 
+CSS Selector	                  Description
+Inherited styles	       Lowest specificity of all selectors - since an inherited style targets the element's parent,
+                         and not the HTML element itself.
+*                        Lowest specificity of all directly targeted selectors
+element	                 Higher specificity than universal selector and inherited styles.
+attribute	               Higher specificity than element selector
+class	                   Higher specificity than attribute, element and universal selectors.
+ID	                     Higher specificity than class selector.
+Combined selectors	     Gets the specificity of the selectors combined.
+CSS properties set
+directly on element,
+inside style attribute.	 Stronger specificity than ID selector.
+
+```
+3. Sequence of declaration.
+
+```css
+.some-class {
+  /* Color going to be red */
+  color: red !important;
+}
+```
+
+
