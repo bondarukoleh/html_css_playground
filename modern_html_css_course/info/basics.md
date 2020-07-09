@@ -179,3 +179,46 @@ be under floated element. This is weird, I know. Clear - gives you ability to av
 where this float element is - element with clear is ignoring it and all rules goes from start. \
 
 Float lifts elements on the same level, tnd they act like inline element, not block.
+
+`Display`
+If you want to see block elements displayed as inline - you can use display:inline. \
+You cannot set width with display, With 'display: inline', the width, height, margin-top, margin-bottom, and float properties have no effect. display:inline-block - can help you.
+
+`Shortcuts`
+To use html generating shortcuts go [here](https://docs.emmet.io/cheat-sheet/)
+```html
+<!-- from this:
+div[class=box]#box-${Block $}*5
+to this: -->
+<div class="box" id="box-1">Block 1</div>
+<div class="box" id="box-2">Block 2</div>
+<div class="box" id="box-3">Block 3</div>
+<div class="box" id="box-4">Block 4</div>
+<div class="box" id="box-5">Block 5</div>
+```
+
+`Position`
+```static```: every element has a static position by default, so the element will stick to the normal page flow.
+So if there is a left/right/top/bottom/z-index set then there will be no effect on that element. \
+```relative```: an element’s original position remains in the flow of the document, just like the static value.
+But now left/right/top/bottom/z-index will work. The positional properties “nudge” the element from the original 
+position in that direction. \
+```absolute```: the element is removed from the flow of the document and other elements will behave as if it’s not
+even there whilst all the other positional properties will work on it. Positioned to the parent element that is 
+positioned relative. \
+```fixed```: the element is removed from the flow of the document like absolutely positioned elements.
+In fact they behave almost the same, only fixed positioned elements are always relative to the document,
+not any particular parent, and are unaffected by scrolling. Relative not to parent but to viewport. \
+```sticky``` (experimental): the element is treated like a relative value until the scroll location of the viewport
+reaches a specified threshold, at which point the element takes a fixed position where it is told to stick. Relative to
+scroll. \
+```inherit```: the position value doesn’t cascade, so this can be used to specifically force it to, and inherit the
+positioning value from its parent. \
+
+z-index - layers of page. You can also use negative even numbers.
+
+
+`Viewport`
+The viewport is the user's visible area of a web page.
+The viewport varies with the device, and will be smaller on a mobile phone than on a computer screen.
+Before tablets and mobile phones, web pages were designed only for computer screens, and it was common for web pages to have a static design and a fixed size.

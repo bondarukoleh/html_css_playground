@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Nav menu */
+        .navbar {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            background: #4c6ca0;
+            border-radius: 5px;
+            overflow: auto;
+        }
+
+        .navbar li {
+            float: left;
+        }
+
+        .navbar li a {
+            color: wheat;
+            text-decoration: none;
+            display: block;
+            padding: 15px 20px;
+        }
+
+        .navbar li a:hover {
+            background-color: #4c6990;
+        }
+
+
+        /*Side menu*/
+        .side-menu {
+            list-style: none;
+            border: 2px #ddd solid;
+            max-width: 300px;
+            padding: 20px;
+        }
+
+        .side-menu li {
+            font-size: 18px;
+            line-height: 1.5em;
+            border-bottom: #ddd dotted 1px;
+        }
+
+        .side-menu li:last-child {
+            border: none;
+        }
+
+        .side-menu li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .side-menu li a:hover {
+            color: coral;
+        }
+
+        /*Test display property*/
+        .testDisplay {
+            list-style: none;
+            border: lightcoral 2px solid;
+            max-width: fit-content;
+            padding: 0;
+        }
+
+        .testDisplay li {
+            display: inline;
+            padding: 20px;
+        }
+
+        .testDisplay li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .testDisplay li a:hover {
+            color: aqua;
+        }
+
+        /* inline images block displayed */
+        .images img {
+            display: block;
+            margin: auto;
+        }
+
+        /* block divs inlined */
+        .Text div {
+            margin: 5px;
+            padding: 5px;
+            border: #4c6990 solid 2px;
+            background: lightgray;
+            width: 30%;
+            display: inline-block;
+            box-sizing: border-box;
+        } 
+    </style>
+</head>
+
+<body>
+    <main>
+        <nav>
+            <ul class="navbar">
+                <li><a href="#">Here</a></li>
+                <li><a href="#">There</a></li>
+                <li><a href="#">Where</a></li>
+                <li><a href="#">Nowhere</a></li>
+            </ul>
+        </nav>
+        <aside>
+            <ul class="side-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </aside>
+        <div>
+            <ul class="testDisplay">
+                <li><a href="#">Technology</a></li>
+                <li><a href="#">Business</a></li>
+                <li><a href="#">Fashion</a></li>
+            </ul>
+        </div>
+        <div class="images">
+            <img src="../media/leaf.png" alt="This is inline leaf">
+            <img src="../media/leaf.png" alt="This is inline leaf">
+        </div>
+        <div class="Text">
+            <div class="text_1">
+                <h3>Header 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt aperiam ut, labore dolorum debitis
+                     reiciendis eos quisquam qui doloribus architecto.</p>
+            </div>
+            <div class="text_2">
+                <h3>Header 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt aperiam ut, labore dolorum debitis
+                     reiciendis eos quisquam qui doloribus architecto.</p>
+            </div>
+            <div class="text_3">
+                <h3>Header 3</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt aperiam ut, labore dolorum debitis
+                     reiciendis eos quisquam qui doloribus architecto.</p>
+            </div>
+            <div class="text_4">
+                <h3>Header 4</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt aperiam ut, labore dolorum debitis
+                     reiciendis eos quisquam qui doloribus architecto.</p>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
