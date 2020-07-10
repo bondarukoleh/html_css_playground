@@ -91,6 +91,10 @@ header {
     padding: 20px;
 }
 
+.content p {
+    text-align: left;
+}
+
 .btn-link:hover {
     background-color:#f7c08a;
 }
@@ -106,8 +110,8 @@ header {
 }
 
 .bg-primary {
-    background-color: #333;
-    color: #f7c08a;
+    background-color: #f7c08a;
+    color: #333;
 }
 
 
@@ -146,9 +150,9 @@ header {
 }
 
 .info-content {
+    text-align: center;
     float: right;
     width: 50%;
-    text-align: center;
     height: 100%;
     padding: 50px 30px;
     overflow: hidden;
@@ -161,7 +165,40 @@ header {
 }
 
 .info-content p {
+    text-align: left;
     line-height: 1.5em;
     padding-bottom: 20px;
 }
 
+/* Features */
+#features {
+    height: 350px;
+    margin: 0 auto;
+}
+
+.box {
+    text-align: center;
+    width: 33.3%;
+    height: 100%;
+    float: left;
+    padding: 50px;
+}
+
+.box i {
+    margin-bottom: 10px;
+}
+
+.box h3 {
+    margin-bottom: 20px;
+}
+
+.box p {
+    padding: 0 20px;
+    line-height: 1.8em;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+}
