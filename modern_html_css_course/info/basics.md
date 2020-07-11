@@ -171,6 +171,9 @@ Margin: auto, means browser add same indent from both sides pushing element to m
 To be more responsive, instead of static width: 100px we can use max-width: 100px, means if screen will be less than \
 100px - browser will try automatically show all content.
 
+Margin can be used only for block elements (for inline - text-align), only horizontally, and only if whey have width.
+Padding: auto - doesn't exist.
+
 `Box-sizing, outline`
 Outline responsible for behavior out of the element boarder. outline-offset also a interesting one.
 Box-sizing gives you ability to keep element width and height keep strict to size that you have set. Without adding
