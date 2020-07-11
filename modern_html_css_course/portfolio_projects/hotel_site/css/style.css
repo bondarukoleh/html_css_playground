@@ -173,25 +173,44 @@ footer {
 #comments {
     height: 600px;
     background: url("../pictures/test-bg.jpg") no-repeat center center/cover;
-    text-align: center;
 }
 
 #comments h3 {
+    text-align: center;
     color: white;
     font-size: 30px;
 }
 
 #comments img {
-    width: 200px;
+    display: block;
+    float: left;
+    border-radius: 70%;
+    margin: 25px;
+    width: 15%;
+}
+
+ #comments p {
+    background-color: tomato;
+    opacity: 0.8;
+    display: inline;
+    /* width: 75%;
+    height: 100px; */
 }
 
 #comments .comment {
-    background-color: tomato;
-    margin: 20px;
-    text-align: left;
+    
 }
+/*
+#comments .comment img {
+    display: block;
+    float: left;
+    width: 150px;
+    border-radius: 70%;
+    margin: 25px;
+} */
 
-#comments .comment_content {
+#comments .comment p {
+    float: right;
     opacity: 0.8;
 }
 
