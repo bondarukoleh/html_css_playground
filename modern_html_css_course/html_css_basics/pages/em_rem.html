@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relative Font size</title>
+  <style>
+    /* html {
+      font-size: 10px;
+    } */
+
+    #rem p {
+      font-size: 1.5rem;
+      padding: 1rem;
+      line-height: 1.7rem;
+    }
+
+    #percentage {
+      font-size: 150%;
+    }
+
+    #em {
+      font-size: 20px;
+    }
+
+    #em p, #em h1 {
+      font-size: 1.5em;
+      padding: 1.5em;
+    }
+
+    #em ul { 
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="fonts">
+    <div id="rem">
+      <h1>This is header for REM content</h1>
+      <p>Font size Depend on root <strong>html</strong> font size</p>
+      <p>REM content Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, inventore.</p>
+      <div id="percentage">Some text with percentage</div>
+    </div>
+    <div id="em">
+      <h1>This is header for EM content</h1>
+      <p>Font size Depend on <strong>parent element</strong> font size</p>
+      <p>REM content Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, inventore.</p>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <ul>
+          <li>3.1</li>
+          <li>3.2</li>
+        </ul>
+        <li>4</li>
+      </ul>
+    </div>
+  </div>
+</body>
+<script>
+  const $ = (selector) => document.querySelector(selector);
+  const getFontSize = (el) => window.getComputedStyle(el).getPropertyValue('font-size')
+  const html = $('html')
+  const remBlock = $('#rem')
+  const emBlock = $('#em')
+  const p = document.createElement('p');
+  p.textContent = 'html tag font-size: "' + getFontSize(html) + "\".";
+  p.textContent += ' rem font-size: 1.2rem actual is "' + getFontSize(rem) + '\"';
+  p.textContent += ' em font-size: 1.5em, its parent is 20px actual is "' + getFontSize(em) + '\"';
+  $('.fonts').appendChild(p)
+</script>
+</html>

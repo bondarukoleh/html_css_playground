@@ -119,12 +119,32 @@ in - inches
 px - pixels (1px = 1/96th of 1in)
 pt - points (1pt = 1/72th of 1in)
 pc - Picas picas (1pc = 12pt)
+
 ```Relative``` \
 % - To parent element
 em - To font-size of parent element (if parent font-size is 16px - 1em child will be 16px, 1.2em - 19.2px)
 rem - To font-size of root element (same but for root. 16px - is default rem.)
-vw - To 1% of viewport width
-vh - To 1% of viewport height
+The difference is next:
+Default size for every element is 1em. Means it will search for set font-size property of his parent element, then his
+parent, and so on, until he reaches the root html tag - and get his default font-size.
+If we set font-size: 1.1rem - it means it won't lurk for parents - it will go directly to the root html tag ant get its
+font-size as a base. \
+
+There is a trouble with `ems`. If I set parent to 10px size and use 1.5em in child, I get the 15px in child. But when 
+you'll set margin/padding of the element in ems - you get em from current element font size. In same situation I set
+padding 1.5em to child, and I won't get the 15px padding based on parent, I get the 22.5px (1.4 from 15px) based on
+child's font-size. Also, there another one, nested elements will always get the font-size from their parents and the 
+last level, if you set size to 1.5em to element, and there are few nested elements in this one - only the deepest
+element will be affected. \
+Font-size in browser settings - doesn't affect the em size, but do affect the rem size (if you haven't set html font size manually) which is nice, adaptive and responsive. \
+
+So rem really preferable because it doesn't have these weird and not-obvious behavior. \
+
+vw - To 1% of viewport width \
+vh - To 1% of viewport height \
+
+Viewport hight and width are always 100. e.g. no matter how small or big browser there always 100 of vh values, and 100
+of vw values.
 
 `Colors`
 ```css
@@ -157,6 +177,8 @@ Same stuff you can do with background. Combine everything in one line.
 `margin padding`
 If you add width 100px and padding 10px, then real width will be 120 px. If you don't want that you'll need box-sizing: border-box. \
 
+
+
 In Css overriding same as in JS, last read property overrides previous one. \
 
 All the stuff in css:
@@ -175,9 +197,13 @@ Margin can be used only for block elements (for inline - text-align), only horiz
 Padding: auto - doesn't exist.
 
 `Box-sizing, outline`
-Outline responsible for behavior out of the element boarder. outline-offset also a interesting one.
+Outline responsible for behavior out of the element boarder. outline-offset also a interesting one. \
 Box-sizing gives you ability to keep element width and height keep strict to size that you have set. Without adding
-margin and padding or border-width.
+margin and padding or border-width. \
+
+```box-sizing: content-box``` - default value. Here, the dimensions of the element are calculated as: width = width of the content, and height = height of the content. (Borders and padding are not included in the calculation.) \
+```box-sizing: border-box``` - The width and height properties include the content, padding, and border, but do not include the margin.
+Here the dimensions of the element are calculated as: width = border + padding + width of the content, and height = border + padding + height of the content. \
 
 `floats`
 Before css grids and flex-boxes, float was used a lot. You shouldn't use it now. \
@@ -190,7 +216,9 @@ Float lifts elements on the same level, tnd they act like inline element, not bl
 
 `Display`
 If you want to see block elements displayed as inline - you can use display:inline. \
-You cannot set width with display, With 'display: inline', the width, height, margin-top, margin-bottom, and float properties have no effect. display:inline-block - can help you.
+```display:inline``` - You cannot set width, height, margin-top, margin-bottom, and float properties.
+`display:inline-block` - you can set width, height, margin/padding, but no line break after the element added, it can still be in the line. \
+`display:block` - you can set properties, and line break added. \
 
 `Shortcuts`
 To use html generating shortcuts go [here](https://docs.emmet.io/cheat-sheet/)
