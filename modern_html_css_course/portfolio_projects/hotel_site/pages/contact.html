@@ -1,11 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <meta name="description" content="Best hotel service in Boston. Try it and you'll like it.">
+    <meta name="keywords" content="Hotel, Boston hotel, Stay, Rent, about">
+    <title>Contact Hotel BT</title>
 </head>
+
 <body>
-    <h1>Contact page</h1>
+    <header>
+        <div class="bg-dark">
+            <nav id="navbar">
+                <h1 class="logo"><a href="index.html">HBT</a></h1>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a class="current-open" href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="bg-light contact-wrapper">
+            <div class="contact-content">
+                <h1><span class="text-primary">Contact</span> Us</h1>
+                <p>Please fill form below to contact us</p>
+                <form class="contact-form" action="#">
+                    <label for="name">Name</label>
+                    <input type="text" name="input_name" id="name">
+                    <label for="email">Email</label>
+                    <input type="text" name="input_email" id="email">
+                    <label for="message">Message</label>
+                    <textarea type="text" name="textarea_message" id="message"></textarea>
+                    <button type="submit" value="Submit" class="btn-link">Submit</button>
+                </form>
+            </div>
+        </section>
+        <section id="features" class="bg-dark">
+            <div class="feature-content">
+                <div class="feature">
+                    <i class="fas fa-hotel fa-3x"></i>
+                    <h1 l-heading>Location</h1>
+                    <p>50 Main st, Boston MA</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-phone fa-3x"></i>
+                    <h5>Phone Number</h5>
+                    <p>(617) 555-5555</p>
+                </div>
+                <div class="feature">
+                    <i class="fa fa-envelope fa-3x" aria-hidden="true"></i>
+                    <h5>Email Address</h5>
+                    <p>frontdesk@hotelbt.co</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-dark-lighter">Hotel BT &copy 2020, All Rights Reserved</footer>
 </body>
+
 </html>

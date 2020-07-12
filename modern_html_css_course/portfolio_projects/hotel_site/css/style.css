@@ -3,8 +3,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* border: #fff 1px solid; */
-    /* opacity: 0.8; */
 }
 
 /* General styling */
@@ -140,10 +138,11 @@ footer {
 /* Header */
 
 #about_header_content {
-    width: 1100px;
+    max-width: 1100px;
     padding: 30px;
     height: 350px;
     margin: auto;
+    overflow: auto;
 }
 
 .left-content {
@@ -170,47 +169,120 @@ footer {
 }
 
 /* Comments */
-#comments {
-    height: 600px;
+.wrapper {
+    padding: 100px 20px 20px;
     background: url("../pictures/test-bg.jpg") no-repeat center center/cover;
 }
 
-#comments h3 {
+#comments {
+    height: 600px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+#comments h2 {
     text-align: center;
     color: white;
     font-size: 30px;
-}
-
-#comments img {
-    display: block;
-    float: left;
-    border-radius: 70%;
-    margin: 25px;
-    width: 15%;
-}
-
- #comments p {
-    background-color: tomato;
-    opacity: 0.8;
-    display: inline;
-    /* width: 75%;
-    height: 100px; */
+    padding-bottom: 40px;
 }
 
 #comments .comment {
-    
+    padding: 20px;
+    background-color: rgb(247, 192, 138, 0.9);
+    overflow: hidden;
+    margin-bottom: 20px;
+    border-radius: 10px;
 }
-/*
-#comments .comment img {
-    display: block;
+
+#comments img {
     float: left;
-    width: 150px;
-    border-radius: 70%;
-    margin: 25px;
-} */
-
-#comments .comment p {
-    float: right;
-    opacity: 0.8;
+    border-radius: 50%;
+    width: 100px;
+    height: 100%;
+    margin-right: 25px;
 }
 
+
+ #comments p {
+    line-height: 1.7em;
+    width: 85%;
+    margin: 10px 0;
+}
+
+/* Contact Us */
+.contact-content {
+    width: 1100px;
+    margin: auto;
+    padding: 15px;
+}
+.contact-content h1 {
+    margin: 20px 0;
+    font-size: 40px;
+}
+
+.contact-content p {
+    margin: 20px 0 10px;
+}
+
+.contact-content input:not([type='submit']), textarea {
+    width: 100%;
+}
+
+.contact-form  label, input{
+    display: block;
+}
+
+.contact-form label {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.contact-form input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #a8a8a8;
+}
+
+.contact-form textarea {
+    padding: 10px;
+    height: 200px;
+}
+
+.contact-form button {
+    margin-bottom: 15px;
+}
+
+.contact-form textarea:focus,
+.contact-form input:focus {
+    outline: none;
+    border-color: #f7c08a;
+}
+
+/* Features */
+.feature-content {
+    max-width: 1100px;
+    height: 250px;
+    margin: auto;
+}
+
+.feature {
+    text-align: center;
+    float: left;
+    width: 33.3%;
+    overflow: hidden;
+    height: 100%;
+}
+
+.feature i {
+    margin-top: 50px;
+}
+
+.feature h5 {
+    padding-top: 5px;
+    font-size: 18px;
+}
+
+.feature p {
+    padding-top: 20px;
+}

@@ -39,6 +39,11 @@
   color: #fff;
 }
 
+.bg-dark-lighter {
+  background-color: rgb(82, 78, 78);
+  color: #fff;
+}
+
 .bg-light {
   background-color: #f4f4f4;
   color: #333;
@@ -59,4 +64,9 @@
 
 .clr {
   clear: both;
+}
+
+.l-heading {
+  font-size: 60px;
+  line-height: 1.2em;
 }
