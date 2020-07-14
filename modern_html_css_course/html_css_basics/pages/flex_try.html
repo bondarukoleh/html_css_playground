@@ -4,8 +4,80 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flex try</title>
+  <style>
+    #container_alignment {
+      border: blue 2px solid;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 600px;
+      flex-wrap: wrap;
+      align-content: space-between;
+    }
+
+    .item_align {
+      flex-basis: 200px;
+      background: lightgrey;
+      border: #333 solid 1px;
+      padding: 1rem;
+      text-align: center;
+      margin: 10px;
+      order: 3;
+    }
+
+    .special {
+      background: lightgreen;
+      /* align-self: center; */
+      /* align-self: flex-end; */
+      order: 1;
+    }
+
+    #container {
+      margin-top: 500px;
+      border: red 2px solid;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      /* flex-flow: column; */
+      height: 1000px;
+      justify-content: flex-end;
+    }
+
+    .item {
+      background: lightgrey;
+      border: #333 solid 1px;
+      padding: 1rem;
+      text-align: center;
+      flex: 1;
+      margin: 0.75rem;
+      flex-basis: 50px;
+    }
+
+    .item:first-child {
+      flex: 1;
+    }
+  </style>
 </head>
 <body>
-  
+  <div id="container_alignment">
+    <div class="item_align"><h3>Item 1</h3></div>
+    <div class="item_align"><h3>Item 3</h3></div>
+    <div class="item_align"><h3>Item 3</h3></div>
+    <div class="item_align"><h3>Item 3</h3></div>
+    <div class="item_align special"><h3>Item 3</h3></div>
+  </div>
+  <div id="container">
+    <div class="item"><h3>Item 1</h3></div>
+    <div class="item"><h3>Item 2</h3></div>
+    <div class="item"><h3>Item 3</h3></div>
+    <div class="item"><h3>Item 4</h3></div>
+    <div class="item"><h3>Item 5</h3></div>
+    <div class="item"><h3>Item 6</h3></div>
+    <div class="item"><h3>Item 7</h3></div>
+    <div class="item"><h3>Item 8</h3></div>
+    <div class="item"><h3>Item 9</h3></div>
+    <div class="item"><h3>Item 10</h3></div>
+    <div class="item"><h3>Item 11</h3></div>
+  </div>
 </body>
 </html>

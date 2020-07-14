@@ -90,6 +90,11 @@ flex-end: align to the right side \
 center: align at the center \
 space-between: display with equal spacing between them. \
 space-around: display with equal spacing around them. \
+```css
+.container {
+     justify-content: flex-start | flex-end | center | space-between | space-around | space-evenly | start | end | left | right ... + safe | unsafe;
+}
+```
 
 `align-items` - aligns items vertically (cross axis) and accepts the following values: \
 flex-start: align to the top of the container. \
@@ -97,6 +102,7 @@ flex-end: align to the bottom of the container. \
 center: align at the vertical center of the container. \
 baseline: display at the baseline of the container. \
 stretch: are stretched to fit the container. \
+In order its to work container needs height.
 
 
 `flex-direction` - defines the direction items are placed in the container, and accepts the following values: \
@@ -135,3 +141,36 @@ space-around: Lines display with equal spacing around them. \
 stretch: Lines are stretched to fit the container. \
 Align-content determines the spacing between lines, while align-items determines how the items as a whole are aligned
 within the container. When there is only one line, align-content has no effect.
+
+`flex-grow` - ability for a flex item to grow if necessary.
+default is 0. Negative numbers are invalid.
+`flex-shrink`- ability for a flex item to shrink if necessary.
+default is 1. Negative numbers are invalid.
+`flex-basis` - defines the default size of an element before the remaining space is distributed. It can be a length (e.g. 20%, 5rem, etc.) or a keyword. The auto keyword means “look at my width or height property”. The ```content``` keyword means “size it based on the item’s content”.
+default is auto.
+
+`flex` property is a sub-property of the Flexible Box Layout module.
+This is the shorthand for `flex-grow, flex-shrink and flex-basis`. The second and third parameters (flex-shrink and flex-basis) are optional.
+default is - 0 1 auto;
+
+```css
+.container {
+   display: flex;
+}
+
+.container .item {
+  /* this */
+  flex: 1 100px;
+
+  /* is the same as */
+  flex-grow: 1;
+  flex-basis: 100px;
+
+  /* and it leaves the flex-shrink property alone, which would be */
+  flex-shrink: inherit; /* defaults to 1 */
+
+  /* It could be
+  flex: <'flex-grow'> <'flex-shrink'> <'flex-basis'> | none | inherit
+  */
+}
+```
