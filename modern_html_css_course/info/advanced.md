@@ -59,3 +59,79 @@ type. Print - documents in preview/print mode, screen - regular PC screen.
 @media only screen and (max-width: 100px){}
 ```
 
+##### Flexbox
+Introduced in CSS3, modern way to build layout. \
+When we say display: flex - container becomes "flex", means it has main, cross size, axis, start, end. You can check 
+the scheme. It makes all direct child elements - flex items.
+
+```css
+.someContainer {
+   display: flex;
+   justify-content: flex-start;
+   align-items: baseline;
+   flex-direction: column;
+   flex-wrap: wrap;
+   align-content: space-around;
+}
+
+.someContainer .element {
+   order: -1;
+   align-self: flex-end;
+}
+
+.otherContainer {
+   flex-flow: column-reverse wrap;
+}
+
+```
+`justify-content` - aligns items horizontally (main axis) and accepts the following values: \
+flex-start: align to the left side of the container \
+flex-end: align to the right side \
+center: align at the center \
+space-between: display with equal spacing between them. \
+space-around: display with equal spacing around them. \
+
+`align-items` - aligns items vertically (cross axis) and accepts the following values: \
+flex-start: align to the top of the container. \
+flex-end: align to the bottom of the container. \
+center: align at the vertical center of the container. \
+baseline: display at the baseline of the container. \
+stretch: are stretched to fit the container. \
+
+
+`flex-direction` - defines the direction items are placed in the container, and accepts the following values: \
+row: placed the same as the text direction. \
+row-reverse: placed opposite to the text direction. \
+column: placed top to bottom. \
+column-reverse: placed bottom to top. \
+
+!Notice that when you set the direction to a reversed row or column, flex-start and end are also reversed. \
+!Notice that when the flex direction is a column, justify-content changes to the vertical and align-items to the
+horizontal. \
+
+`order`
+Sometimes reversing the row or column order of a container is not enough. \
+We can apply the order property to individual items. By default, items have a value of 0, but we can use this property 
+to also set it to a positive or negative integer value (-2, -1, 0, 1, 2). \
+Items are assigned an integer that represents their group. The items are then placed in the visual order according to
+that integer, lowest values first. \
+
+`align-self` - same as align-items but for one element. \ 
+
+`flex-wrap` which accepts the following values: \
+nowrap: Every item is fit to a single line in flex container, items can overflow. \
+wrap: Items wrap around to additional lines. Lined in set order (flex-direction). \
+wrap-reverse: Items wrap around to additional lines in reverse, lined in revers set order. \
+
+`flex-flow` - flex-direction and flex-wrap together. accepts values from both properties. \
+
+`align-content` to set how multiple lines (after flex-wrap) are spaced apart from each other. (cross axis extra spaces) \
+This property takes the following values: \
+flex-start: Lines are packed at the top of the container. \
+flex-end: Lines are packed at the bottom of the container. \
+center: Lines are packed at the vertical center of the container. \
+space-between: Lines display with equal spacing between them. \
+space-around: Lines display with equal spacing around them. \
+stretch: Lines are stretched to fit the container. \
+Align-content determines the spacing between lines, while align-items determines how the items as a whole are aligned
+within the container. When there is only one line, align-content has no effect.
