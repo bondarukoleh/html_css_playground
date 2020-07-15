@@ -1,0 +1,141 @@
+/* implementation */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+.bg-light {
+  color: darkslategrey;
+  background: antiquewhite;
+}
+
+.bg-dark {
+  background: darkslategrey;
+  color: antiquewhite;
+}
+
+a {
+  text-decoration: none;
+  color: antiquewhite;
+}
+
+nav {
+  opacity: 0.9;
+  background: darkgray;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  padding: 1rem;
+  font-weight: 700;
+}
+
+.primary-text, .logo i {
+  color: aquamarine;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+}
+
+nav ul li {
+  padding: 10px;
+  text-align: center;
+  width: 6rem;
+  border-radius: 10px;
+}
+
+nav ul li:hover {
+  background-color: darkolivegreen;
+  height: 100vh;
+  width: 100vw;
+}
+
+#home {
+  background: url("../media/showcase.jpg") no-repeat center center/cover;
+  height: 100vh;
+  width: 100vw;
+  color: antiquewhite;
+}
+
+.l-heading {
+  padding: 7rem 1rem 2rem;
+  font-size: 3rem;
+}
+
+.lead {
+  padding: 2rem 3rem 2rem;
+}
+
+.btn {
+  margin: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: darkolivegreen;
+}
+
+.btn:hover {
+  background-color: darkgreen;
+}
+
+.content-heading {
+  padding: 1.5rem 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.items {
+  display: flex;
+  padding: 1rem;
+}
+
+.item {
+  display: flex;
+  text-align: left;
+}
+
+.item i {
+  padding: 0.5rem;
+  background: lightgreen;
+  border-radius: 50%;
+  align-self: center;
+  margin: 0.5rem;
+}
+
+#description .container{
+  display: flex;
+  justify-content: stretch;
+}
+
+#description .container div{
+  flex: 1;
+}
+
+#team_image {
+  background: url("../media/people.jpg");
+}
+
+#description img{
+
+}
+
+.list{
+
+
+}
+.contact-form{
+
+}
+.map{
+
+}
