@@ -1,1 +1,28 @@
-/**/
+nav {
+  flex-direction: column;
+  align-items: center;
+}
+
+#home .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.items {
+  flex-direction: column;
+  align-items: center;
+}
+
+#team_image {
+  display: none;
+}
+
+.map {
+  display: none;
+}
+
+#contact {
+  display: block;
+}
