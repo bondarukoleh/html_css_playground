@@ -26,3 +26,7 @@ nav {
 #contact {
   display: block;
 }
+
+#showcase {
+  margin-top: -80px;
+}

@@ -146,6 +146,17 @@ vh - To 1% of viewport height \
 Viewport hight and width are always 100. e.g. no matter how small or big browser there always 100 of vh values, and 100
 of vw values.
 
+`height`
+```css
+.some-div {
+  height: 100px;
+}
+
+.some-div .inner-div {
+  height: 100%; /* Means take place for 100% of your parent container, not by the content but by the size of parent */
+}
+```
+
 `Colors`
 ```css
 /* Color - name */
