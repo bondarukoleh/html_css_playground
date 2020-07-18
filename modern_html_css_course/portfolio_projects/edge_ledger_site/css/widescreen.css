@@ -1,1 +1,16 @@
-/**/
+/* Services */
+
+/* align items to left */
+.item {
+  text-align: left;
+  display: flex;
+}
+
+.item i {
+  margin-right: 1.3rem;
+}
+
+/* Make map bigger */
+.map {
+  flex: 2;
+}

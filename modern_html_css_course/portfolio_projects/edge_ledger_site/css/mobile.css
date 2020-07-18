@@ -1,32 +1,70 @@
-nav {
-  flex-direction: column;
-  align-items: center;
+/* Navigation header */
+/* Make logo in center */
+@media(max-width: 500px){
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar ul {
+    margin: 0.6rem;
+  }
+
+  .l-heading {
+    padding-top: 5rem;
+  }
+
+  .py-1 {padding: 0.5rem 0;}
+  .py-2 {padding: 1rem 0;}
+  .py-3 {padding: 1.5rem 0;}
+  
+  .p-1 {padding: 0.5rem;}
+  .p-2 {padding: 1rem;}
+  .p-3 {padding: 1.5rem;}
 }
 
-#home .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
+#services .container {
+  padding: 0 0.5rem;
 }
 
+/* Services */
+/* Make icons float left */
 .items {
   flex-direction: column;
   align-items: center;
+  padding: 0.5rem;
 }
 
+.item {
+  text-align: left;
+  display: flex;
+  padding: 0.5rem;
+}
+
+.item i {
+  margin-right: 1.3rem;
+}
+
+/* Description */
 #team_image {
   display: none;
 }
 
-.map {
+/* Contacts */
+#clients .client-icon:last-child{
   display: none;
+}
+
+/* Contact */
+#contact {
+  flex-direction: column;
+}
+
+.map {
+  height: 25rem;
+  border-top: 4px solid #333;
 }
 
 #contact {
   display: block;
-}
-
-#showcase {
-  margin-top: -80px;
 }

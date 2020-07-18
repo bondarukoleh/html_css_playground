@@ -56,9 +56,37 @@
     .item:first-child {
       flex: 1;
     }
+
+    #try_something {
+      border: blueviolet 2px solid;
+      margin-bottom: 4rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    #try_something .item_try {
+      border:steelblue 2px solid;
+      margin: 0.5rem;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
+  <div id="try_something">
+    <div class="item_try">
+      <h3>Item 1</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, autem?</p>
+    </div>
+    <div class="item_try">
+      <h3>Item 2</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, autem?</p>
+    </div>
+    <div class="item_try">
+      <h3>Item 3</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, autem?</p>
+    </div>
+  </div>
+
   <div id="container_alignment">
     <div class="item_align"><h3>Item 1</h3></div>
     <div class="item_align"><h3>Item 3</h3></div>

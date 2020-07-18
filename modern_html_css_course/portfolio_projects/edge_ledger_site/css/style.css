@@ -13,10 +13,6 @@ body {
   line-height: 1.4;
 }
 
-ul {
-  list-style: none;
-}
-
 a {
   text-decoration: none;
   color: #fff;
@@ -28,13 +24,13 @@ a {
 }
 
 .bg-light {
-  color: darkslategrey;
-  background: antiquewhite;
+  color: #333;
+  background: #fff;
 }
 
 .bg-dark {
   background: #333;
-  color: antiquewhite;
+  color: #fff;
 }
 
 .bg-primary {
@@ -50,65 +46,100 @@ a {
   background-color: #93cb52;
 }
 
-.btn:hover {
-  background-color: #7ab436;
-}
-
 .btn-dark {
   background: #333;
   color: #fff;
 }
 
-.content-heading {
-  padding: 1.5rem 0rem;
+.btn:hover {
+  background-color: #7ab436;
+}
+
+.btn-dark:hover {
+  background: #222;
 }
 
 .text-center {
   text-align: center;
 }
 
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 2rem;
+  overflow: auto;
+}
+
+.l-heading {
+  font-size: 4rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+}
+
+.m-heading {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+}
+
+.lead {
+  margin-bottom: 2rem;
+}
+
+.py-1 {padding: 1.5rem 0;}
+.py-2 {padding: 2rem 0;}
+.py-3 {padding: 2.5rem 0;}
+
+.p-1 {padding: 1.5rem;}
+.p-2 {padding: 2rem;}
+.p-3 {padding: 2.5rem;}
+
 /* Navigation header */
-nav {
-  position: sticky;
-  top: 0;
-  opacity: 0.9;
-  background: #333;
+.navbar {
   display: flex;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  background: #333;
   justify-content: space-between;
   z-index: 1;
+  padding: 1rem;
+  color: #fff;
+}
+
+.navbar ul {
+  margin-right: 1rem;
+  list-style: none;
 }
 
 .logo {
-  padding: 1rem;
   font-weight: 700;
 }
 
-nav ul {
+.navbar ul {
   display: flex;
   align-items: center;
 }
 
 nav ul li a {
-  padding: 1rem;
   margin: 0 0.25rem;
   padding: 0.75rem;
 }
 
-nav ul li a:hover {
+.navbar ul li a:hover {
   background-color: #93cb52;
   border-radius: 10px;
 }
 
-/* Logo */
-#showcase {
+/* Main theme */
+#main-theme {
   background: #333 url("../media/showcase.jpg") no-repeat center center/cover;
   height: 100vh;
   color: #fff;
-  margin-top: -70px;
   position: relative;
 }
 
-#showcase .container {
+#main-theme .main-theme-content{
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -125,37 +156,23 @@ nav ul li a:hover {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.l-heading {
-  font-size: 4rem;
-  margin-bottom: 0.75rem;
-}
-
-.lead {
-  font-size: 1.3rem;
-  margin-bottom: 2rem;
-}
-
+/* Services */
 .items {
   display: flex;
-  padding: 2rem;
-  justify-content: center;
-  width: 100vw;
+  padding: 1rem;
+  text-align: center;
 }
 
 .item {
+  flex: 1;
   padding: 1rem;
-  display: flex;
-  text-align: left;
-  width: 20rem;
-  justify-content: center;
 }
 
 .item i {
-  padding: 0.5rem;
-  background: lightgreen;
+  padding: 1rem;
+  background: #93cb52;
   border-radius: 50%;
   align-self: center;
-  margin: 0.5rem;
 }
 
 .item div {
@@ -167,15 +184,15 @@ nav ul li a:hover {
 }
 
 .item h3 {
-  padding-bottom: 0.5rem;
+  padding: 0.5rem 0;
 }
 
-#description .container{
+/* Who we are */
+#description {
   display: flex;
-  justify-content: stretch;
 }
 
-#description .container div{
+#description div {
   flex: 1;
 }
 
@@ -191,21 +208,19 @@ nav ul li a:hover {
   padding-bottom: 1rem;
 }
 
+.list {
+  margin: 0.5rem 0;
+  list-style: none;
+}
+
 .list li {
-  padding: 1rem 0rem 0.5rem 0rem;
+  padding: 0.5rem 0;
   border-bottom: 1px dotted dimgrey;
 }
 
-#clients .container {
-  max-width: 1100px;
-  margin: auto;
+/* Clients */
+.client-icons {
   display: flex;
-  padding: 2rem;
-  justify-content: center;
-}
-
-#clients h2 {
-  font-size: 2rem;
 }
 
 .client-icon img {
@@ -214,56 +229,45 @@ nav ul li a:hover {
   margin: auto;
 }
 
+/* Contact form */
 #contact {
   display: flex;
 }
 
-#contact div {
-  flex: 0.33;
-}
 .contact-form {
-  padding: 2.5rem;
+  flex: 1;
+  padding: 1rem;
+}
+
+.contact-form .form-group {
+  margin: 0.75rem;
+}
+
+.contact-form .form-group label {
+  display: block;
+}
+
+.contact-form .form-group input,
+.contact-form .form-group textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 0.5px solid #333;
+}
+
+.contact-form .form-group textarea {
+  height: 5rem;
 }
 
 .contact-form h2 {
   font-size: 2rem;
-  padding-bottom: 0.5rem;
 }
 
-.contact-form form {
-  padding: 0rem 1rem;
-}
-.contact-form input,
-.contact-form label,
-.contact-form textarea,
-.contact-form button {
-  display: block;
-  width: 100%;
-}
-
-.contact-form label {
-  padding-top: 1rem;
-  padding-bottom: 0.5rem;
-}
-
-.contact-form input {
-  padding: 0.5rem;
-}
-
-.contact-form textarea {
-  margin-bottom: 1.5rem;
-}
-
-.contact-form button {
-  margin: 0px;
-  padding: 0.7rem;
-  color: antiquewhite;
+.contact-form h2, .contact-form p {
+  margin-left: 0.75rem;
 }
 
 .map {
-
-}
-
-footer div {
-  padding: 1.5rem;
+  /* background: url('../media/boston.PNG') no-repeat center center/cover; */
+  flex: 1;
 }

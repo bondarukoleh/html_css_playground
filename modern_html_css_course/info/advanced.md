@@ -174,3 +174,10 @@ default is - 0 1 auto;
   */
 }
 ```
+
+Map
+```html
+<script src="https://maps.googleapis.com/maps/api/js?key=MY_KEY&callback=initMap&libraries=&v=weekly" defer></script>
+<script src="../javascript/script.js"></script>
+```
+In ```script.js``` there is a function initMap. And exactly this function is set as callback in Google API ```&callback=initMap```
