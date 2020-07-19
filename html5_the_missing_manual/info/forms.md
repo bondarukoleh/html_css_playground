@@ -61,9 +61,9 @@ To use this technique, you simply need to add a few new pseudo-classes. Your opt
 •   ```required and optional```, which apply styles to fields based on whether they use the required attribute.
 •   ```valid and invalid```, which apply styles to controls based on whether they contain mistakes.
 •   ```in-range and out-of-range```, controls that use the min and max attributes to limit numbers to a range.
-and mutch more.
+and much more.
 
-```html
+```css
 input:required:invalid {
     background-color:red;
 }

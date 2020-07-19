@@ -16,6 +16,7 @@ body {
 a {
   text-decoration: none;
   color: #fff;
+  transition-duration: .25s;
 }
 
 /* Utilities */
@@ -44,6 +45,7 @@ a {
   border-radius: 5px;
   border: none;
   background-color: #93cb52;
+  transition-duration: .25s;
 }
 
 .btn-dark {
@@ -128,7 +130,7 @@ nav ul li a {
 
 .navbar ul li a:hover {
   background-color: #93cb52;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 /* Main theme */
@@ -252,11 +254,20 @@ nav ul li a {
   width: 100%;
   padding: 0.5rem;
   border-radius: 5px;
-  border: 0.5px solid #333;
+  border: 0.2px solid #333;
 }
 
 .contact-form .form-group textarea {
   height: 5rem;
+}
+
+.form-group input[type='checkbox'] {
+  width: auto;
+}
+
+.form-group label[for='autofill'] {
+  display: inline;
+  padding-right: 0.5rem;
 }
 
 .contact-form h2 {
@@ -268,6 +279,5 @@ nav ul li a {
 }
 
 .map {
-  /* background: url('../media/boston.PNG') no-repeat center center/cover; */
   flex: 1;
 }

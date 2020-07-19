@@ -1,3 +1,4 @@
+/* Showing map */
 (function (exports) {
   "use strict";
   function initMap() {
@@ -12,6 +13,7 @@
   exports.initMap = initMap;
 })((this.window = this.window || {}));
 
+/* Smooth scroll */
 $(document).ready(function () {
   // Add smooth scrolling to all links
   $('.navbar a, .btn-nav').on('click', function (event) {
@@ -34,10 +36,42 @@ $(document).ready(function () {
   });
 });
 
+/* Making header transparent */
 window.addEventListener('scroll', function () {
-  if(window.scrollY > 150) {
+  if (window.scrollY > 150) {
     document.querySelector('.navbar').style.opacity = 0.9;
   } else {
     document.querySelector('.navbar').style.opacity = 1;
   }
-})
+});
+
+/* Autofill */
+(function addAutofill() {
+  console.log('YOU')
+  const findElement = function (selector) { return document.querySelector(selector) };
+
+  const data = {
+    name: 'Some Name',
+    email: 'example@mail.com',
+    phone: '+(123)-456-78-90',
+    message: 'Thank you.'
+  };
+
+  const nameEl = findElement('#name');
+  const emailEl = findElement('#email');
+  const phoneEl = findElement('#phone');
+  const messageEl = findElement('#message');
+  findElement('#autofill').addEventListener('change', function () {
+    if (this.checked) {
+      nameEl.value = data.name
+      emailEl.value = data.email
+      phoneEl.value = data.phone
+      messageEl.value = data.message
+    } else {
+      nameEl.value = '';
+      emailEl.value = '';
+      phoneEl.value = '';
+      messageEl.value = '';
+    }
+  });
+})();

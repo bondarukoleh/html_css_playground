@@ -40,3 +40,8 @@
 - Upload static site via Git
 - Great for static websites
 - Free (except extra features)
+
+###### Deploying
+`FTP` \
+Filezilla - is a nice FTP client and server. You can use client to upload your whole site folder to your hosting server. Default port - 21.
+But better to use Git and hooks in your CI/CD.
