@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selectors</title>
+  <style>
+    /* direct child */
+    div > p {
+      background: cyan;
+    }
+
+    /* next sibling */
+    div + p {
+      background: lightblue;
+    }
+
+    section ul li:last-child {
+      background-color: lightgoldenrodyellow;
+    }
+
+    section ul li:first-child {
+      background-color: lightgray;
+    }
+
+    /* section ul li:nth-child(odd) {
+      background-color: lightgreen;
+    }
+
+    section ul li:nth-child(even) {
+      background-color: lime;
+    } */
+
+    /*Started from 3rd element */
+    section ul li:nth-child(3n+3) {
+      background-color: lime;
+    }
+
+    #before_after {
+      background: linen;
+    }
+
+    #before_after > form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem;
+    }
+
+    #before_after > form > input {
+      margin: 0.5rem;
+    }
+
+    #before_after > form > label.is-required::after {
+      content: "*";
+      color: red;
+      padding-left: 0.3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    
+  </header>
+  <section id="before_after">
+    <h3>Form with something required</h3>
+    <form action="#">
+      <label for="name" class="is-required">Your name</label>
+      <input type="text" name="name" id="name" required placeholder="Name...">
+      <label for="email" class="is-required">Your email</label>
+      <input type="email" name="email" id="email" required placeholder="Email...">
+      <label for="time">Your time</label>
+      <input type="time" name="time" id="time">
+      <label for="message">Your message</label>
+      <textarea name="message" id="message" cols="30" rows="10" placeholder="Message..."></textarea>
+    </form>
+
+  </section>
+
+  <section>
+      <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+        <li>item 4</li>
+        <li>item 5</li>
+        <li>item 6</li>
+        <li>item 7</li>
+        <li>item 8</li>
+        <li>item 9</li>
+        <li>item 10</li>
+      </ul>
+  </section>
+  <div>
+    <p>you can check out html5_css3_sandbox\pages\inputs_audio_video.html all are there</p>
+    <p>Lorem ipsum dolor sit amet. P1</p>
+    <ul>
+      <li>Item 1</li>
+      <li><p>Item 2 paragraph P2<p></li>
+      <li>Item 3</li>
+    </ul>
+    <p>Lorem ipsum dolor sit amet. P3</p>
+  </div>
+  <p>Lorem ipsum dolor sit amet. P4</p>
+</body>
+</html>
