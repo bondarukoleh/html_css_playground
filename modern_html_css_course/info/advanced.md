@@ -188,7 +188,7 @@ The :root selector allows you to target the highest-level “parent” element i
 pseudo-class”, meaning it is used to style content based on its relationship with parent and sibling content.
 
 
-`Css variables`
+`Css variables` \
 ```css
 :root {
       --primary-color: steelblue;
@@ -214,4 +214,112 @@ Super convenient for colors, basic sizing of elements and rest general stuff. Va
 .table { /* table doesn't have box as a parent, so it doesn't know about var */
    max-width: var(--box-max-width); /* Doing nothing, since it doesn't know */
 }
+```
+
+`animation`
+Describe how you want to animate, what properties to animate described in @keyframes;
+```css
+@keyframes my-animation {
+   0% {color: red, width: 5rem}
+   100% {color: blue, width: 15rem}
+}
+
+.some:hover {
+   animation-name: my-animation; /* name */
+   animation-duration: 5s; /* how long */
+   animation-timing-function: linear; /* dynamic */
+   animation-delay: 1s;
+   animation-iteration-count: infinity; /* how many times */
+   animation-direction: alternative; /* will it be backwards? (reverse, alternative, alternative-reverse)*/
+   animation-fill-mode: none; /* what state of the element should be by the animation before and after it is executing. (forwards, backwards, both)*/
+   animation-play-state: running;/*Lets you pause and resume the animation sequence. Also can be "paused"*/
+
+   /* Or together */
+   animation: my-animation 5s linear 1s infinity alternative none running;
+}
+```
+
+`@keyframes` \
+The @keyframes rule specifies the animation code.
+!important rule is ignored here.
+```css
+/* With percentage of animation progress */
+@keyframes my-animation {
+  0%   {top: 0px; left: 0px; background: red;}
+  25%  {top: 0px; left: 100px; background: blue;}
+  50%  {top: 100px; left: 100px; background: yellow;}
+  75%  {top: 100px; left: 0px; background: green;}
+  100% {top: 0px; left: 0px; background: red;}
+}
+
+/* with from to */
+@keyframes my-other-animation {
+  from {top: 0px; left: 0px; background: red;}
+  /* optional you can add state */
+  50%  {top: 100px; left: 100px; background: yellow;}
+  to {top: 10px; left: 100px; background: blue;}
+}
+
+div {
+  width: 100px;
+  height: 100px;
+  background: red;
+  position: relative;
+  animation: my-animation 5s infinite;
+}
+```
+
+`transition`
+```css
+.someElement {
+   transition-property: color; /* What will be changing */
+   transition-duration: 2s; /* how fast it will change */
+   transition-timing-function: linear; /* how dynamically it will change. ease, linear, ease-in, ease-out, easy-in-out */
+   transition-delay: 0.5s; /* delay before start of animation */
+
+   /* or all in one */
+   transition: color 2s linear 0.5s;
+   /* You can say all properties */
+   transition: all 2s linear 0.5s;
+   /* or several */
+   transition: color 2s linear 0.5s, width 5s;
+}
+
+.someElement:hover {
+   color: red;
+   width: 100px;
+}
+```
+
+```css
+  #smoothWidth {
+    width: 300px;
+    height: 50px;
+    border: 2px solid;
+    transition: color 1s, width 4s, background-color 2s;
+  }
+  #smoothWidth:hover {
+    width: 400px;
+    color: chartreuse;
+    background-color: cadetblue;
+  }
+```
+
+`transform` \
+Moving, rotating elements.
+```css
+   #elem1 {
+      transition: 500ms linear;
+   }
+  #elem1:hover {
+      transform: translate(50px, 10px); /*x, y*/
+  }
+  /* transform has translate(), rotate(), scale(), skew() */
+```
+There more features to animate the elements.
+```css
+.some:hover {
+   transform: perspective(200px) translateZ(50px);
+}
+/* also there are: translateX, translateY, translateZ, rotateX, rotateY, rotateZ */
 ```
