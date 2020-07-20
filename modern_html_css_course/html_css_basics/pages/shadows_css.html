@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shadows</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .box {
+      font-size: 2rem;
+      padding: 1rem;
+      margin: 1rem;
+      background: lightsteelblue;
+      color: #fff;
+      /* offset-x, offset-y, color */
+      box-shadow: 10px 15px #333;
+      /* offset-x, offset-y, blur-radius, color */
+      box-shadow: 10px 15px 10px #333;
+      /* offset-x, offset-y, blur-radius, spread-radius, color */
+      box-shadow: -10px -15px 15px 5px rgb(0, 0, 0, 0.9);
+      /* inset, offset-x, offset-y, color */
+      box-shadow: inset -15px 15px 5px 10px rgb(0, 0, 0, 0.9);
+      /* Multiple */
+      box-shadow: 10px 15px #333, -3px -15px #333;
+    }
+
+    .box:nth-child(1) {
+      /* h-shadow, v-shadow, color */
+      text-shadow: 0.2rem 0.2rem #333;
+    }
+
+    .box:nth-child(2) {
+      text-shadow: 0.2rem 0.2rem 0.7rem #333;
+    }
+
+    .box:nth-child(3) {
+      color: #fff;
+      background: #fff;
+      text-shadow: 0.5rem 0.5rem 1rem steelblue;
+    }
+
+    .box:nth-child(4) {
+      text-shadow: -0.5rem -0.5rem 1rem #333;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box">
+      <h3>Lorem, ipsum dolor.</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias eos omnis maiores accusamus velit ipsa
+        aspernatur repellendus repellat, ea nesciunt.</p>
+    </div>
+    <div class="box">
+      <h3>Lorem, ipsum dolor.</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias eos omnis maiores accusamus velit ipsa
+        aspernatur repellendus repellat, ea nesciunt.</p>
+    </div>
+    <div class="box">
+      <h3>Lorem, ipsum dolor.</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias eos omnis maiores accusamus velit ipsa
+        aspernatur repellendus repellat, ea nesciunt.</p>
+    </div>
+    <div class="box">
+      <h3>Lorem, ipsum dolor.</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias eos omnis maiores accusamus velit ipsa
+        aspernatur repellendus repellat, ea nesciunt.</p>
+    </div>
+  </div>
+</body>
+
+</html>

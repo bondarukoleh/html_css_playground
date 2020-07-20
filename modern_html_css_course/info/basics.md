@@ -305,5 +305,24 @@ inside style attribute.	 Stronger specificity than ID selector.
 }
 ```
 
-Interesting site with pictures
+`Shadow` \
+```css
+.someClass {
+  /* offset-x, offset-y, color */
+  box-shadow: 10px 15px #333;
+  /* offset-x, offset-y, blur-radius, color */
+  box-shadow: 10px -15px 10px #333;
+  /* offset-x, offset-y, blur-radius, spread-radius, color */
+  box-shadow: 10px -15px 10px 15px #333;
+  /* inset, offset-x, offset-y, blur-radius, spread-radius, color */
+  box-shadow: inset -15px 15px 5px 10px rgb(0, 0, 0, 0.9);
+  /* Multiple */
+  box-shadow: 10px 15px #333, -3px -15px #333;
+}
+
+.someText {
+  /* h-shadow, v-shadow, color */
+  text-shadow: 10px 15px #333;
+}
+```
 

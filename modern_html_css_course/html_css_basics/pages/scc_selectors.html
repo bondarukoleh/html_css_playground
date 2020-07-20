@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Selectors</title>
   <style>
     /* direct child */
-    div > p {
+    div>p {
       background: cyan;
     }
 
     /* next sibling */
-    div + p {
+    div+p {
       background: lightblue;
     }
 
@@ -40,28 +41,73 @@
       background: linen;
     }
 
-    #before_after > form {
+    #before_after>form {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       padding: 1rem;
     }
 
-    #before_after > form > input {
+    #before_after>form>input {
       margin: 0.5rem;
     }
 
-    #before_after > form > label.is-required::after {
+    #before_after>form>label.is-required::after {
       content: "*";
       color: red;
       padding-left: 0.3rem;
     }
+
+    .container {
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      background: #333;
+      color: #fff;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      height: 100vh;
+    }
+
+    header::before {
+      content: '';
+      background: url("https://source.unsplash.com/1600x900/?nature,water") no-repeat center center/cover;
+      opacity: 0.3;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    header > h1 {
+      font-size: 4rem;
+      margin: 1rem;
+    }
+
+
   </style>
 </head>
+
 <body>
-  <header>
-    
-  </header>
+  <div class="container">
+    <header>
+      <h1>Lorem ipsum dolor sit amet.</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos natus necessitatibus labore cupiditate quam
+        repellat, inventore ipsum veritatis soluta nemo?</p>
+    </header>
+  
+    <section id="content">
+      <h1>Lorem, ipsum dolor.</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat doloremque, aut, beatae facere ipsum vero, quam
+        soluta dolore atque quidem minus. Est laudantium quos debitis harum officiis necessitatibus veritatis voluptatum.
+      </p>
+    </section>
+  </div>
+
   <section id="before_after">
     <h3>Form with something required</h3>
     <form action="#">
@@ -78,29 +124,33 @@
   </section>
 
   <section>
-      <ul>
-        <li>item 1</li>
-        <li>item 2</li>
-        <li>item 3</li>
-        <li>item 4</li>
-        <li>item 5</li>
-        <li>item 6</li>
-        <li>item 7</li>
-        <li>item 8</li>
-        <li>item 9</li>
-        <li>item 10</li>
-      </ul>
+    <ul>
+      <li>item 1</li>
+      <li>item 2</li>
+      <li>item 3</li>
+      <li>item 4</li>
+      <li>item 5</li>
+      <li>item 6</li>
+      <li>item 7</li>
+      <li>item 8</li>
+      <li>item 9</li>
+      <li>item 10</li>
+    </ul>
   </section>
   <div>
     <p>you can check out html5_css3_sandbox\pages\inputs_audio_video.html all are there</p>
     <p>Lorem ipsum dolor sit amet. P1</p>
     <ul>
       <li>Item 1</li>
-      <li><p>Item 2 paragraph P2<p></li>
+      <li>
+        <p>Item 2 paragraph P2
+        <p>
+      </li>
       <li>Item 3</li>
     </ul>
     <p>Lorem ipsum dolor sit amet. P3</p>
   </div>
   <p>Lorem ipsum dolor sit amet. P4</p>
 </body>
+
 </html>

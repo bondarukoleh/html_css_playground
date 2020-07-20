@@ -175,9 +175,43 @@ default is - 0 1 auto;
 }
 ```
 
-Map
+Map \
 ```html
 <script src="https://maps.googleapis.com/maps/api/js?key=MY_KEY&callback=initMap&libraries=&v=weekly" defer></script>
 <script src="../javascript/script.js"></script>
 ```
-In ```script.js``` there is a function initMap. And exactly this function is set as callback in Google API ```&callback=initMap```
+In ```script.js``` there is a function initMap. And exactly this function is set as callback in Google
+API ```&callback=initMap```
+
+`:root` \
+The :root selector allows you to target the highest-level “parent” element in the DOM, or document tree. “structural
+pseudo-class”, meaning it is used to style content based on its relationship with parent and sibling content.
+
+
+`Css variables`
+```css
+:root {
+      --primary-color: steelblue;
+      --secondary-color: steelblue;
+      --light-color: lightblue;
+      --dark-color: darkslateblue;
+    }
+
+.some-element {
+   color: var(--primary-color);
+}
+```
+Super convenient for colors, basic sizing of elements and rest general stuff. Variables have inheritance, They must be declared in parent children to see them.
+```css
+.box {
+   --box-max-width: 100px;
+}
+
+.box .box-1 { /* in html box-1 has also box class, or box-1 parent has box class. He can use variable. */
+   max-width: var(--box-max-width);
+}
+
+.table { /* table doesn't have box as a parent, so it doesn't know about var */
+   max-width: var(--box-max-width); /* Doing nothing, since it doesn't know */
+}
+```
