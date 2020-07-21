@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Positioning</title>
     <style>
-body {
-    height: 300rem;
-}
+        body {
+            height: 300rem;
+        }
 
         .box {
             width: 100px;
@@ -15,6 +16,7 @@ body {
             border: 3px solid black;
             margin: 5px;
         }
+
         .container {
             width: 500px;
             height: 500px;
@@ -23,6 +25,7 @@ body {
             position: relative;
             z-index: 1;
         }
+
         #red-box {
             z-index: 2;
             background-color: rgba(255, 20, 20, 0.7);
@@ -30,32 +33,36 @@ body {
             top: 20px;
             left: 50px;
         }
+
         #blue-box {
             position: absolute;
             top: 100px;
             left: 100px;
             background-color: blue;
         }
+
         #yellow-box {
             bottom: 100px;
             right: 100px;
             position: absolute;
             background-color: yellow;
         }
+
         #green-box {
             width: 120px;
             position: fixed;
             background-color: rgba(0, 250, 0, 0.7);
         }
+
         #purple-box {
             position: sticky;
             top: 0;
             height: 120px;
             background-color: purple;
         }
-
     </style>
 </head>
+
 <body>
     <div class="box" id="red-box">Block 1 relative</div>
 
@@ -89,4 +96,5 @@ body {
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non, dicta?</p>
     </div>
 </body>
+
 </html>
