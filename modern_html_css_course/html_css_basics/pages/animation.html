@@ -9,20 +9,148 @@
       background: #333;
     }
 
+    /* Animation */
     .box {
       background: white;
-      width: 200px;
-      height: 200px;
-      animation-name: animate-keyframe-1;
-      animation-duration: 2s;
+      width: 20px;
+      height: 20px;
+      position: relative;
+      /* animation-name: animate-keyframe-1; */
+      /* animation-duration: 4s; */
+      /* animation-timing-function: ease-in-out;*/
+      /* animation-delay: 1s;*/
+      /* animation-iteration-count: infinite;*/
+      /* animation-direction: alternate-reverse; */
+      /* animation-fill-mode: backwards;*/
+      animation: animate-keyframe-1 4s ease-in-out 1s infinite alternate-reverse backwards;
+    }
+
+    .another-box {
+      background-color: #fff;
+      width: 20px;
+      height: 20px;
+      position: relative;
+      animation: animate-keyframe-2 4s ease-in-out 1s infinite alternate-reverse backwards;
     }
 
     @keyframes animate-keyframe-1 {
-      from: 
+      from {
+        top: 0;
+      }
+
+      to {
+        width: 600px;
+        background: red;
+        top: 60px;
+      }
+    }
+
+    @keyframes animate-keyframe-2 {
+      from {
+        top: 20px;
+        left: 30px;
+      }
+
+      to {
+        width: 600px;
+        background: lightblue;
+        top: 50px;
+        left: 60px;
+      }
+    }
+
+    /* Transition */
+    .container {
+      background: mistyrose;
+      border-top: lightgreen 1px solid;
+      position: relative;
+      top: 450px;
+      padding: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 30vh;
+    }
+
+    .transition-box {
+      background-color: rgb(54, 172, 50);
+      width: 100px;
+      height: 100px;
+      position: relative;
+      color: magenta;
+      transition-property: color, background;
+      transition-duration: 2s;
+      transition-delay: 0.5s;
+      transition-timing-function: ease;
+    }
+
+    .transition-box:hover {
+      color: lightseagreen;
+      background: lightsteelblue;
+    }
+
+    /* Transform */
+    .transform-container {
+      background: navajowhite;
+      border-top: lightgreen 1px solid;
+      position: relative;
+      top: 450px;
+      padding: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 60vh;
+    }
+
+    div[class^="transform-box"] {
+      width: 100px;
+      height: 100px;
+      background:lightcoral;
+      margin: 5px;
+      transition: all 1s ease-in-out;
+      padding: 5px;
+      text-align: center;
+    }
+
+    .transform-box1:hover {
+      transform: rotate(180deg);
+    }
+
+    .transform-box2:hover {
+      transform: skew(25deg);
+    }
+
+    .transform-box3:hover {
+      transform: scale(1.3);
+    }
+
+    .transform-box4:hover {
+      transform: translate(1rem, 0.6rem);
+    }
+    /* matrix( scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY()) */
+    .transform-box5:hover {
+      transform: matrix(1.5, 1.2, -10, 3, 0.5, 0.2);
+    }
+    .transform-box6:hover {
+      transform: translateX(100px);
     }
   </style>
 </head>
 <body>
-  <div class="box"></div>
+    <div class="box"></div>
+    <div class="another-box"></div>
+    <div class="container">
+      <div class="transition-box">Text</div>
+    </div>
+    <div class="transform-container">
+      <div class="transform-box1">hover rotate(180deg)</div>
+      <div class="transform-box2">hover skew(25deg)</div>
+      <div class="transform-box3">hover scale(1.3)</div>
+      <div class="transform-box4">hover translate(1rem, 0.6rem)</div>
+      <div class="transform-box5">hover matrix(1.5, 1.2, -10, 3, 0.5, 0.2)</div>
+      <div class="transform-box6">hover translateX (100px)</div>
+    </div>
 </body>
 </html>

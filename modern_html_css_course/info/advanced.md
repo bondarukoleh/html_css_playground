@@ -218,6 +218,7 @@ Super convenient for colors, basic sizing of elements and rest general stuff. Va
 
 `animation`
 Describe how you want to animate, what properties to animate described in @keyframes;
+Mostly done for something that bigger that transition.
 ```css
 @keyframes my-animation {
    0% {color: red, width: 5rem}
@@ -236,6 +237,18 @@ Describe how you want to animate, what properties to animate described in @keyfr
 
    /* Or together */
    animation: my-animation 5s linear 1s infinity alternative none running;
+
+
+   /* Working variant */
+   /* animation-name: animate-keyframe-1; */
+      /* animation-duration: 4s; */
+      /* animation-timing-function: ease-in-out;*/
+      /* animation-delay: 1s;*/
+      /* animation-iteration-count: infinite;*/
+      /* animation-direction: alternate-reverse; */
+      /* animation-fill-mode: backwards;*/
+      /* animation: animate-keyframe-1 4s ease-in-out 1s infinite alternate-reverse backwards 1s; */
+      animation: animate-keyframe-1 4s ease-in-out 1s infinite alternate-reverse backwards;
 }
 ```
 
@@ -270,6 +283,7 @@ div {
 ```
 
 `transition`
+More simple than animation, like hover events, some instant action.
 ```css
 .someElement {
    transition-property: color; /* What will be changing */
@@ -314,8 +328,9 @@ Moving, rotating elements.
   #elem1:hover {
       transform: translate(50px, 10px); /*x, y*/
   }
-  /* transform has translate(), rotate(), scale(), skew() */
+  /* transform has translate(), rotate(), scale(), skew() matrix() */
 ```
+matrix syntax - matrix( scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY())
 There more features to animate the elements.
 ```css
 .some:hover {
