@@ -245,24 +245,20 @@ to this: -->
 ```
 
 `Position`
-```static```: every element has a static position by default, so the element will stick to the normal page flow.
-So if there is a `left/right/top/bottom/z-index` set then there will be `no effect` on that element. \
-```relative```: an element’s original position remains in the flow of the document, just like the static value.
-But now `left/right/top/bottom/z-index will work`. The positional properties pushes the element from the original 
-position in that direction. \
-```absolute```: the element is removed from the flow of the document and `other elements will behave as if it’s not
-even there` whilst all the other positional properties will work on it. Positioned to the parent element that is 
-positioned relative, it is `positioned relative to the nearest positioned ancestor`. \
-```fixed```: the element is removed from the flow of the document like absolutely positioned elements.
-In fact they behave almost the same, only fixed positioned elements are always relative to the document,
-not any particular parent, and are unaffected by scrolling. `Relative not to parent but to viewport.` \
+```static```: default position. Normal page flow.
+`left/right/top/bottom/z-index` - `no effect` on that element. \
+```relative```: act like static. But now `left/right/top/bottom/z-index will work` When you use them - element will be removed from the page flow,
+so it won't affect any other elements and can overlay on them.\
+```absolute```: the element is removed from the document flow. And `other elements will behave as if it’s not even there`. When you want to stick 
+some element somewhere but you don't want to anything else moved. When you use top/bottom/etc. - it will be positioned `to the nearest positioned ancestor or html in the end`. \
+```fixed```: same as absolute, but element stays same when you scroll and `relative not to positioned parent but to viewport.` \
 ```sticky```: the element is treated like a relative value until the scroll location of the viewport
 reaches a specified threshold, at which point the element takes a fixed position where it is told to stick. Relative to
 scroll. Is positioned based on the user's scroll position. \
 ```inherit```: the position value doesn’t cascade, so this can be used to specifically force it to, and inherit the
 positioning value from its parent. \
 
-z-index - layers of page. You can also use negative even numbers.
+`z-index` - property specifies the stack order of an element. You can also use negative even numbers. z-index only works on positioned elements (position: absolute, position: relative, position: fixed, or position: sticky). \
 
 
 `Viewport`
