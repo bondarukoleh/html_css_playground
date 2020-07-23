@@ -1,62 +1,151 @@
-.menu-wrap {
-  position: fixed;
-}
-
+/* Checkbox */
 .toggler {
   opacity: 0;
   position: absolute;
-  width: 3rem;
-  height: 3rem;
+  width: 50px;
+  height: 50px;
   top: 0;
   left: 0;
   cursor: pointer;
   z-index: 2;
 }
 
+/* Dash menu */
 .hamburger {
   position: absolute;
-  background: lightskyblue;
-  width: 30px;
-  height: 30px;
+  background: var(--secondary-color);
+  width: 50px;
+  height: 50px;
   top: 0;
   left: 0;
+  padding: 0.7rem;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+}
+
+/* Dashes */
+.hamburger > div,
+.hamburger > div::after,
+.hamburger > div::before {
+  width: 100%;
+  height: 2px;
+  background: var(--light-color);
   z-index: 1;
 }
 
-.hamburger div,
-.hamburger div::after,
-.hamburger div::before {
-  background: #333;
-  width: 100%;
-  height: 2px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hamburger div {
+.hamburger > div {
   position: relative;
-  flex: none;
+  transition: all var(--fast-speed) ease;
 }
 
-.hamburger div::after {
+.hamburger > div::after,
+.hamburger > div::before {
+  content: '';
+  position: absolute;
+}
+
+.hamburger > div::after {
   top: -10px;
-  content: '';
-  position: absolute;
 }
 
-.hamburger div::before {
-  position: absolute;
+.hamburger > div::before {
   top: 10px;
-  content: '';
+}
+
+/* turns dashes into X */
+.toggler:checked + .hamburger > div {
+  top: 0;
+  transform: rotate(135deg);
+}
+
+.toggler:checked + .hamburger > div::before {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+.toggler:checked + .hamburger > div::after {
+  top: 0;
+  transform: rotate(0);
+}
+
+.toggler:checked:hover + .hamburger > div{
+  transform: rotate(320deg);
+}
+
+
+/* Menu overlay animation */
+.toggler:checked ~ .menu {
+  visibility: visible;
+}
+
+.toggler:checked ~ .menu > .dark-overlay {
+  transform: scale(1);
+  transition: var(--slow-speed);
+}
+
+.toggler:checked ~ .menu > .dark-overlay > .on-overlay{
+  opacity: 1;
+  transition: opacity var(--fast-speed) ease var(--fast-speed);
 }
 
 /* Items menu */
-.menu {
-  visibility: hidden;
+.menu-wrap {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu > .dark-overlay {
+  background: var(--overlay-color);
+  width: 200vw;
+  height: 200vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--fast-speed) ease;
+  flex: none;
+  transform: scale(0);
+  border-radius: 50%;
+}
+
+.menu > .dark-overlay > .on-overlay {
+  text-align: center;
+  max-width: 90vw;
+  max-height: 100vh;
+  opacity: 0;
+  transition: opacity var(--fast-speed) ease;
+}
+
+.menu-wrap .menu > div > div > ul > li {
+  list-style: none;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+.on-overlay > ul > li > a {
+  color: inherit;
+  transition: color var(--fast-speed) ease;
+}
+
+.on-overlay > ul > li > a:hover {
+  color: var(--secondary-color);
+}
+
