@@ -142,7 +142,7 @@ footer {
     padding: 30px;
     height: 350px;
     margin: auto;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .left-content {
