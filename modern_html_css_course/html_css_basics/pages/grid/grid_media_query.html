@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Media query</title>
+  <style>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      grid-gap: 1rem;
+    }
+
+    @media(max-width: 760px) {
+      .grid {
+        grid-template-columns: repeat(2, auto);
+      }
+    }
+
+    @media(max-width: 500px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="grid">
+  <div class="item-1">
+    <h3>Heading 1</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci architecto doloremque dolorum expedita harum
+      inventore laudantium nisi perspiciatis quaerat quas quibusdam, repellendus reprehenderit repudiandae sed ullam?
+      Commodi cum delectus eius eum ex incidunt iure quidem, reprehenderit sed temporibus ut voluptates? Animi beatae
+      consequuntur illo labore recusandae? Aperiam est ipsam voluptates!</p>
+  </div>
+  <div class="item-2">
+    <h3>Heading 3</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci architecto doloremque dolorum expedita harum
+      inventore laudantium nisi perspiciatis quaerat quas quibusdam, repellendus reprehenderit repudiandae sed ullam?
+      Commodi cum delectus eius eum ex incidunt iure quidem, reprehenderit sed temporibus ut voluptates? Animi beatae
+      consequuntur illo labore recusandae? Aperiam est ipsam voluptates!</p>
+  </div>
+  <div class="item-3">
+    <h3>Heading 3</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci architecto doloremque dolorum expedita harum
+      inventore laudantium nisi perspiciatis quaerat quas quibusdam, repellendus reprehenderit repudiandae sed ullam?
+      Commodi cum delectus eius eum ex incidunt iure quidem, reprehenderit sed temporibus ut voluptates? Animi beatae
+      consequuntur illo labore recusandae? Aperiam est ipsam voluptates!</p>
+  </div>
+  <div class="item-4">
+    <h3>Heading 4</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci architecto doloremque dolorum expedita harum
+      inventore laudantium nisi perspiciatis quaerat quas quibusdam, repellendus reprehenderit repudiandae sed ullam?
+      Commodi cum delectus eius eum ex incidunt iure quidem, reprehenderit sed temporibus ut voluptates? Animi beatae
+      consequuntur illo labore recusandae? Aperiam est ipsam voluptates!</p>
+  </div>
+</div>
+</body>
+</html>
