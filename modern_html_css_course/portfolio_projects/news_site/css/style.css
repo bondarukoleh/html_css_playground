@@ -1,1 +1,102 @@
-/**/
+:root {
+  --primary-color: #ff0000;
+  --dark-color: #333;
+  --grey-color: #e5e5e5;
+  --white-color: #fff;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: var(--grey-color);
+}
+
+/* Utils */
+.primary-text {
+  color: var(--primary-color);
+}
+
+.primary-bg {
+  background: var(--primary-color);
+  color: var(--white-color);
+}
+
+.grey-bg {
+  background: var(--grey-color);
+  color: var(--dark-color);
+}
+
+.weight-text {
+  font-weight: 900;
+}
+
+.l-heading {
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+.m-heading {
+  font-size: 1.5rem;
+  padding: .7rem;
+}
+
+.s-heading {
+  padding: .5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: .5rem .5rem;
+}
+
+.current {
+  background: var(--primary-color);
+  color: var(--white-color);
+}
+
+/* Navigation */
+.grid-nav {
+  display: grid;
+  grid-template-areas:
+      'nav-logo nav-logo nav-logo nav-icons nav-icons nav-btns';
+  align-items: center;
+  background: var(--white-color);
+}
+
+.nav-logo img {
+  height: 2.5rem;
+}
+
+.nav-logo {
+  grid-area: nav-logo;
+}
+
+.nav-icons {
+  grid-area: nav-icons;
+  justify-self: right;
+}
+
+.nav-btns {
+  grid-area: nav-btns;
+  justify-self: right;
+}
+
+.nav-logo,
+.nav-icons,
+.nav-btns {
+  padding: .7rem;
+}
