@@ -5,13 +5,11 @@
   --light-color: #f3f3f3;
   --dark-color: #333;
 
-  --max-width: 1100px;
-}
-
-.news-category {
   --sports-color: var(--secondary-color);
   --entertaiment-color: #a66bbe;
   --tech-color: #009cff;
+
+  --max-width: 1100px;
 }
 
 /* Reset */
@@ -82,11 +80,13 @@ body {
   padding: .75rem;
   text-align: center;
   font-weight: bold;
+  border: none;
 }
 
 .btn:hover {
-  background: var(--light-color);
-  color: var(--dark-color);
+  background: var(--dark-color);
+  color: var(--light-color);
+  opacity: 0.9;
 }
 
 .current {
@@ -94,13 +94,36 @@ body {
   color: #fff;
 }
 
-.container {
+.width-container {
   max-width: var(--max-width);
   margin: auto;
   padding: 0 2rem;
   overflow: hidden;
 }
 
+.category {
+  display: inline-block;
+  color: #fff;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  padding: .4rem .6rem;
+  border-radius: 15px;
+  margin-bottom: .5rem;
+}
+
+.category-sport {
+  background: var(--sports-color);
+}
+
+.category-ent {
+  background: var(--entertaiment-color);
+}
+
+.category-tech {
+  background: var(--tech-color);
+}
+
+/* Navigation */
 #main-nav {
   background: #fff;
   position: sticky;
@@ -108,7 +131,7 @@ body {
   top: 0;
 }
 
-#main-nav .container {
+#main-nav .width-container {
   display: grid;
   grid-template-columns: 6fr 3fr 2fr;
   padding: 1rem;
@@ -131,4 +154,41 @@ body {
 #main-nav .nav-social-icons i {
   color: #777;
   margin-right: .5rem;
+}
+
+/* Showcase header */
+#showcase {
+  color: #fff;
+  background: var(--dark-color);
+  position: relative;
+  padding: 2rem;
+}
+
+#showcase::before {
+  content: '';
+  background: url('../img/featured.jpg') no-repeat center center/cover;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+#showcase .showcase-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+#showcase .showcase-container .showcase-content {
+  z-index: 1;
+}
+
+
+#showcase .showcase-container .showcase-content p {
+  margin-bottom: 1rem;
 }

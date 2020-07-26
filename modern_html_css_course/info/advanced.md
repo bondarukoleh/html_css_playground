@@ -338,3 +338,4 @@ There more features to animate the elements.
 }
 /* also there are: translateX, translateY, translateZ, rotateX, rotateY, rotateZ */
 ```
+`opacity` - if you set opacity of some container, 
