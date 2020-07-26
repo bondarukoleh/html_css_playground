@@ -322,3 +322,14 @@ inside style attribute.	 Stronger specificity than ID selector.
 }
 ```
 
+`icon`: \
+Files that contain the .ico file extension are image container files that store icons that are used by different Windows
+applications, such as the Windows folder icons, file icons and program icons that appear on a user's desktop.
+
+The ICO file is not an image file itself. It is a container file that stores two bitmaps and the image mask that is used
+to create the icon that is saved in the file. ICO files can be modified to create custom icons for a Windows interface
+and are sometimes downloaded with Windows desktop themes.
+
+ICO files are similar to CUR files, but they have a different identification byte in the file header.
+We can [create](http://tools.dynamicdrive.com/favicon/) an icon from image.
+

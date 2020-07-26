@@ -1,8 +1,17 @@
+/* vars */
 :root {
-  --primary-color: #ff0000;
+  --primary-color: #c72727;
+  --secondary-color: #f99500;
+  --light-color: #f3f3f3;
   --dark-color: #333;
-  --grey-color: #e5e5e5;
-  --white-color: #fff;
+
+  --max-width: 1100px;
+}
+
+.news-category {
+  --sports-color: var(--secondary-color);
+  --entertaiment-color: #a66bbe;
+  --tech-color: #009cff;
 }
 
 /* Reset */
@@ -18,11 +27,21 @@ ul {
 
 a {
   text-decoration: none;
+  color: var(--dark-color);
+}
+
+img {
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Staatliches', cursive;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background: var(--grey-color);
+  font-family: 'Lato', sans-serif;
+  line-height: 1.5;
+  background: var(--light-color);
 }
 
 /* Utils */
@@ -32,11 +51,11 @@ body {
 
 .primary-bg {
   background: var(--primary-color);
-  color: var(--white-color);
+  color: var(--light-color);
 }
 
 .grey-bg {
-  background: var(--grey-color);
+  background: var(--light-color);
   color: var(--dark-color);
 }
 
@@ -60,43 +79,56 @@ body {
 
 .btn {
   display: inline-block;
-  padding: .5rem .5rem;
+  padding: .75rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: var(--light-color);
+  color: var(--dark-color);
 }
 
 .current {
   background: var(--primary-color);
-  color: var(--white-color);
+  color: #fff;
 }
 
-/* Navigation */
-.grid-nav {
+.container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+
+#main-nav {
+  background: #fff;
+  position: sticky;
+  z-index: 2;
+  top: 0;
+}
+
+#main-nav .container {
   display: grid;
-  grid-template-areas:
-      'nav-logo nav-logo nav-logo nav-icons nav-icons nav-btns';
+  grid-template-columns: 6fr 3fr 2fr;
+  padding: 1rem;
   align-items: center;
-  background: var(--white-color);
 }
 
-.nav-logo img {
-  height: 2.5rem;
+#main-nav .logo {
+  width: 180px;
 }
 
-.nav-logo {
-  grid-area: nav-logo;
+#main-nav ul {
+  justify-self: end;
+  display: flex;
 }
 
-.nav-icons {
-  grid-area: nav-icons;
-  justify-self: right;
+#main-nav .nav-social-icons {
+  justify-self: center;
 }
 
-.nav-btns {
-  grid-area: nav-btns;
-  justify-self: right;
-}
-
-.nav-logo,
-.nav-icons,
-.nav-btns {
-  padding: .7rem;
+#main-nav .nav-social-icons i {
+  color: #777;
+  margin-right: .5rem;
 }
