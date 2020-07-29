@@ -15,7 +15,7 @@ img {
 
 header {
   background: #333;
-  color: #f4f4f4;
+  color: set-text-color(#f4f4f4);
   padding: 1rem; }
   header h1 {
     text-align: center; }
@@ -29,15 +29,34 @@ header {
     color: #fff; }
   .section-b {
     background: #6060e4;
-    color: #fff; }
+    color: #333; }
 
-a {
-  color: #fff;
-  background: #2c42af;
-  padding: 1rem .7rem;
+/* Buttons */
+.btn-dark, .btn-light {
+  padding: .7rem 2rem;
   display: inline-block;
-  margin: .5rem 0;
-  text-decoration: none; }
-  a:hover {
-    background: #35357c;
-    transform: rotate(20deg); }
+  margin-top: 1rem;
+  text-decoration: none;
+  cursor: pointer; }
+
+.btn-light:hover, .btn-dark:hover {
+  transition: 1s ease-in-out; }
+
+.btn-dark {
+  background: #03549c;
+  color: #fff; }
+
+.btn-light {
+  background: #76d2f8;
+  color: #333; }
+
+.btn-light:hover {
+  background: #1a1a1a;
+  color: #fff;
+  transform: rotate(-20deg); }
+
+.btn-dark:hover {
+  background: white;
+  color: #333;
+  opacity: 0.9;
+  transform: rotate(20deg); }

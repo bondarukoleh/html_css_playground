@@ -1,60 +1,90 @@
 @import 'variables';
+@import 'functions';
 
 /* reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background: $light-color;
-    color: $dark-color;
-    font-family: $font-stack;
-    line-height: 1.5;
+  background: $light-color;
+  color: $dark-color;
+  font-family: $font-stack;
+  line-height: 1.5;
 }
 
 img {
-    width: 100%;
+  width: 100%;
 }
 
 header {
-    background: $dark-color;
-    color: $light-color;
-    padding: 1rem;
+  background: $dark-color;
+  color: set-text-color($light-color);
+  padding: 1rem;
 
-    h1 {
-        text-align: center;
-    }
+  h1 {
+    text-align: center;
+  }
 }
 
 .section {
-    padding: 3rem;
+  padding: 3rem;
 
-    h3 {
-        font-size: 2rem;
-    } 
+  h3 {
+    font-size: 2rem;
+  }
 
-    &-a {
-        background: $primary-color;
-        color: #fff;
-    }
+  &-a {
+    background: $primary-color;
+    color: set-contrast-color($primary-color);
+  }
 
-    &-b {
-        background: $secondary-color;
-        color: #fff;
-    }
+  &-b {
+    background: $secondary-color;
+    color: set-contrast-color($secondary-color);
+  }
 }
 
-a {
-    color:#fff;
-    background: rgb(44, 66, 175);
-    padding: 1rem .7rem;
-    display: inline-block;
-    margin: .5rem 0;
-    text-decoration: none;
-    &:hover {
-        background: rgb(53, 53, 124);
-        transform: rotate(20deg);
+/* Buttons */
+%btn-shared {
+  padding: .7rem 2rem;
+  display: inline-block;
+  margin-top: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+%transition {
+    transition: 1s ease-in-out;
+}
+
+.btn {
+    &-dark {
+        @extend %btn-shared;
+        background: #03549c;
+        color: set-contrast-color($dark-color);
+    }
+
+    &-light {
+        @extend %btn-shared;
+        background: #76d2f8;
+        color: set-contrast-color(#76d2f8);
+    }
+
+    &-light:hover {
+        background: darken($dark-color, 10%);
+        color: set-contrast-color(darken($dark-color, 10%));
+        @include transform(rotate(-20deg));
+        @extend %transition;
+    }
+
+    &-dark:hover {
+        background: lighten($light-color, 90%);
+        color: set-contrast-color(lighten($light-color, 90%));
+        opacity: 0.9;
+        @include transform(rotate(20deg));
+        @extend %transition;
     }
 }

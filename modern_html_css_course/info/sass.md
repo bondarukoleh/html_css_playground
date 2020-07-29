@@ -136,3 +136,66 @@ $colors: (
   @return map-get($colors, $key);
 }
 ```
+
+`Inheritance`
+You can create some style sets and then inherit them. Css set starts from "%my-set" sign, and extends with "@extend %my-set"
+```scss
+%btn-shared {
+  padding: .7rem 2rem;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn {
+    &-dark {
+        @extend %btn-shared;
+        background: #03549c;
+    }
+
+    &-light {
+        @extend %btn-shared;
+        background: #76d2f8;
+    }
+
+    &-dark:hover {
+        background: #76f8f0;
+    }
+}
+```
+
+`functions`
+They kind a like in js, have optional arguments, @each loops, Arbitrary func($args...) Arguments, Keyword Arguments for
+explanation what are you passing. Function should return something. 
+```scss
+// in _functions.scss
+@function set-contrast-color($color) {
+  @if(lightness($color) > 50%) {
+    @return #333;
+  } @else {
+    @return #fff;
+  }
+}
+
+// in main.css
+@import 'functions';
+.someEl {
+  background: #000;
+  color: set-contrast-color(#000);
+}
+```
+
+`mixins` they are just included, and doing some work.
+```scss
+// in _functions.scss
+@mixin transform($property){
+  transform: $property;
+}
+
+// in main.css
+@import 'functions';
+.someEl {
+  @include transform(rotate(20deg));
+}
+```
+
+It has a lot more interesting stuff.

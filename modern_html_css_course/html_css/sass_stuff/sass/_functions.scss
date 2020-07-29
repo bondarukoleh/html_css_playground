@@ -1,0 +1,13 @@
+// set text-color
+@function set-contrast-color($color) {
+  @if(lightness($color) > 50%) {
+    @return #333;
+  } @else {
+    @return #fff;
+  }
+}
+
+// Transform mixin
+@mixin transform($property){
+  transform: $property;
+}
