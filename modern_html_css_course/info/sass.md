@@ -13,6 +13,7 @@ Saas has:
 * Partials / Imports (you can import (and merge) other .css files, but in CSS3 - there is a server request for each imported style)
 * Functions & Mixins (reusable)
 * Color Functions
+* Interpolation
 
 In SASS, you can write code in a CSS-like version called `SCSS`. This version of code looks pretty similar to CSS
 syntax:
@@ -56,5 +57,82 @@ files won't change. To import it you don't need to write underscore or extension
 
 .someElement {
   color: $variable_from_variables;
+}
+```
+
+`Nesting` - structure od scss looks like the html structure. \
+`&` - means "this"), means current "compiled" parent selector
+```scss
+header {
+    background: $dark-color;
+    color: $light-color;
+    padding: 1rem;
+    /* applies only for direct h1 child inside header */
+    > h1 { /* can be also "& > h1" */
+      text-align: center;
+    }
+    /* applies on any inside h1 */
+    h1 {
+      text-align: center;
+    }
+    /* USEFUL when you need to specify style depend on parent  */
+    .dark-bg & { /* means ".dark-bg header", all headers that have parent with dark-bg class */
+      color: white;
+    }
+
+    .light-bg & {
+      color: black;
+    }
+
+    &.text-center { /* header.text-center, all headers with class text-center */
+      font-style: italic;
+    }
+}
+```
+Another complicated example
+```scss
+.parent {
+  .child {
+    & div & & > a {}
+  }
+}
+/* For each & it will be replaced with the compiled parent selector. Every time there is an & we’ll insert .parent .child. */
+```
+```css
+.parent .child div .parent .child .parent .child > a {}
+```
+The & is always the fully compiled parent selector. You cannot get only some level parent with it. \
+@at-roof can help to keep some specific rules in the structure but in the same time hold them as a separate rule.
+```scss
+.parent {
+  .child {
+    @at-roof .something-separate > a {}
+  }
+}
+/* it will be .something-separate > a {}, without parents */
+```
+`Interpolation`
+Same as ${} in js string.
+```scss
+$answer: 42;
+@warn "The Answer to the Ultimate Question of Life, the Universe, and Everything is #{$answer}.";
+/* Another example */
+// _config.scss
+$colors: (
+  "primary": tomato,
+  "secondary": hotpink
+);
+ 
+// _component.scss
+.el {
+  background-color: color(primary);
+}
+
+// _function.scss
+@function color($key) {
+  @if not map-has-key($colors, $key) {
+    @warn "Key `#{$key}` not found in $colors map.";
+  }
+  @return map-get($colors, $key);
 }
 ```

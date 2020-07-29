@@ -17,3 +17,44 @@ body {
 img {
     width: 100%;
 }
+
+header {
+    background: $dark-color;
+    color: $light-color;
+    padding: 1rem;
+
+    h1 {
+        text-align: center;
+    }
+}
+
+.section {
+    padding: 3rem;
+
+    h3 {
+        font-size: 2rem;
+    } 
+
+    &-a {
+        background: $primary-color;
+        color: #fff;
+    }
+
+    &-b {
+        background: $secondary-color;
+        color: #fff;
+    }
+}
+
+a {
+    color:#fff;
+    background: rgb(44, 66, 175);
+    padding: 1rem .7rem;
+    display: inline-block;
+    margin: .5rem 0;
+    text-decoration: none;
+    &:hover {
+        background: rgb(53, 53, 124);
+        transform: rotate(20deg);
+    }
+}

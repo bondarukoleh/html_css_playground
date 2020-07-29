@@ -12,3 +12,32 @@ body {
 
 img {
   width: 100%; }
+
+header {
+  background: #333;
+  color: #f4f4f4;
+  padding: 1rem; }
+  header h1 {
+    text-align: center; }
+
+.section {
+  padding: 3rem; }
+  .section h3 {
+    font-size: 2rem; }
+  .section-a {
+    background: steelblue;
+    color: #fff; }
+  .section-b {
+    background: #6060e4;
+    color: #fff; }
+
+a {
+  color: #fff;
+  background: #2c42af;
+  padding: 1rem .7rem;
+  display: inline-block;
+  margin: .5rem 0;
+  text-decoration: none; }
+  a:hover {
+    background: #35357c;
+    transform: rotate(20deg); }

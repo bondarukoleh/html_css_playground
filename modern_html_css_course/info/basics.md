@@ -122,7 +122,8 @@ pc - Picas picas (1pc = 12pt)
 
 ```Relative``` \
 % - To parent element
-em - To font-size of parent element (if parent font-size is 16px - 1em child will be 16px, 1.2em - 19.2px)
+em - To font-size of current element (if font-size of the element (or inherited from parent) is 16px - 1em child will 
+be 16px, 1.2em - 19.2px)
 rem - To font-size of root element (same but for root. 16px - is default rem.)
 The difference is next:
 Default size for every element is 1em. Means it will search for set font-size property of his parent element, then his
