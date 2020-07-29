@@ -46,3 +46,15 @@ highly recommend to use SASS over SCSS—write Less—get more. \
 `Compass` is an extension for SASS. Usage of Compass is recommended because:
 * It has a collection of modern mixins
 * It creates sprites
+
+To compile sass, you can use npm packages, like `node-sass` or VScode extension or even desktop app. like "koala" \
+
+`Partials` - .scss files with your extra stuff. Named `_variables.scss` - means that compiler won't touch them, output
+files won't change. To import it you don't need to write underscore or extension.
+```scss
+@import 'variables';
+
+.someElement {
+  color: $variable_from_variables;
+}
+```

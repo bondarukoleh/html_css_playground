@@ -1,0 +1,19 @@
+@import 'variables';
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: $light-color;
+    color: $dark-color;
+    font-family: $font-stack;
+    line-height: 1.5;
+}
+
+img {
+    width: 100%;
+}

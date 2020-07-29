@@ -1,0 +1,22 @@
+{
+  "name": "html_css_playground",
+  "version": "1.0.0",
+  "description": "Playground for html and css practice",
+  "main": "",
+  "scripts": {
+    "sass": "node-sass -wr ./modern_html_css_course/html_css/sass_stuff/sass -o ./modern_html_css_course/html_css/sass_stuff/dist/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bondarukoleh/html_css_playground.git"
+  },
+  "author": "Oleh Bondaruk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bondarukoleh/html_css_playground/issues"
+  },
+  "homepage": "https://github.com/bondarukoleh/html_css_playground#readme",
+  "devDependencies": {
+    "node-sass": "4.14.1"
+  }
+}
