@@ -1,0 +1,68 @@
+@import 'config';
+@import 'reset';
+@import 'utilities';
+
+// Logo
+#logo {
+    width: 70px;
+    height: 70px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+// main nav
+#main-nav {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+
+    ul {
+        display: flex;
+    }
+    
+    ul li {
+        padding: 1rem 1.5rem;
+    }
+
+    a {
+        color: #fff;
+        text-transform: uppercase;
+        border-bottom: 3px transparent solid;
+        transition: border-color .4s;
+        padding-bottom: .5rem;
+
+        // &:hover {
+        //     border-color: $medium-color;
+        // }
+
+        &.current {
+            border-color: $main-color;
+        }
+    }
+}
+
+/* Header */
+#header {
+    // Header home
+    &-home {
+        background: $bg-image no-repeat center right/cover;
+        height: 100vh;
+
+        // Header Content
+        .header-content {
+            color: #fff;
+            text-align: center;
+            padding: 20%;
+
+            h1 {
+                font-size: 4rem;
+                line-height: 1.2;
+            }
+        }
+    }
+
+    // Heder inner
+    &-inner {
+        background: $bg-image;
+    }
+}
