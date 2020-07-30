@@ -1,68 +1,177 @@
 @import 'config';
 @import 'reset';
 @import 'utilities';
+@import 'functions';
 
 // Logo
 #logo {
-    width: 70px;
-    height: 70px;
-    color: #fff;
-    text-transform: uppercase;
+  width: 70px;
+  height: 70px;
+  color: #fff;
+  text-transform: uppercase;
 }
 
 // main nav
 #main-nav {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+
+  ul {
     display: flex;
-    justify-content: space-between;
-    padding-top: 1rem;
+  }
 
-    ul {
-        display: flex;
+  ul li {
+    padding: 1rem 1.5rem;
+  }
+
+  a {
+    color: #fff;
+    text-transform: uppercase;
+    border-bottom: 3px transparent solid;
+    transition: border-color .4s;
+    padding-bottom: .5rem;
+
+    &:hover {
+      border-color: $medium-color;
     }
-    
-    ul li {
-        padding: 1rem 1.5rem;
+
+    &.current {
+      border-color: $main-color;
     }
-
-    a {
-        color: #fff;
-        text-transform: uppercase;
-        border-bottom: 3px transparent solid;
-        transition: border-color .4s;
-        padding-bottom: .5rem;
-
-        // &:hover {
-        //     border-color: $medium-color;
-        // }
-
-        &.current {
-            border-color: $main-color;
-        }
-    }
+  }
 }
 
 /* Header */
 #header {
-    // Header home
-    &-home {
-        background: $bg-image no-repeat center right/cover;
-        height: 100vh;
+  // Header home
+  &-home {
+    background: $bg-image no-repeat center right/cover;
+    height: 100vh;
 
-        // Header Content
-        .header-content {
-            color: #fff;
-            text-align: center;
-            padding: 20%;
+    // Header Content
+    .header-content {
+      color: #fff;
+      text-align: center;
+      padding: 20%;
 
-            h1 {
-                font-size: 4rem;
-                line-height: 1.2;
-            }
+      h1 {
+        font-size: 3rem;
+        line-height: 1.2;
+      }
+    }
+  }
+
+  // Header inner
+  &-inner {
+    background: $bg-image;
+  }
+}
+
+/* Home sections */
+#home {
+  /* Section A, specialities */
+  &-a {
+    .specials {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+
+      h3 {
+        font-size: 1.3rem;
+      }
+
+      .fas {
+        color: $main-color;
+        padding-bottom: .4rem;
+        font-size: 3rem;
+      }
+    }
+  }
+
+  /* Section B, statistics */
+  &-b {
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      justify-content: center;
+      align-items: center;
+
+      .fas {
+        color: $dark-color;
+        font-size: 2.5rem;
+        padding-bottom: .4rem;
+      }
+
+      li {
+        &.stats-title {
+          font-size: 1.5rem;
         }
-    }
 
-    // Heder inner
-    &-inner {
-        background: $bg-image;
+        &.stats-number {
+          font-size: 1.2rem;
+        }
+      }
+
+      div {
+        padding: 1rem 0;
+
+        &:nth-child(odd) {
+          background: $light-color;
+        }
+
+        &:nth-child(even) {
+          background: $medium-color;
+        }
+      }
     }
+  }
+
+  /* Section C, statistics */
+  &-c {
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      justify-content: center;
+      align-items: center;
+
+      div {
+        text-align: center;
+      }
+
+      .fas {
+        margin-right: auto;
+        margin-left: auto;
+        color: $light-color;
+        padding: 2rem;
+        background: $dark-color;
+        border-radius: 50%;
+        position: relative;
+        font-size: 3rem;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        div {
+          width: 30px;
+          height: 30px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          top: 0;
+          right: 0;
+          background: $main-color;
+          border-radius: 50%;
+          font-size: 1.5rem;
+        }
+      }
+
+
+    }
+  }
 }

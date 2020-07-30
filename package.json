@@ -3,12 +3,6 @@
   "version": "1.0.0",
   "description": "Playground for html and css practice",
   "main": "",
-  "config": {
-    "sassPortfolio": "modern_html_css_course/portfolio_projects/biography_site",
-    "sassPortfolioSass": "modern_html_css_course/portfolio_projects/biography_site/sass",
-    "sassPortfolioDist": "modern_html_css_course/portfolio_projects/biography_site/dist/css",
-    "port": "300"
-  },
   "scripts": {
     "sassStudy": "node-sass -wr ./modern_html_css_course/html_css/sass_stuff/sass -o ./modern_html_css_course/html_css/sass_stuff/dist/css",
     "sassPortfolio": "node-sass -wr modern_html_css_course/portfolio_projects/biography_site/sass -o modern_html_css_course/portfolio_projects/biography_site/dist/css"
