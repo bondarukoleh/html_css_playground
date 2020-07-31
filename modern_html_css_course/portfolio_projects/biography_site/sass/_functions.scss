@@ -1,1 +1,6 @@
-/**/
+@function set-contract-color($color){
+  @if(lightness($color) >= 50){
+    @return $dark-color;
+  }
+  @return $light-color;
+}

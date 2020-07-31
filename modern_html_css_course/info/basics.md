@@ -104,9 +104,11 @@ Ctr + "+" - to make it bigger.
 `Font`
 When it's a few fonts that listed.
 ```css
-font-family: "Times New Roman", Times, serif;
-font-style: italic;
-font-weight: bold;
+.a {
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+  font-weight: bold;
+}
 ```
 Means it tries to find "Times New Roman", if it can't find it - it'll try Times, and so on. Sans serif - nice one. \
 We can find some in [Google fonts](https://fonts.google.com/)
@@ -334,3 +336,26 @@ and are sometimes downloaded with Windows desktop themes.
 ICO files are similar to CUR files, but they have a different identification byte in the file header.
 We can [create](http://tools.dynamicdrive.com/favicon/) an icon from image.
 
+`background`: \
+`background-size`: \
+```css
+.a {
+/* One-value syntax */
+/* the width of the image (height becomes 'auto') */
+  background-size: 50%;
+
+/* Two-value syntax */
+/* first value: width of the image, second value: height */
+  background-size: 50% auto;
+}
+```
+Keywords: \
+- contain. Scales the image as large as possible without cropping or stretching the image. \
+- cover. Scales the image as large as possible without stretching the image. If the proportions of the image differ
+  from the element, it is cropped either vertically or horizontally so that no empty space remains. \
+- auto. Scales the background image in the corresponding direction such that its intrinsic proportions are maintained.
+- < length > Stretches the image in the corresponding dimension to the specified length. Negative values are not allowed. \
+- < percentage > Stretches the image in the corresponding dimension to the specified percentage of the background
+positioning area. The background positioning area is determined by background-origin (by default, the padding box).
+However, if the background's background-attachment value is fixed, the positioning area is instead the entire viewport.
+Negative values are not allowed.

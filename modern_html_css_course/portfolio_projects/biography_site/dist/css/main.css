@@ -1,8 +1,7 @@
 /* reset */
 * {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box; }
+  padding: 0; }
 
 a {
   text-decoration: none;
@@ -36,22 +35,22 @@ h2, h3, h4 {
   cursor: pointer; }
 
 .btn-main {
-  color: #333;
-  background-color: #ffbc00; }
+  background-color: #ffbc00;
+  color: #333; }
 
 .btn-light {
-  color: #333;
-  background-color: #f4f4f4; }
+  background-color: #f4f4f4;
+  color: #333; }
 
 .btn-dark {
-  color: #f4f4f4;
-  background-color: #333; }
+  background-color: #333;
+  color: #333; }
 
 button[class^="btn-"]:hover,
 a[class^="btn-"]:hover,
 input[class^="btn-"]:hover {
-  color: #333;
-  background-color: #ffbc00; }
+  background-color: #ffbc00;
+  color: #333; }
 
 .lead {
   font-size: 1.3rem;
@@ -103,13 +102,6 @@ input[class^="btn-"]:hover {
 .m-3 {
   margin: 3rem; }
 
-.bottom-line {
-  width: 75px;
-  height: 2px;
-  background: #ffbc00;
-  margin: 0 auto 1rem;
-  display: block; }
-
 .section-title {
   font-size: 2rem;
   display: block;
@@ -118,7 +110,13 @@ input[class^="btn-"]:hover {
   text-transform: uppercase;
   font-weight: 100; }
 
-/**/
+.bottom-line {
+  width: 4rem;
+  height: 2px;
+  background: #ffbc00;
+  margin: 0 auto 1rem;
+  display: block; }
+
 #logo {
   width: 70px;
   height: 70px;
@@ -157,13 +155,15 @@ input[class^="btn-"]:hover {
       line-height: 1.2; }
 
 #header-inner {
-  background: url("../img/showcase.jpg"); }
+  background: url("../img/showcase.jpg") no-repeat 20% 30%/cover;
+  height: 5.5rem;
+  border-bottom: 3px solid #ffbc00; }
 
 /* Home sections */
 #home {
   /* Section A, specialities */
   /* Section B, statistics */
-  /* Section C, statistics */ }
+  /* Section C, MY CREATIVE PROCESS */ }
   #home-a .specials {
     margin-top: 3rem;
     display: grid;
@@ -197,34 +197,59 @@ input[class^="btn-"]:hover {
   #home-c .process {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    justify-content: center;
-    align-items: center; }
-    #home-c .process div {
-      text-align: center; }
-    #home-c .process .fas {
-      margin-right: auto;
-      margin-left: auto;
+    text-align: center;
+    gap: 1.5rem; }
+    #home-c .process-step {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 1.5rem;
+      background: #ffbc00;
+      color: #333;
+      border-radius: 50%;
+      height: 0.9rem;
+      width: 0.9rem;
+      line-height: 0.9rem;
+      padding: 1rem;
+      transition: all .4s; }
+    #home-c .process-icon {
+      position: relative;
+      border-radius: 50%;
+      background: #333;
       color: #f4f4f4;
       padding: 2rem;
-      background: #333;
-      border-radius: 50%;
-      position: relative;
-      font-size: 3rem;
-      width: 100px;
-      height: 100px;
-      display: flex;
-      justify-content: center;
-      align-items: center; }
-      #home-c .process .fas div {
-        width: 30px;
-        height: 30px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        top: 0;
-        right: 0;
+      width: 70px;
+      height: 70px;
+      text-align: center;
+      line-height: 70px;
+      transition: all .4s;
+      box-sizing: initial; }
+      #home-c .process-icon:hover {
         background: #ffbc00;
-        border-radius: 50%;
-        font-size: 1.5rem; }
+        width: 5.6rem;
+        height: 5.6rem;
+        line-height: 5.6rem; }
+        #home-c .process-icon:hover .process-step {
+          background: #333;
+          color: #f4f4f4; }
+
+#main-footer {
+  background: #333;
+  color: #f4f4f4;
+  height: 5rem; }
+  #main-footer .footer-content {
+    display: flex;
+    justify-content: space-between;
+    height: 5rem;
+    align-items: center; }
+    #main-footer .footer-content .social .fab {
+      margin-right: 1rem;
+      padding: .5rem;
+      border: 2px #f4f4f4 solid;
+      border-radius: 50%;
+      width: 1.25rem;
+      height: 1.25rem;
+      line-height: 1.25rem;
+      text-align: center; }
+      #main-footer .footer-content .social .fab:hover {
+        background: #ffbc00; }

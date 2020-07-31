@@ -17,28 +17,33 @@
 .btn {
   &-main {
     @extend %btn-shared;
-    color: $dark-color;
     background-color: $main-color;
+    color: set-contract-color($main-color);
   }
 
   &-light {
     @extend %btn-shared;
-    color: $dark-color;
     background-color: $light-color;
+    color: set-contract-color($light-color);
   }
 
   &-dark {
     @extend %btn-shared;
-    color: $light-color;
     background-color: $dark-color;
+    color: set-contract-color($light-color);
   }
 }
 
 button[class^="btn-"]:hover,
 a[class^="btn-"]:hover,
 input[class^="btn-"]:hover {
-  color: $dark-color;
   background-color: $main-color;
+  color: set-contract-color($main-color);
+}
+
+// Backgrounds
+.bg {
+
 }
 
 .lead {
@@ -116,14 +121,6 @@ input[class^="btn-"]:hover {
     }
 }
 
-.bottom-line {
-  width: 75px;
-  height: 2px;
-  background: $main-color;
-  margin: 0 auto 1rem;
-  display: block; // In case it will be span or smth
-}
-
 .section-title {
   font-size: 2rem;
   display: block; // Just in case
@@ -131,4 +128,12 @@ input[class^="btn-"]:hover {
   padding-bottom: .5rem;
   text-transform: uppercase;
   font-weight: 100;
+}
+
+.bottom-line {
+  width: 4rem;
+  height: 2px;
+  background: $main-color;
+  margin: 0 auto 1rem;
+  display: block; // In case it will be span or smth
 }
