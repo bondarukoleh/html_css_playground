@@ -52,6 +52,22 @@ input[class^="btn-"]:hover {
   background-color: #ffbc00;
   color: #333; }
 
+.bg-main {
+  background: #ffbc00;
+  color: #333; }
+
+.bg-light {
+  background: #f4f4f4;
+  color: #333; }
+
+.bg-dark {
+  background: #333;
+  color: #f4f4f4; }
+
+.bg-medium {
+  background: #ccc;
+  color: #333; }
+
 .lead {
   font-size: 1.3rem;
   margin-bottom: 2rem; }
@@ -232,6 +248,83 @@ input[class^="btn-"]:hover {
         #home-c .process-icon:hover .process-step {
           background: #333;
           color: #f4f4f4; }
+
+#about-a .about-info {
+  display: grid;
+  grid-template-areas: 'bioimage bio bio' 'awd1 awd2 awd3';
+  grid-gap: 1.2rem; }
+
+#about-a .bio-image {
+  grid-area: bioimage; }
+
+#about-a .bio {
+  grid-area: bio;
+  border-left: 3px solid #ffbc00;
+  padding: .8rem; }
+
+#about-a .award-1 {
+  grid-area: awd1; }
+
+#about-a .award-2 {
+  grid-area: awd2; }
+
+#about-a .award-3 {
+  grid-area: awd3; }
+
+#about-a .award-1 .fas,
+#about-a .award-2 .fas,
+#about-a .award-3 .fas {
+  color: #ffbc00;
+  margin: 1rem; }
+
+#about-b .progress {
+  overflow: hidden;
+  height: 1.5rem;
+  background: #ccc;
+  border-radius: 5px;
+  margin-bottom: .6rem; }
+  #about-b .progress div {
+    height: 100%;
+    color: #f4f4f4;
+    text-align: center;
+    background: #ffbc00; }
+
+#about-c .about-logos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  align-content: center;
+  justify-content: center; }
+  #about-c .about-logos img {
+    width: 8rem;
+    justify-self: center;
+    align-self: center; }
+
+#about-d .testimonials {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  align-content: center;
+  justify-content: center; }
+  #about-d .testimonials div {
+    align-self: center;
+    justify-self: center;
+    text-align: center; }
+  #about-d .testimonials p {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: .7rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    font-weight: 100; }
+  #about-d .testimonials ul {
+    margin-top: .5rem;
+    display: flex;
+    justify-content: center; }
+    #about-d .testimonials ul img {
+      border-radius: 50%;
+      width: 3rem;
+      margin-right: 1rem; }
 
 #main-footer {
   background: #333;
