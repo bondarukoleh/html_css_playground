@@ -30,7 +30,7 @@ h2, h3, h4 {
 .btn-main, .btn-light, .btn-dark {
   display: inline-block;
   padding: .8rem 2rem;
-  transition: all .5s;
+  transition: background-color .5s;
   border: none;
   cursor: pointer; }
 
@@ -44,7 +44,7 @@ h2, h3, h4 {
 
 .btn-dark {
   background-color: #333;
-  color: #333; }
+  color: #f4f4f4; }
 
 button[class^="btn-"]:hover,
 a[class^="btn-"]:hover,
@@ -132,6 +132,94 @@ input[class^="btn-"]:hover {
   background: #ffbc00;
   margin: 0 auto 1rem;
   display: block; }
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  box-shadow: 0 10px 5px 5px rgba(0, 0, 0, 0.5); }
+
+.item {
+  position: relative;
+  background: #ffbc00;
+  overflow: hidden;
+  /* Showing overlay */
+  /* Scale image on hover */
+  /* Show text on hover */
+  /* Image styles */
+  /* Text */ }
+  .item:after {
+    content: '';
+    position: absolute;
+    display: block;
+    background: inherit;
+    opacity: 0.9;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(2) translateX(-75%) translateY(-75%) rotate(-30deg);
+    transition: transform 3s cubic-bezier(0.2, 1, 0.3, 1); }
+  .item:hover:after {
+    transform: scale(2) translateX(0) translateY(0) rotate(-30deg); }
+  .item:hover .item-image {
+    transform: scale(1.2); }
+  .item:hover .item-text {
+    opacity: 1;
+    transform: translateY(0); }
+  .item-image {
+    height: auto;
+    transform: translateZ(0);
+    display: block;
+    transition: transform 750ms cubic-bezier(0.2, 1, 0.3, 1); }
+  .item-image:before {
+    content: '';
+    display: block;
+    padding-top: 75%;
+    overflow: hidden; }
+  .item-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 0; }
+  .item-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    z-index: 1;
+    color: #f4f4f4;
+    transform: translateY(-100%);
+    transition: opacity 0.7s cubic-bezier(0.2, 1, 0.3, 1), transform 0.7s cubic-bezier(0.2, 1, 0.3, 1);
+    transition-delay: .3s; }
+  .item-text-wrap {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%); }
+  .item-text-title {
+    font-size: 2rem;
+    padding: 0 1rem;
+    margin-top: 5px; }
+  .item-text-category {
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-weight: 700;
+    opacity: 0.7;
+    margin: 0; }
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  box-shadow: 0 10px 5px 5px rgba(0, 0, 0, 0.5); }
+
+.item {
+  position: relative; }
+  .item:hover .item-image {
+    transform: scale(1.2); }
 
 #logo {
   width: 70px;
@@ -242,9 +330,7 @@ input[class^="btn-"]:hover {
       box-sizing: initial; }
       #home-c .process-icon:hover {
         background: #ffbc00;
-        width: 5.6rem;
-        height: 5.6rem;
-        line-height: 5.6rem; }
+        transform: scale(1.2); }
         #home-c .process-icon:hover .process-step {
           background: #333;
           color: #f4f4f4; }
@@ -326,6 +412,37 @@ input[class^="btn-"]:hover {
       width: 3rem;
       margin-right: 1rem; }
 
+#contact-a .text-fields {
+  display: grid;
+  grid-template-areas: 'name email' 'subject phone' 'message message';
+  grid-gap: 1.2rem;
+  margin-bottom: 1.2rem; }
+  #contact-a .text-fields .name-input {
+    grid-area: name; }
+  #contact-a .text-fields .subject-input {
+    grid-area: subject; }
+  #contact-a .text-fields .email-input {
+    grid-area: email; }
+  #contact-a .text-fields .phone-input {
+    grid-area: phone; }
+  #contact-a .text-fields .message-input {
+    grid-area: message;
+    height: 100px; }
+  #contact-a .text-fields .text-input {
+    padding: 0.5rem 1rem; }
+
+#contact-a button[type='submit'] {
+  width: 50%; }
+
+#contact-b .contact-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center; }
+
+#contact-c h1 {
+  text-align: center;
+  font-size: 4rem; }
+
 #main-footer {
   background: #333;
   color: #f4f4f4;
@@ -346,3 +463,94 @@ input[class^="btn-"]:hover {
       text-align: center; }
       #main-footer .footer-content .social .fab:hover {
         background: #ffbc00; }
+
+/* Media queries import */
+/* Tablets */
+@media (max-width: 800px) {
+  #header-home {
+    height: 30rem; }
+    #header-home .header-content {
+      padding-top: 5rem; }
+      #header-home .header-content h1 {
+        font-size: 2rem; }
+  #home-b .stats .stats-title:nth-child(2) {
+    font-size: 1rem; }
+  #work .items {
+    grid-template-columns: repeat(2, 1fr); }
+  #about-d .testimonials {
+    grid-template-columns: repeat(2, 1fr); } }
+
+/* Smartphones */
+@media (max-width: 500px) {
+  #main-nav {
+    flex-direction: column;
+    align-items: center; }
+    #main-nav ul {
+      width: 300px;
+      justify-content: center; }
+      #main-nav ul li {
+        padding: 1rem; }
+  #header-home {
+    height: 10rem;
+    border-bottom: 3px #ffbc00 solid; }
+    #header-home .header-content {
+      display: none; }
+  #header-inner {
+    background: url("../img/showcase.jpg") no-repeat center right/cover;
+    height: 10rem; }
+  #home-a .specials {
+    grid-template-columns: 1fr; }
+    #home-a .specials div {
+      border-bottom: dotted 1px #333;
+      margin-bottom: .5rem;
+      padding-bottom: .8rem; }
+  #home-b .stats {
+    grid-template-columns: 1fr; }
+    #home-b .stats div {
+      padding: 2rem 0; }
+  #home-c .process {
+    grid-template-columns: 1fr; }
+  #about-a .about-info {
+    grid-template-areas: 'bioimage bioimage' 'bio bio' 'awd1 awd2' 'awd3 awd3'; }
+  #about-c {
+    display: none; }
+  #about-d {
+    padding: 1rem 0; }
+    #about-d .testimonials {
+      grid-template-columns: 1fr; }
+  #work .items {
+    grid-template-columns: 1fr;
+    gap: 1rem; }
+  #contact-a {
+    padding: 1rem; }
+    #contact-a .text-fields {
+      grid-template-areas: 'name' 'email' 'subject' 'phone' 'message'; }
+  #contact-b {
+    padding: 1rem; }
+    #contact-b .contact-info {
+      grid-template-columns: 1fr; }
+      #contact-b .contact-info div {
+        padding: 1rem 0;
+        border-bottom: 1px solid #ccc; }
+        #contact-b .contact-info div:last-child {
+          border-bottom: none; }
+  #contact-c {
+    padding: 1rem; }
+    #contact-c h1 {
+      font-size: 2rem; }
+  #main-footer {
+    height: 7rem; }
+    #main-footer .footer-content {
+      flex-direction: column;
+      height: 5rem;
+      padding: 1rem; } }
+
+/* Landscape */
+@media (max-height: 500px) {
+  #header-home .header-content {
+    padding-top: 2rem; }
+    #header-home .header-content h1 {
+      font-size: 1.5rem; }
+    #header-home .header-content p {
+      font-size: 1rem;
+      margin-bottom: 2rem; } }

@@ -2,6 +2,7 @@
 @import 'reset';
 @import 'functions';
 @import 'utilities';
+@import 'grid_items';
 
 // Logo
 #logo {
@@ -168,9 +169,7 @@
 
         &:hover {
           background: $main-color;
-          width: 5.6rem;
-          height: 5.6rem;
-          line-height: 5.6rem;
+          transform: scale(1.2);
 
           .process-step {
             background: $dark-color;
@@ -294,6 +293,64 @@
   }
 }
 
+#contact {
+  &-a {
+    .text-fields {
+      display: grid;
+      grid-template-areas:
+        'name email'
+        'subject phone'
+        'message message';
+      grid-gap: 1.2rem;
+      margin-bottom: 1.2rem;
+
+      // Grid Areas
+      .name-input {
+        grid-area: name;
+      }
+
+      .subject-input {
+        grid-area: subject;
+      }
+
+      .email-input {
+        grid-area: email;
+      }
+
+      .phone-input {
+        grid-area: phone;
+      }
+
+      .message-input {
+        grid-area: message;
+        height: 100px;
+      }
+
+      .text-input {
+        padding: 0.5rem 1rem;
+      }
+    }
+
+    button[type='submit'] {
+      width: 50%;
+    }
+  }
+
+  &-b {
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      text-align: center;
+    }
+  }
+
+  &-c {
+    h1 {
+      text-align: center;
+      font-size: 4rem;
+    }
+  }
+}
 
 #main-footer {
   background: $dark-color;
@@ -322,3 +379,6 @@
     }
   }
 }
+
+/* Media queries import */
+@import 'media';

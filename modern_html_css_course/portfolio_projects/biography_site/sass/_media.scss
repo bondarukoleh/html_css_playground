@@ -1,0 +1,198 @@
+/* Tablets */
+@media(max-width: 800px) {
+  #header-home {
+    height: 30rem;
+
+    .header-content {
+      padding-top: 5rem;
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  #home {
+    &-b {
+      .stats {
+        .stats-title:nth-child(2){
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  #work {
+    .items {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  #about {
+    &-d {
+      .testimonials {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}
+
+/* Smartphones */
+@media(max-width: 500px) {
+  #main-nav {
+    flex-direction: column;
+    align-items: center;
+
+    ul {
+      width: 300px;
+      justify-content: center;
+
+      li {
+        padding: 1rem;
+      }
+    }
+  }
+
+  #header {
+    &-home {
+      height: 10rem;
+      border-bottom: 3px $main-color solid;
+
+      .header-content {
+        display: none;
+      }
+    }
+
+    &-inner {
+      background: $bg-image no-repeat center right/cover;
+      height: 10rem;
+    }
+  }
+
+  #home {
+    &-a {
+      .specials {
+        grid-template-columns: 1fr;
+
+        div {
+          border-bottom: dotted 1px $dark-color;
+          margin-bottom: .5rem;
+          padding-bottom: .8rem;
+        }
+      }
+    }
+
+    &-b {
+      .stats {
+        grid-template-columns: 1fr;
+
+        div {
+          padding: 2rem 0;
+        }
+      }
+    }
+
+    &-c {
+      .process {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  #about {
+    &-a {
+      .about-info {
+        grid-template-areas:
+        'bioimage bioimage'
+        'bio bio'
+        'awd1 awd2'
+        'awd3 awd3';
+      }
+    }
+
+    &-c {
+      display: none;
+    }
+
+    &-d {
+      padding: 1rem 0;
+
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+
+  #work {
+    .items {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  #contact {
+    &-a {
+      padding: 1rem;
+
+      .text-fields {
+        grid-template-areas:
+        'name'
+        'email'
+        'subject'
+        'phone'
+        'message';
+      }
+    }
+
+    &-b {
+      padding: 1rem;
+
+      .contact-info {
+        grid-template-columns: 1fr;
+
+        div {
+          padding: 1rem 0;
+          border-bottom: 1px solid $medium-color;
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+
+    &-c {
+      padding: 1rem;
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  #main-footer {
+    height: 7rem;
+
+    .footer-content {
+      flex-direction: column;
+      height: 5rem;
+      padding: 1rem;
+    }
+  }
+}
+
+/* Landscape */
+@media(max-height: 500px) {
+  #header-home {
+    .header-content {
+      padding-top: 2rem;
+
+      h1 {
+        font-size: 1.5rem;
+      }
+      p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
