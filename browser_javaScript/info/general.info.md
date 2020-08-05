@@ -40,26 +40,45 @@ To construct the `render tree`, the browser checks every node (misses the link, 
 of the DOM tree, and determine which CSS rules are attached. The `render tree only captures visible content`. The head
 section (generally) doesn't contain any visible information, and is therefore not included in the render tree. Render 
 tree consist of visible elements with their style, it's like visualized version of the DOM. In Gecko element of render 
-tree called "frame", in webkit - renderer ot render object.
+tree called "frame", in webkit - "renderer" ot "render object". Render tree is constructed with order elements should
+appear on the page.
 
 LAYOUT: \
 Once the render tree is built, layout becomes possible. `Layout is dependent on the size of screen`. The layout step
-determines where and how the elements are positioned on the page, determining the width and height of each element,
+recursively calculates where and how the elements are positioned on the page, also width and height of each element,
 and where they are in relation to each other. Width depends on the set value or on the parent width, in the end it 
 depends on body width, which depends on a viewport. 
 The viewport meta tag defines the width of the layout viewport, impacting the layout. It is value in tag, or default
 960px or with tag - it can be width of your device (which changes if you rotate the screen). \
-For each element browser calculates the size and place on the page, Browsers use `flow` method to do that, means for most
-cases there enough only one flow to layout all elements.
+For each element browser calculates the size and place on the page, Browsers use `flow` method to do that, means it's
+enough only one walk thru all elements to layout them, except elements that affects position or size already shown 
+elements.
+Layout can be global - calculation position and size of all elements, e.g. include font-size, or element size change, or
+incremental - when it's only part of the tree needs to be recalculated, it is possible only for elements marked "dirty".
+"dirty bit system" - when some element changed, or added - it marks as "dirty", so in future it can be re-layout 
+incrementally affecting global layout.
 ```html
 <meta name="viewport" content="width=device-width">
 ```
 Layout performance is impacted by the DOM -- the greater the number of nodes, the longer layout takes. To reduce the
 frequency and duration of layout events, batch updates and avoid animating box model properties.
+So after layout browser know where and what and how he should show on the page.
 
-Once the render tree is created and layout occurs, the `pixels can be painted to the screen`. After that, only changed
-parts of the layout will be repainted.
+PAINT: \
+Once the render tree is created and layout occurs, the `pixels can be painted to the screen`.
+Can be also global - fully repainting, and incremental (partial) - when some render object needs to be repainted it marks
+himself as a invalid, and browser will repaint that part of the page. Browser know how to combine all invalid parts to 
+repaint them in one flow.
 
+COMPOSITE:\
+This phase helps not to load CPU with a lot of calculation, composites different element changes in different layers
+of memory. It is quite cheap, so worth to try change something with composite.
+Two property can be changed with composite - opacity и transform.
+
+e.g. ```background``` change will call paint, and then composite. ```display``` change will fire layout, paint and 
+composite.
+
+Layout ant paint - very expansive processes that affects CPU (central processing unit) that trying to produce 60fps.
 Optimizing for CRP:
 1) minimizing the number of resources download, make them defer and async or grouped
 2) optimizing the number of required requests, also file size of each request
