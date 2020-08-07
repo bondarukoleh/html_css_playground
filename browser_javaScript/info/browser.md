@@ -69,7 +69,8 @@ elem.childNodes[elem.childNodes.length - 1] === elem.lastChild
 The `childNodes` (direct children) collection lists all child nodes, including text nodes. \
 `Decedents` - not just child nodes, but all nodes that under some element. Children of children and so on. \
 `Siblings` are nodes that are children of the same parent. \
-The next sibling is in `nextSibling` property, and the previous one – in `previousSibling`. \
+The next sibling is in `nextSibling` property, and the previous one – in `previousSibling`. But be aware, that nextSibling
+often will show you the "#text" node with "new line" sign. If you need element node - use nextElement sibling \
 The parent is available as `parentNode`.
 
 ---
@@ -142,7 +143,7 @@ Each DOM node belongs to the corresponding built-in class.
 The root of the hierarchy is EventTarget, that is inherited by Node, and other DOM nodes inherit from it.
 
 EventTarget \
-&nbsp;&nbsp;Node \ \
+&nbsp;&nbsp;Node \
 &nbsp;&nbsp;&nbsp;&nbsp;Text (< div>`Text`< /div>) \
 &nbsp;&nbsp;&nbsp;&nbsp;Comment (< !-- Comment -->) \
 &nbsp;&nbsp;&nbsp;&nbsp;Element (< `div`>Text< `/div`>) \
@@ -152,16 +153,17 @@ EventTarget \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTMLBodyElement(< body>) \
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTMLAnchorElement(< a href="…">) 
 
-*EventTarget* – is the root “abstract” class. All DOM nodes support so-called “events” (in JS - inherit from Object)  \
-*Node* – is also an “abstract” class. It provides the core tree functionality: parentNode, nextSibling, childNodes
+_**Object**_ - The most top class in the DOM.
+_**EventTarget**_ – is the root “abstract” class. All DOM nodes support so-called “events" \
+_**Node**_ – is also an “abstract” class. It provides the core tree functionality: parentNode, nextSibling, childNodes
 and so on. \
-*Element* – is a base class for DOM elements. It provides element-level navigation like nextElementSibling,
+_**Element**_ – is a base class for DOM elements. It provides element-level navigation like nextElementSibling,
 children and searching methods like getElementsByTagName, querySelector. A browser supports not only HTML, but also 
 XML and SVG. \
-*HTMLElement* – is finally the basic class for all HTML elements. It is inherited by concrete HTML elements:
-HTMLInputElement – the class for \<input\> elements,
-HTMLBodyElement – the class for \<body\> elements,
-HTMLAnchorElement – the class for \<a\> elements,
+_**HTMLElement**_ – is finally the basic class for all HTML elements. It is inherited by concrete HTML elements: \
+HTMLInputElement – the class for \<input\> elements, \
+HTMLBodyElement – the class for \<body\> elements, \
+HTMLAnchorElement – the class for \<a\> elements, \
 …and so on, each tag has its own class that may provide specific properties and methods.
 
 > console.dir(elem) versus console.log(elem) \
@@ -184,10 +186,10 @@ difference between `tagName and nodeName`?
 * The tagName property exists only for Element nodes. (undefined for text or comment) (always uppercase except XML mode)
 * The nodeName is defined for any Node:
     * for elements it means the same as tagName.
-    * for other node types (text, comment, etc.) it has a string with the node type.
+    * for other node types (text, comment, etc.) it has a string with the node type ("DIV", "#text", #comment").
 
 `innerHTML` the contents \
-The innerHTML property allows to get the HTML inside the element as a string.
+The innerHTML property allows to get the HTML inside the element as a string. It is only valid for element nodes.
 We can also modify it. So it’s one of the most powerful ways to change the page. \
 > Beware: “innerHTML+=” does a full overwrite
 
@@ -212,7 +214,44 @@ The outerHTML property contains the full HTML of the element. That’s like inne
 
 So what happened in div.outerHTML=... is: \
 * div was removed from the document
-* Another piece of HTML <p>A new element</p> was inserted in its place.
+* Another piece of HTML \<p\>A new element\</p\> was inserted in its place.
 * div still has its old value. The new HTML wasn’t saved to any variable.
 
-`nodeValue/data` text node content
+`nodeValue/data` - text node content \
+You cannot get the innerHTML from  not-element nodes. From them you can get `nodeValue` and `data` properties. We can use
+data in most cases.
+For text nodes - we can change content, and comments - we can read, and sometimes there is instructions for JS logic in
+comments, but I believe this is not a nice approach.
+
+`textContent` - pure text \
+The textContent provides access to the text inside the element: only text, minus all \<tags\>. So if you want to add text
+- you can use textContent, if you need to add html as text - use innerHTML
+
+`hidden` property \
+We ca easily hide the element, like display: node. It will still be in the DOM, but place would filled.
+
+`some more...` \
+DOM elements also have additional properties, in particular those that depend on the class: \
+value – the value for \<input>, \<select\> and \<textarea\> (HTMLInputElement, HTMLSelectElement…). \
+href – the “href” for \<a href="..."\> (HTMLAnchorElement). \
+id – the value of “id” attribute, for all elements (HTMLElement).
+
+---
+#### Attributes and properties
+##### DOM properties
+DOM nodes are regular JavaScript objects. We can add some properties or functions to them.
+```js
+document.body.myData = {
+  name: 'Caesar',
+  title: 'Imperator'
+};
+document.body.sayTagName = function() {
+  alert(this.tagName); // "BODY"
+};
+// Modify prototype
+Element.prototype.sayHi = function() {
+  alert(`Hello, I'm ${this.tagName}`);
+};
+```
+
+##### HTML attributes
