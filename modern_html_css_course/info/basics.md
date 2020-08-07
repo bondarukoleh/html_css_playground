@@ -359,3 +359,20 @@ Keywords: \
 positioning area. The background positioning area is determined by background-origin (by default, the padding box).
 However, if the background's background-attachment value is fixed, the positioning area is instead the entire viewport.
 Negative values are not allowed.
+
+```css
+.some {
+              /* source           position/size width height repeat,  multiple possible    */
+  background: url('image/im.png') top left/50px 50px no-repeat, url('image/im.png') top 20px left 20px/50px 50px no-repeat;
+}
+```
+`background-repeat`: repeat|repeat-x|repeat-y|no-repeat|initial|inherit; \
+repeat - image repeated both vertically and horizontally. The last image will be clipped if it does not fit (by default); \
+repeat-x - image is repeated only horizontally; \
+repeat-y - image is repeated only vertically; \
+no-repeat	- image is not repeated. The image will only be shown once; \
+space -	image is repeated as much as possible without clipping. The first and last images are pinned to either side
+ of the element, and whitespace is distributed evenly between the images; \
+round -	image is repeated and squished or stretched to fill the space (no gaps)	\
+initial -	Sets this property to its default value. Read about initial	\
+inherit -	Inherits this property from its parent element.

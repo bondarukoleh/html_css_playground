@@ -19,7 +19,7 @@ Here what we have in web browser:
 
 `root` - window, has JS ```global``` object, and presents browser window, and has methods to control it. \
 `DOM (Document Object Model)` - represents all page content as objects that can be modified. The `document` object is the
-main “entry point” to the page. We can change or create anything on the page using it. [DOM spec.][1]
+main “entry point” to the page. We can change or create anything on the page using it. [DOM spec.]()
 
 [1]: https://dom.spec.whatwg.org/ "whatwg spec"
 DOM also can be user in server-side page processing. \
@@ -28,6 +28,7 @@ DOM also can be user in server-side page processing. \
 everything except the document`. e.g. navigator object provides information about the browser and the operating system.
 ```navigator.userAgent``` – about the current browser, and ```navigator.platform``` – about the platform.
 The location object allows us to read the current URL and can redirect the browser to a new one.
+
 ---
 ##### DOM tree
 Every tag element is an object. Tags are `element nodes` (or just elements) with their children.
@@ -53,6 +54,7 @@ DOM includes !Doctype, comments, everything.
 DOM structure in developer tools is simplified. Text nodes are shown just as text and there are no “blank” (space only)
 text nodes at all. In chrome dev tools, when you select some node in a html - it available in the console with $0, 
 previous selected node - $1 and so on.
+
 ---
 ##### Walking the DOM
 < html> = document.documentElement
@@ -85,6 +87,7 @@ DOM `collections are read-only`.
 We can’t replace a child by something else by assigning childNodes[i] = .... \
 DOM `collections are live`.
 If we keep a reference to elem.childNodes, and add/remove nodes into DOM, then they appear in the collection automatically.
+
 ---
 ##### Element-only navigation
 Navigation properties listed above refer to all nodes. For instance, in childNodes we can see both text nodes, element nodes, and even comment nodes if there exist.
