@@ -370,4 +370,70 @@ names available in `elem.dataset` property. Multiword attributes like ```data-or
 </script>
 ```
 
+---
 #### Modifying the document
+##### Creating an element
+document.createElement(tag) \
+document.createTextNode(text) \
+
+##### Insertion methods
+If you want to add *element node* to another element, or append any string as a *text node*:
+ * node.append(...nodes or strings) – append nodes or strings at the end of node,
+ * node.prepend(...nodes or strings) – insert nodes or strings at the beginning of node,
+ * node.before(...nodes or strings) –- insert nodes or strings before a node,
+ * node.after(...nodes or strings) –- insert nodes or strings after node,
+ * node.replaceWith(...nodes or strings) –- replaces a node with the given nodes or strings.
+ 
+```text
+before
+    prepend
+    element
+    append
+after
+```
+
+`insertAdjacentHTML/Text/Element` \
+If you want to add any *string as HTML* to another element you need insertAdjacent***:
+ * elem.insertAdjacentHTML(where, html), string will be parsed as html and added as an element;
+ * elem.insertAdjacentText(where, text), string will be parsed as text, and added as a text node;
+ * elem.insertAdjacentElement(where, elem), element will be added.
+ 
+There are 4 places where you can add things:
+ * "beforebegin" – insert html immediately before elem;
+ * "afterbegin" – insert html into elem, at the beginning;
+ * "beforeend" – insert html into elem, at the end;
+ * "afterend" – insert html immediately after elem; 
+
+##### Node removal
+To remove a node, there’s a method elem.remove(). \
+If you want to move element no need to remove it from old one, all insertion methods automatically remove the node
+from the old place.
+
+##### Cloning nodes: cloneNode
+ * elem.cloneNode(true) creates a “deep” clone – with all attributes and subelements;
+ * If we call elem.cloneNode(false), then the clone is made without child elements;
+
+##### DocumentFragment
+DocumentFragment is a special DOM node that serves as a wrapper to pass around lists of nodes. \
+We can append other nodes to it, but when we insert it somewhere, then its content is inserted instead.
+
+##### Old-school insert/remove methods
+`parentElem.appendChild(node)` Appends node as the last child of parentElem. \
+`parentElem.insertBefore(node, nextSibling)` - Inserts node before nextSibling into parentElem. \
+`parentElem.replaceChild(node, oldChild)` - Replaces oldChild with node among children of parentElem. \
+`parentElem.removeChild(node)` - Removes node from parentElem (assuming node is its child). \
+No need to use those methods since we have _append, prepend, before, after, remove, replaceWith_
+
+`document.write` - writes the html into page “right here and now”. \
+The call to document.write only works while the page is loading. If we call it afterwards, the existing document
+content is erased, this is a disadvantage.
+Advantage - when document.write is called while the browser is parsing incoming HTML, and it writes something, the
+browser consumes it as if it were in the HTML text, so it's very fast, because there’s no _DOM modification_ involved.
+```html
+<p>After one second the contents of this page will be replaced...</p>
+<script>
+  // document.write after 1 second
+  // that's after the page loaded, so it erases the existing content
+  setTimeout(() => document.write('<b>...By this.</b>'), 1000);
+</script>
+```
