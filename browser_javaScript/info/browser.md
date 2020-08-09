@@ -238,6 +238,9 @@ id – the value of “id” attribute, for all elements (HTMLElement).
 
 ---
 #### Attributes and properties
+Attributes – is what’s written in HTML. \
+Properties – is what’s in DOM objects. \
+
 ##### DOM properties
 DOM nodes are regular JavaScript objects. We can add some properties or functions to them.
 ```js
@@ -254,4 +257,117 @@ Element.prototype.sayHi = function() {
 };
 ```
 
+---
 ##### HTML attributes
+Tags have attributes. When the browser parses the HTML to create DOM objects from tags, _**standard** attributes become
+DOM properties_. But that doesn’t happen if the attribute is non-standard. \
+Standard attribute for one element can be unknown for another one. "type" is standard for <input> (HTMLInputElement),
+but not for <body> (HTMLBodyElement).
+
+How go get non-standard properties from DOM?
+ ```js
+elem.hasAttribute(name) // – checks for existence.
+elem.getAttribute(name)  // – gets the value.
+elem.setAttribute(name, value) // – sets the value.
+elem.removeAttribute(name) // – removes the attribute.
+```
+```html
+<body something="non-standard">
+  <script>
+    alert(document.body.getAttribute('something')); // non-standard
+  </script>
+</body>
+```
+
+`HTML attributes`:
+ - [x] Case-insensitive;
+ - [x] Always string, no matter what you've set there;
+ - [x] Has "name" and "value";
+ 
+```html
+<body>
+  <div id="elem" custom_prop="Some custom value"></div>
+  <script>
+    alert( elem.getAttribute('CuStOm_Prop') ); // (1) 'Elephant', reading
+    elem.setAttribute('Test', 123); // (2), writing
+    alert( elem.outerHTML ); // <div id="elem" custom_prop="Some custom valu" test="123"></div>
+    for (let attr of elem.attributes) { // (4) list all
+      alert( `${attr.name} = ${attr.value}` );
+    }
+  </script>
+</body>
+```
+
+`DOM properties`:
+ - [x] case-sensitive;
+ - [x] typed by JS types;
+
+```html
+<input id="input" type="checkbox" checked> checkbox
+<script>
+  alert(input.getAttribute('checked')); // the attribute value is: empty string
+  alert(input.checked); // the property value is: true
+</script>
+
+<div id="div" style="color:red; font-size:120%">Hello</div>
+<script>
+  // string
+  alert(div.getAttribute('style')); // color:red;font-size:120%
+  // object
+  alert(div.style); // [object CSSStyleDeclaration]
+  alert(div.style.color); // red
+</script>
+
+<a id="a" href="#hello">link</a>
+<script>
+  // attribute
+  alert(a.getAttribute('href')); // #hello
+  // property
+  alert(a.href ); // full URL in the form http://site.com/page#hello
+</script>
+```
+
+---
+##### Property-attribute synchronization
+In most cases standard attribute change - update the property of the element and vice versa.
+```html
+<input>
+<script>
+  let input = document.querySelector('input');
+  // Change attribute affects property
+  input.setAttribute('id', 'id');
+  alert(input.id); // id (updated)
+  // Change property affects attribute
+  input.id = 'newId';
+  alert(input.getAttribute('id')); // newId (updated)
+</script>
+```
+But, e.g. input.value synchronizes only from an attribute to property, but not back:
+```html
+<input>
+<script>
+  let input = document.querySelector('input');
+  // attribute => property
+  input.setAttribute('value', 'text');
+  alert(input.value); // text
+  // NOT property => attribute
+  input.value = 'newValue';
+  alert(input.getAttribute('value')); // text (not updated!)
+</script>
+```
+That “feature” may be useful when user changes value, and we want to recover the “original” value from HTML,
+it’s in the attribute.
+
+##### Non-standard attributes, dataset
+So we can add non-standard attributes, and easily manage them from JS. But what if they will be added to HTML standard?
+For this case there is a `dataset` property. All non-standard attributes that have `data-` in the beginning of their 
+names available in `elem.dataset` property. Multiword attributes like ```data-order-state``` become camel-cased:
+```dataset.orderState```.
+```html
+<body data-about="Elephants">
+<script>
+  alert(document.body.dataset.about); // Elephants
+</script>
+```
+
+#### Modifying the document
