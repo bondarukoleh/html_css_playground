@@ -239,7 +239,7 @@ id – the value of “id” attribute, for all elements (HTMLElement).
 ---
 #### Attributes and properties
 Attributes – is what’s written in HTML. \
-Properties – is what’s in DOM objects. \
+Properties – is what’s in DOM objects.
 
 ##### DOM properties
 DOM nodes are regular JavaScript objects. We can add some properties or functions to them.
@@ -261,8 +261,8 @@ Element.prototype.sayHi = function() {
 ##### HTML attributes
 Tags have attributes. When the browser parses the HTML to create DOM objects from tags, _**standard** attributes become
 DOM properties_. But that doesn’t happen if the attribute is non-standard. \
-Standard attribute for one element can be unknown for another one. "type" is standard for <input> (HTMLInputElement),
-but not for <body> (HTMLBodyElement).
+Standard attribute for one element can be unknown for another one. "type" is standard for \<input> (HTMLInputElement),
+but not for \<body> (HTMLBodyElement).
 
 How go get non-standard properties from DOM?
  ```js
@@ -437,3 +437,134 @@ browser consumes it as if it were in the HTML text, so it's very fast, because t
   setTimeout(() => document.write('<b>...By this.</b>'), 1000);
 </script>
 ```
+
+---
+#### Styles and classes
+##### className and classList
+ * className - all class names in one string separated
+ * classList - collection that has *["length", "value", "item", "contains", "add", "remove", "toggle", "replace",
+ "supports", "toString", "entries", "forEach", "keys", "values"]*
+
+
+##### Element style
+The property `elem.style is an object` that corresponds to what’s written in the "style" attribute. For *background-color*
+=> elem.style.backgroundColor. *-moz-border-radius* - elem.style.MozBorderRadius. \
+To `reset` some css property to default - set style.my_css_prop to an empty string, browser applies CSS classes and its
+built-in styles normally. No need to delete this property. \
+To set whole style as a string (same as all classes with className) use `style.cssText`:
+```html
+<div id="div">Button</div>
+<script>
+  // we can set special style flags like "important" here
+  div.style.cssText=`color: red !important; background-color: yellow;`;
+</script>
+```
+Another way to set style as string is `div.setAttribute('style', ...)`:
+```js
+div.setAttribute('style', 'color: red...')
+```
+
+##### Mind the units
+Don't forget values that you are setting to properties. If it's px - it won't work just with numbers but with string "1px"
+```html
+<body>
+  <script>
+    // doesn't work!
+    document.body.style.margin = 20;
+    alert(document.body.style.margin); // '' (empty string, the assignment is ignored)
+    // now add the CSS unit (px) - and it works
+    document.body.style.margin = '20px';
+    alert(document.body.style.margin); // 20px
+  </script>
+</body>
+```
+
+##### Computed styles: getComputedStyle
+The style property operates only on the value of the "style" attribute, without any CSS cascade. \
+`window.getComputedStyle(element, [pseudo])` to get all current style properties as an object.
+ * element - Element to read the value for.
+ * pseudo - A pseudo-element if required, for instance ::before. An empty string or no argument means the element itself.
+
+```js
+  let computedStyle = getComputedStyle(document.body);
+```
+
+`Computed and resolved values` \
+There are two concepts in CSS:
+ * A **computed style**, relative the value after all CSS rules and CSS inheritance is applied, as the result of the CSS
+ cascade. It can look like height:1em or font-size:125%.
+ * A **resolved style**, concrete value that applied to the element. The browser takes the computed value and makes all
+units fixed and absolute, so relative height:1em becomes height:16px. For geometry properties values may have a floating 
+point, like width:50.5px.
+
+ * getComputedStyle - returns resolved values.\
+ * getComputedStyle requires the full property name, better to ask paddingLeft, instead just padding.
+ * Styles applied to :visited links are hidden for security reasons.
+
+#### Element size and scrolling
+> Beware the scrollbar. It takes width of content.
+> Beware The padding-bottom area may be filled with text (if there is a lot of)
+
+##### offsetParent
+The `offsetParent` is the nearest ancestor that the browser uses for calculating coordinates during rendering. \ 
+> Beware client/offset/scrolled properties value are number type, but mean pixels
+
+That’s the nearest ancestor that is one of the following:
+ * CSS-positioned (position is absolute, relative, fixed or sticky)
+ * \<td>, \<th>, or \<table>
+ * \<body>
+
+ There are several occasions when offsetParent is null:
+ * For not shown elements (display:none or not in the document).
+ * For \<body> and \<html>.
+ * For elements with position:fixed.
+
+##### offsetLeft/offsetTop 
+Provide x/y coordinates relative to offsetParent upper-left corner. **Margin from parent to up left border corner**.
+
+```html
+<main style="position: relative" id="main">
+  <article>
+    <div style="position: absolute; left: 180px; top: 180px"></div>
+  </article>
+</main>
+<script>
+  alert(example.offsetLeft); // 180 (note: a number, not a string "180px")
+  alert(example.offsetTop); // 180
+</script>
+```
+
+##### offsetWidth/offsetHeight
+provide the “outer” width/height of the element. Or, in other words, its **full size including borders**.
+
+>zero/null geometry properties values for elements are not displayed
+If an element (or any of its ancestors) has *display:none* or is not in the document, then all geometry properties are zero (or null for offsetParent).
+
+For example, offsetParent is null, and offsetWidth, offsetHeight are 0 when we created an element, but haven’t inserted it into the document yet, or it (or it’s ancestor) has display:none.
+
+```js
+function isHidden(elem) {
+  // if element in the DOM, and have 0 size - it is still visible.
+  return !elem.offsetWidth && !elem.offsetHeight;
+}
+```
+
+##### clientTop/clientLeft
+Borders size, top and left. Relative coordinates from **border to inner area**.
+If *scrollbar* from the left - it's width *included* in the clientLeft.
+
+##### clientWidth/clientHeight
+provide the size of the area inside the element borders. *Scrollbar is not included* to clientWidth.
+**it's padding + width (content width)** \
+If there are no paddings, then clientWidth/Height is exactly the content area, inside the borders and the scrollbar (if any).
+
+##### scrollWidth/scrollHeight
+properties are **like clientWidth/clientHeight**, but they also **include the scrolled out** (area that is not showed on the screen because of the monitor size) parts.
+
+```js
+// expand the element to the full content height
+element.style.height = `${element.scrollHeight}px`;
+```
+
+##### scrollLeft/scrollTop
+**the width/height of the hidden, scrolled out** part of the element. `scrollTop` is “how much you've scrolled down already”.
