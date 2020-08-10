@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Trying to understand offset and so on</title>
+  <style>
+    main {
+      height: 1200px;
+      overflow: scroll;
+    }
+
+    #text {
+      width: 300px;
+      height: 400px;
+      overflow: scroll;
+    }
+
+    #in_text {
+      background: red;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div id="text">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore dolorem dolores ea fugiat ipsum nisi obcaecati
+    perspiciatis saepe vel? Ab atque culpa dolore doloremque ea in laboriosam libero? Accusantium ad adipisci amet animi
+    aut autem consectetur consequuntur corporis cumque delectus dicta doloremque dolorum ea error et expedita harum
+    ipsum
+    iusto laboriosam minima <span id="in_text" class="highlight">molestiae</span> molestias mollitia necessitatibus
+    nesciunt nihil placeat
+    porro possimus quibusdam
+    reprehenderitsintsunttemporibusteneturtotamutveniamvoluptatesAliquam aperiam consequatur possimus
+    sunt! Accusantium, adipisci beatae commodi doloremque eaque esse et ex impedit in itaque labore laudantium maxime
+    molestiae nesciunt nihil numquam odit repellat repudiandae similique sit suscipit tempore temporibus totam veniam
+    veritatis vero voluptatem voluptatum? Accusantium architecto aut cum deserunt impedit itaque porro provident tempora
+    velit? Ad adipisci asperiores at cupiditate distinctio doloribus facere, id ipsa ipsam iste laborum maxime molestiae
+    mollitia necessitatibus nihil odio perspiciatis quasi quidem quod repellendus reprehenderit repudiandae rerum
+    similique suscipit vero. Commodi enim esse laborum officiis placeat veritatis vitae? Aliquam amet assumenda, beatae
+    dolores doloribus exercitationem expedita inventore maxime modi obcaecati odit optio quis, rem, repellat sit totam
+    voluptas. Accusantium adipisci cum dolorum ea excepturi, expedita hic id inventore iste iure minima non obcaecati
+    tempore totam ullam vel vitae voluptatum.
+  </div>
+
+  <div id="result">
+    <p>Result is:</p>
+    <p id="in_result"></p>
+  </div>
+</main>
+
+<script>
+  let res = document.getElementById('text');
+  // setInterval(() => {
+  //   console.log(res.scrollTop, res.scrollHeight);
+  // }, 3000)
+</script>
+</body>
+</html>

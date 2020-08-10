@@ -84,10 +84,10 @@ Array.from(document.querySelectorAll('div')).map
 let elems = [...document.querySelectorAll('div')].map
 ```
 
-DOM `collections are read-only`. 
-We can’t replace a child by something else by assigning childNodes[i] = .... \
-DOM `collections are live`.
-If we keep a reference to elem.childNodes, and add/remove nodes into DOM, then they appear in the collection automatically.
+DOM `collections are read-only`. \
+We can’t replace a child by something else by assigning childNodes[i] = .... Changing DOM needs other methods. \
+DOM `collections are live with special methods`. \
+By reference to elem.childNodes, and add/remove nodes into DOM, then they appear in the collection automatically.
 
 ---
 ##### Element-only navigation
@@ -504,6 +504,7 @@ point, like width:50.5px.
 #### Element size and scrolling
 > Beware the scrollbar. It takes width of content.
 > Beware The padding-bottom area may be filled with text (if there is a lot of)
+> Beware all offset.client/scroll properties is read-only, except scrollLeft/scrollTop
 
 ##### offsetParent
 The `offsetParent` is the nearest ancestor that the browser uses for calculating coordinates during rendering. \ 
@@ -538,9 +539,11 @@ Provide x/y coordinates relative to offsetParent upper-left corner. **Margin fro
 provide the “outer” width/height of the element. Or, in other words, its **full size including borders**.
 
 >zero/null geometry properties values for elements are not displayed
-If an element (or any of its ancestors) has *display:none* or is not in the document, then all geometry properties are zero (or null for offsetParent).
+If an element (or any of its ancestors) has *display:none* or is not in the document, then all geometry properties are
+zero (or null for offsetParent).
 
-For example, offsetParent is null, and offsetWidth, offsetHeight are 0 when we created an element, but haven’t inserted it into the document yet, or it (or it’s ancestor) has display:none.
+For example, offsetParent is null, and offsetWidth, offsetHeight are 0 when we created an element, but haven’t inserted
+it into the document yet, or it (or it’s an ancestor) has display:none.
 
 ```js
 function isHidden(elem) {
@@ -555,11 +558,13 @@ If *scrollbar* from the left - it's width *included* in the clientLeft.
 
 ##### clientWidth/clientHeight
 provide the size of the area inside the element borders. *Scrollbar is not included* to clientWidth.
-**it's padding + width (content width)** \
-If there are no paddings, then clientWidth/Height is exactly the content area, inside the borders and the scrollbar (if any).
+**it's padding + visible on the screen content width/height** \
+If there are no paddings, then clientWidth/Height is exactly the content area, inside the borders and the scrollbar
+(if any).
 
 ##### scrollWidth/scrollHeight
-properties are **like clientWidth/clientHeight**, but they also **include the scrolled out** (area that is not showed on the screen because of the monitor size) parts.
+properties are **like clientWidth/clientHeight**, but they also **include the scrolled out** (area that is not showed
+on the screen because of the monitor size) parts.
 
 ```js
 // expand the element to the full content height
@@ -567,4 +572,14 @@ element.style.height = `${element.scrollHeight}px`;
 ```
 
 ##### scrollLeft/scrollTop
-**the width/height of the hidden, scrolled out** part of the element. `scrollTop` is “how much you've scrolled down already”.
+**the width/height of the hidden, scrolled out** part of the element. `scrollTop` is “how much you've scrolled down
+already”. In context of element, not page. If element content does not generate a vertical scrollbar, then it's
+scrollTop value is 0.
+
+`Don’t take width/height from CSS` \
+We should use DOM offset/client width/height instead getComputedStyle(elem).width by reasons:
+ * First, CSS width/height depend on another property: *box-sizing* that defines “what is” CSS width and height.
+   A change in box-sizing for CSS purposes may break such JavaScript.
+ * Second, CSS width/height may be *auto*, and for calculation we need px.
+ * Scrollbar. clientWidth/clientHeight takes into account scrollbar, but width/height from style - behave differently.
+
