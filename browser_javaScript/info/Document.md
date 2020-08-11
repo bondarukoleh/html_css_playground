@@ -606,3 +606,69 @@ For there are read-only properties `window.pageXOffset/pageYOffset` - it is how 
 #### Scrolling: scrollTo, scrollBy, scrollIntoView
 >To scroll the page from JS, DOM must be built. Scroll the page from the script in \<head> - won’t work.
 
+Regular elements can be scrolled by changing scrollTop/scrollLeft. \
+Same we can do for the page *document.documentElement.scrollTop/Left* (is Safari, document.body.scrollTop/Left). \
+But there is a uniform way: \
+ * `window.scrollBy(x,y)` scrolls the page **relative** to its current position. scrollBy(0,10) scrolls the page 10px down.
+ * `scrollTo(pageX,pageY)` scrolls the page to **absolute** coordinates, so that the top-left corner of the visible part
+  has coordinates (pageX, pageY) relative to the document’s top-left corner. It’s like setting scrollLeft/scrollTop.
+  To scroll to the very beginning - scrollTo(0,0);
+ 
+#### scrollIntoView
+`elem.scrollIntoView(top: boolean)` scrolls the page to make elem visible. \ 
+ if top=true (default), page will be scrolled to make elem appear on the top of the window. \
+ if top=false, then the page scrolls to make elem appear at the bottom.
+ 
+##### Forbid the scrolling
+Sometimes we need to make the document “unscrollable”. e.g when we cover page with the large message, we want the visitor
+to interact with it. We can make such change for any element.
+```js
+document.body.style.overflow = "hidden";
+```
+
+### Coordinates
+Most JavaScript methods deal with one of two coordinate systems:
+ * **Relative to the window** – similar to position:fixed, calculated from the window top/left edge. we’ll call these
+  coordinates as `clientX/clientY`.
+ * **Relative to the document** – similar to position:absolute in the document root, calculated from the document
+  top/left edge. we’ll denote them `pageX/pageY`.
+
+#### Element coordinates: getBoundingClientRect
+An object of built-in DOMRect class. Returns positive width/height. Main DOMRect properties:
+* *x/y* – X/Y-coordinates of the rectangle origin relative to window,
+* **width/height** – width/height of the rectangle (can be negative).
+* **top (y)/bottom (y + height)** – Y-coordinate for the top/bottom rectangle edge (can be negative),
+* **left (x)/right (x + width)** – X-coordinate for the left/right rectangle edge.
+
+top/bottom/left/right needed when ou want to play with direction of the element rectangle, when you want it to start
+not from upper left corner, but e.g. from bottom right, then these values can be negative and won't be equal to x/y.
+
+> Internet Explore: no support for x/y \
+> Coordinates right/bottom are different from CSS position properties. In CSS right - distance from the right edge,
+> bottom - distance from the bottom edge. In JS all window coordinates are counted from the top-left corner.
+
+#### elementFromPoint(x, y)
+returns the most nested element at window coordinates (x, y).
+> element should be shown on the screen, means no out-of-the-client-window x/y coordinates, elementFromPoint returns 
+> null for not shown elements
+
+#### Using for “fixed” positioning
+To show something near an element, we can use getBoundingClientRect to get its coordinates, and then CSS position 
+together with left/top (or right/bottom).
+
+#### Document coordinates
+In CSS, window coordinates correspond to position:fixed, while document coordinates are similar to position:absolute 
+on top.
+```js
+// get document coordinates of the element
+function getCoords(elem) {
+  let box = elem.getBoundingClientRect();
+
+  return {
+    top: box.top + window.pageYOffset,
+    right: box.right + window.pageXOffset,
+    bottom: box.bottom + window.pageYOffset,
+    left: box.left + window.pageXOffset
+  };
+}
+```
