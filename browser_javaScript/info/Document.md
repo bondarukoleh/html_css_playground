@@ -1,4 +1,4 @@
-#### Browser
+### Browser
 JavaScript can be executed in many platforms nowadays. A platform may be a browser, or a web-server or another host,
 even a “smart” coffee machine. Each of them provides platform-specific functionality. The JavaScript specification 
 calls that a `host environment`. A host environment provides own objects and functions additional to the language core.
@@ -30,7 +30,7 @@ everything except the document`. e.g. navigator object provides information abou
 The location object allows us to read the current URL and can redirect the browser to a new one.
 
 ---
-##### DOM tree
+#### DOM tree
 Every tag element is an object. Tags are `element nodes` (or just elements) with their children.
 The text inside elements forms - `text nodes`. A text node contains only a string. It may not have children and is
 always a leaf of the tree.
@@ -56,7 +56,7 @@ text nodes at all. In chrome dev tools, when you select some node in a html - it
 previous selected node - $1 and so on.
 
 ---
-##### Walking the DOM
+#### Walking the DOM
 < html> = document.documentElement
 < body> = document.body
 < head> = document.head
@@ -74,7 +74,7 @@ often will show you the "#text" node with "new line" sign. If you need element n
 The parent is available as `parentNode`.
 
 ---
-##### DOM Collections
+#### DOM Collections
 DOM collection is not an array, it's an array like object.
 ```js
 // you ca easily make an array from the elements
@@ -90,7 +90,7 @@ DOM `collections are live with special methods`. \
 By reference to elem.childNodes, and add/remove nodes into DOM, then they appear in the collection automatically.
 
 ---
-##### Element-only navigation
+#### Element-only navigation
 Navigation properties listed above refer to all nodes. For instance, in childNodes we can see both text nodes, element nodes, and even comment nodes if there exist.
 
 The links are similar to those given above, just with Element word inside: \
@@ -135,8 +135,8 @@ HTMLCollection only contains Elements Nodes. NodeList contains Element Nodes and
 |getElementsByTagName|	tag or '*'| +| +|HTMLCollection|		
 |getElementsByClassName|	class|	+|	+|HTMLCollection|
 
-#### Node properties: type, tag and contents
-##### DOM node classes
+### Node properties: type, tag and contents
+#### DOM node classes
 Different DOM nodes may have different properties. For instance, an element node corresponding to tag < a> has 
 link-related properties, and the one corresponding to < input> has input-related properties and so on.
 Each DOM node belongs to the corresponding built-in class.
@@ -194,7 +194,7 @@ We can also modify it. So it’s one of the most powerful ways to change the pag
 > Beware: “innerHTML+=” does a full overwrite
 
 As the content is and rewritten from the scratch, all images and other resources will be reloaded. Mouse selected text
-will be wiped from the rewritting, same as inputs filled by user, and so on.
+will be wiped from the rewriting, same as inputs filled by user, and so on.
 
 `outerHTML` full HTML of the element \
 The outerHTML property contains the full HTML of the element. That’s like innerHTML plus the element itself.
@@ -237,11 +237,11 @@ href – the “href” for \<a href="..."\> (HTMLAnchorElement). \
 id – the value of “id” attribute, for all elements (HTMLElement).
 
 ---
-#### Attributes and properties
+### Attributes and properties
 Attributes – is what’s written in HTML. \
 Properties – is what’s in DOM objects.
 
-##### DOM properties
+#### DOM properties
 DOM nodes are regular JavaScript objects. We can add some properties or functions to them.
 ```js
 document.body.myData = {
@@ -258,7 +258,7 @@ Element.prototype.sayHi = function() {
 ```
 
 ---
-##### HTML attributes
+#### HTML attributes
 Tags have attributes. When the browser parses the HTML to create DOM objects from tags, _**standard** attributes become
 DOM properties_. But that doesn’t happen if the attribute is non-standard. \
 Standard attribute for one element can be unknown for another one. "type" is standard for \<input> (HTMLInputElement),
@@ -328,7 +328,7 @@ elem.removeAttribute(name) // – removes the attribute.
 ```
 
 ---
-##### Property-attribute synchronization
+#### Property-attribute synchronization
 In most cases standard attribute change - update the property of the element and vice versa.
 ```html
 <input>
@@ -358,7 +358,7 @@ But, e.g. input.value synchronizes only from an attribute to property, but not b
 That “feature” may be useful when user changes value, and we want to recover the “original” value from HTML,
 it’s in the attribute.
 
-##### Non-standard attributes, dataset
+#### Non-standard attributes, dataset
 So we can add non-standard attributes, and easily manage them from JS. But what if they will be added to HTML standard?
 For this case there is a `dataset` property. All non-standard attributes that have `data-` in the beginning of their 
 names available in `elem.dataset` property. Multiword attributes like ```data-order-state``` become camel-cased:
@@ -371,12 +371,12 @@ names available in `elem.dataset` property. Multiword attributes like ```data-or
 ```
 
 ---
-#### Modifying the document
-##### Creating an element
+### Modifying the document
+#### Creating an element
 document.createElement(tag) \
 document.createTextNode(text) \
 
-##### Insertion methods
+#### Insertion methods
 If you want to add *element node* to another element, or append any string as a *text node*:
  * node.append(...nodes or strings) – append nodes or strings at the end of node,
  * node.prepend(...nodes or strings) – insert nodes or strings at the beginning of node,
@@ -404,20 +404,20 @@ There are 4 places where you can add things:
  * "beforeend" – insert html into elem, at the end;
  * "afterend" – insert html immediately after elem; 
 
-##### Node removal
+#### Node removal
 To remove a node, there’s a method elem.remove(). \
 If you want to move element no need to remove it from old one, all insertion methods automatically remove the node
 from the old place.
 
-##### Cloning nodes: cloneNode
+#### Cloning nodes: cloneNode
  * elem.cloneNode(true) creates a “deep” clone – with all attributes and subelements;
  * If we call elem.cloneNode(false), then the clone is made without child elements;
 
-##### DocumentFragment
+#### DocumentFragment
 DocumentFragment is a special DOM node that serves as a wrapper to pass around lists of nodes. \
 We can append other nodes to it, but when we insert it somewhere, then its content is inserted instead.
 
-##### Old-school insert/remove methods
+#### Old-school insert/remove methods
 `parentElem.appendChild(node)` Appends node as the last child of parentElem. \
 `parentElem.insertBefore(node, nextSibling)` - Inserts node before nextSibling into parentElem. \
 `parentElem.replaceChild(node, oldChild)` - Replaces oldChild with node among children of parentElem. \
@@ -439,17 +439,17 @@ browser consumes it as if it were in the HTML text, so it's very fast, because t
 ```
 
 ---
-#### Styles and classes
-##### className and classList
+### Styles and classes
+#### className and classList
  * className - all class names in one string separated
  * classList - collection that has *["length", "value", "item", "contains", "add", "remove", "toggle", "replace",
  "supports", "toString", "entries", "forEach", "keys", "values"]*
 
 
-##### Element style
+#### Element style
 The property `elem.style is an object` that corresponds to what’s written in the "style" attribute. For *background-color*
 => elem.style.backgroundColor. *-moz-border-radius* - elem.style.MozBorderRadius. \
-To `reset` some css property to default - set style.my_css_prop to an empty string, browser applies CSS classes and its
+To `reset` some CSS property to default - set style.my_css_prop to an empty string, browser applies CSS classes and its
 built-in styles normally. No need to delete this property. \
 To set whole style as a string (same as all classes with className) use `style.cssText`:
 ```html
@@ -464,7 +464,7 @@ Another way to set style as string is `div.setAttribute('style', ...)`:
 div.setAttribute('style', 'color: red...')
 ```
 
-##### Mind the units
+#### Mind the units
 Don't forget values that you are setting to properties. If it's px - it won't work just with numbers but with string "1px"
 ```html
 <body>
@@ -479,7 +479,7 @@ Don't forget values that you are setting to properties. If it's px - it won't wo
 </body>
 ```
 
-##### Computed styles: getComputedStyle
+#### Computed styles: getComputedStyle
 The style property operates only on the value of the "style" attribute, without any CSS cascade. \
 `window.getComputedStyle(element, [pseudo])` to get all current style properties as an object.
  * element - Element to read the value for.
@@ -501,12 +501,12 @@ point, like width:50.5px.
  * getComputedStyle requires the full property name, better to ask paddingLeft, instead just padding.
  * Styles applied to :visited links are hidden for security reasons.
 
-#### Element size and scrolling
+### Element size and scrolling
 > Beware the scrollbar. It takes width of content.
 > Beware The padding-bottom area may be filled with text (if there is a lot of)
-> Beware all offset.client/scroll properties is read-only, except scrollLeft/scrollTop
+> Beware all offset.client/scroll properties is **read-only**, except scrollLeft/scrollTop
 
-##### offsetParent
+#### offsetParent
 The `offsetParent` is the nearest ancestor that the browser uses for calculating coordinates during rendering. \ 
 > Beware client/offset/scrolled properties value are number type, but mean pixels
 
@@ -520,7 +520,7 @@ That’s the nearest ancestor that is one of the following:
  * For \<body> and \<html>.
  * For elements with position:fixed.
 
-##### offsetLeft/offsetTop 
+#### offsetLeft/offsetTop 
 Provide x/y coordinates relative to offsetParent upper-left corner. **Margin from parent to up left border corner**.
 
 ```html
@@ -535,7 +535,7 @@ Provide x/y coordinates relative to offsetParent upper-left corner. **Margin fro
 </script>
 ```
 
-##### offsetWidth/offsetHeight
+#### offsetWidth/offsetHeight
 provide the “outer” width/height of the element. Or, in other words, its **full size including borders**.
 
 >zero/null geometry properties values for elements are not displayed
@@ -552,17 +552,17 @@ function isHidden(elem) {
 }
 ```
 
-##### clientTop/clientLeft
+#### clientTop/clientLeft
 Borders size, top and left. Relative coordinates from **border to inner area**.
 If *scrollbar* from the left - it's width *included* in the clientLeft.
 
-##### clientWidth/clientHeight
+#### clientWidth/clientHeight
 provide the size of the area inside the element borders. *Scrollbar is not included* to clientWidth.
 **it's padding + visible on the screen content width/height** \
 If there are no paddings, then clientWidth/Height is exactly the content area, inside the borders and the scrollbar
 (if any).
 
-##### scrollWidth/scrollHeight
+#### scrollWidth/scrollHeight
 properties are **like clientWidth/clientHeight**, but they also **include the scrolled out** (area that is not showed
 on the screen because of the monitor size) parts.
 
@@ -571,7 +571,7 @@ on the screen because of the monitor size) parts.
 element.style.height = `${element.scrollHeight}px`;
 ```
 
-##### scrollLeft/scrollTop
+#### scrollLeft/scrollTop
 **the width/height of the hidden, scrolled out** part of the element. `scrollTop` is “how much you've scrolled down
 already”. In context of element, not page. If element content does not generate a vertical scrollbar, then it's
 scrollTop value is 0.
@@ -582,4 +582,27 @@ We should use DOM offset/client width/height instead getComputedStyle(elem).widt
    A change in box-sizing for CSS purposes may break such JavaScript.
  * Second, CSS width/height may be *auto*, and for calculation we need px.
  * Scrollbar. clientWidth/clientHeight takes into account scrollbar, but width/height from style - behave differently.
+
+### Window sizes and scrolling
+#### Width/height of the window
+We can get *window* height or width from `document.documentElement.clientHeight/clientWidth`
+> Beware there also window.innerWidth/innerHeight - but unlike client... they include scrollbar. \
+> DOCTYPE is important, top-level geometry properties may work a little bit differently when there’s no \<!DOCTYPE HTML>
+
+#### Width/height of the document
+Behavior of the different browsers are weird sometimes, so better to choose max value from below: 
+```js
+let documentHeight = Math.max(
+  document.body.scrollHeight, document.documentElement.scrollHeight,
+  document.body.offsetHeight, document.documentElement.offsetHeight,
+  document.body.clientHeight, document.documentElement.clientHeight
+);
+```
+
+#### Get the current scroll
+DOM elements have their current scroll state in elem.scrollLeft/scrollTop.
+For there are read-only properties `window.pageXOffset/pageYOffset` - it is how many pixels have scrolled already.
+
+#### Scrolling: scrollTo, scrollBy, scrollIntoView
+>To scroll the page from JS, DOM must be built. Scroll the page from the script in \<head> - won’t work.
 
