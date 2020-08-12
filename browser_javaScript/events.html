@@ -149,21 +149,21 @@
       const tunnel_1 = false;
       const first1 = $('#first1')
       const second1 = $('#second1')
-      const third1 = $('#thrird1')
+      const third1 = $('#third1')
       first1.addEventListener('click', function (e) {
         this.style.backgroundColor = 'red'
         alert('first click event fired')
-        e.stopPropagation()
+        // e.stopPropagation()
       }, tunnel_1)
       second1.addEventListener('click', function (e) {
         this.style.backgroundColor = 'yellow'
         alert('second click event fired')
-        e.stopPropagation()
+        // e.stopPropagation()
       }, tunnel_1)
       third1.addEventListener('click', function (e) {
         this.style.backgroundColor = 'green'
         alert('third click event fired')
-        e.stopPropagation()
+        // e.stopPropagation()
       }, tunnel_1)
 
 </script>

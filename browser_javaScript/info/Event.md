@@ -82,8 +82,11 @@ Some of the properties:
 
 `event.target vs event.currentTarget` \
 If you have onClick on div with paragraph inside. And User clicks on paragraph: \
-**e.target** === paragraph, the **element which caused the event**, on what event was born, which user interacted with. \
-**e.currentTarget** === div, the **element that has handler function registered**, which handler was attached to.
+**e.target** === paragraph, the **element which caused the event**, on what event was born, which user interacted with.
+e.target unlike e.currentTarget - does not change while an event is handling. You can find same target that cause an 
+event everywhere you can get the event object.\
+**e.currentTarget** === div, the **element that has handler function registered**, which handler was attached to. Same
+as `this`, means it's a current element handler is attached to. 
 
 #### Object handlers: handleEvent
 To *addEventListener* instead a function we can assign an object as an event handler. When an event occurs, `handleEvent`
@@ -129,3 +132,19 @@ will be called. So browser will call *obj.handleEvent(event)* from handle object
 ```
 
 ### Bubbling and capturing
+#### Bubbling
+When an event happens on an element, it first runs the handlers on it, then on its parent, then all the way up on other
+ancestors.
+```js
+// If listeners won't capture the event - it will move from bottom (element that gets the event) to top (parents)
+// like a buble
+elem.addEventListener('click', function (e) {}, {capture: false}); 
+```
+> Almost all events bubble. \
+> HTML frame/object: load, unload, scroll (except document scroll event bubble to window); \
+> HTML form: focus, blur; \
+> Mutation: DOMNodeRemovedFromDocument, DOMNodeInsertedIntoDocument; \
+> Progress: loadstart, progress, error, abort, load, loadend
+
+#### Stopping bubbling
+
