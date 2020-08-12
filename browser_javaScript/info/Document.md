@@ -504,7 +504,7 @@ point, like width:50.5px.
 ### Element size and scrolling
 > Beware the scrollbar. It takes width of content.
 > Beware The padding-bottom area may be filled with text (if there is a lot of)
-> Beware all offset.client/scroll properties is **read-only**, except scrollLeft/scrollTop
+> Beware all offset/client/scroll properties is **read-only**, except scrollLeft/scrollTop
 
 #### offsetParent
 The `offsetParent` is the nearest ancestor that the browser uses for calculating coordinates during rendering. \ 
@@ -640,7 +640,9 @@ An object of built-in DOMRect class. Returns positive width/height. Main DOMRect
 * **top (y)/bottom (y + height)** – Y-coordinate for the top/bottom rectangle edge (can be negative),
 * **left (x)/right (x + width)** – X-coordinate for the left/right rectangle edge.
 
-top/bottom/left/right needed when ou want to play with direction of the element rectangle, when you want it to start
+When you'll scroll down y and top and bottom will be less than before scroll down.
+
+top/bottom/left/right needed when you want to play with direction of the element rectangle, when you want it to start
 not from upper left corner, but e.g. from bottom right, then these values can be negative and won't be equal to x/y.
 
 > Internet Explore: no support for x/y \

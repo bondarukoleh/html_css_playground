@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    #field {
+      width: 200px;
+      height: 150px;
+      border: 10px solid black;
+      background-color: #00FF00;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    #ball {
+      position: absolute;
+      transition: .3s ease-in-out;
+    }
+  </style>
+</head>
+
+<body style="height:2000px">
+
+  Click on a field to move the ball there.
+  <br> The ball should never leave the field.
+
+
+  <div id="field">
+    <img src="https://en.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </div>
+
+  <script>
+    let ball = document.querySelector('#ball');
+    let field = document.querySelector('#field');
+    const fieldCoords = field.getBoundingClientRect();
+    document.querySelector('#field').addEventListener('click', function(e){
+      const coords = {x: e.clientX, y: e.clientY};
+      const ballCoords = {
+          top: coords.y - fieldCoords.top - field.clientTop - ball.offsetHeight / 2,
+          left: coords.x - fieldCoords.left - field.clientLeft - ball.offsetWidth /2
+      }
+      // prevent crossing the top field boundary
+      if (ballCoords.top < 0) ballCoords.top = 0;
+      // prevent crossing the left field boundary
+      if (ballCoords.left < 0) ballCoords.left = 0;
+      // // prevent crossing the right field boundary
+      if (ballCoords.left + ball.clientWidth > field.clientWidth) {
+        ballCoords.left = field.clientWidth - ball.clientWidth;
+      }
+      // prevent crossing the bottom field boundary
+      if (ballCoords.top + ball.clientHeight > field.clientHeight) {
+        ballCoords.top = field.clientHeight - ball.clientHeight;
+      }
+      ball.style.top = ballCoords.top + "px";
+      ball.style.left = ballCoords.left + "px";
+    })
+
+  </script>
+</body>
+</html>
