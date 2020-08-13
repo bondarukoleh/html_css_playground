@@ -74,7 +74,7 @@ Some of the properties:
 * e.type - The name of the event e.g. "click".
 * e.target - element which caused the event;
 * e.currentTarget - element that has handler function registered, `this` (if handler not bounded, or () => {}) in handler;
-* e.eventPhase - which phase of the event flow is being processed;
+* e.eventPhase - which phase of the event flow is being processed (capturing=1, target=2, bubbling=3);
 * e.timeStamp - when;
 * e.bubbles - A boolean indicating whether or not the event bubbles up through the DOM.;
 * e.cancelBubble - A historical alias to Event.stopPropagation(). Stops the propagation of events further in the DOM;
@@ -132,6 +132,14 @@ will be called. So browser will call *obj.handleEvent(event)* from handle object
 ```
 
 ### Bubbling and capturing
+If nothing like capturing or stopPropagation is called, event will go from the top html element to the element that was
+clicked, and then will fire all handlers from bottom to top.
+
+The standard *DOM Events* describes 3 phases of event propagation:
+ * **Capturing phase** – the event goes down to the element;
+ * **Target phase** – the event reached the target element;
+ * **Bubbling phase** – the event bubbles up from the element;
+
 #### Bubbling
 When an event happens on an element, it first runs the handlers on it, then on its parent, then all the way up on other
 ancestors.
@@ -147,4 +155,84 @@ elem.addEventListener('click', function (e) {}, {capture: false});
 > Progress: loadstart, progress, error, abort, load, loadend
 
 #### Stopping bubbling
+Event goes from target straight up. Normally it goes till <html>, and document object, and some of them reach window. \
+`event.stopPropagation()` - allows you to stop event move further to top, but if oon this level there are more handlers
+ they will be fired, to prevent this - `event.stopImmediatePropagation()` After it no other handlers execute.
+ > Don’t stop bubbling without a need! Maybe you'll need further all the clicks on menus, or forms, or statics. Stop
+> bubbling can cause weird behavior in the future.
+
+#### Capturing
+Event can be captured during *capture* phase. Pass `{capture: true}` to addEventListener function. From this browser
+decides on what phase register handler, capture or bubbling. `Handler will fire only once per event`. \
+Handlers doesn't matter on what phase they registered will fire on *target* phase, capture registered and bubbling 
+after them.
+> To remove the handler, removeEventListener needs the same phase \
+> Listeners on same element and same phase run in their registering order
+
+### Event delegation
+The idea is that if we have a lot of elements *handled in a similar way*, then instead of assigning a handler to each
+of them – we put a single handler on their common ancestor, and use the `event.target` to make some changes.
+
+
+```html
+<div id="menu">
+  <button data-action="load">Load</button>
+  <button data-action="search">Search</button>
+</div>
+
+<script>
+  class Menu {
+    constructor(elem) {
+      this._elem = elem;
+      elem.onclick = this.onClick.bind(this); // method will e called on element, this would == element unless we bind it
+    }
+    load() {alert('loading');}
+    search() {alert('searching');}
+
+    onClick(event) {
+      let action = event.target.dataset.action;
+      if (action) {
+        this[action]();
+      }
+    };
+  }
+  new Menu(menu);
+</script>
+```
+##### The “behavior” pattern
+We can use event delegation to add “behavior” to elements declaratively, with special attributes and classes. \
+The pattern has two parts:
+1. We add a custom attribute to an element that describes its behavior.
+2. A document-wide handler tracks events, and if an event happens on an attributed element – performs the action.
+
+Counter: \
+This click handler increases all values of all elements that have attribute data-counter.
+```html
+<input type="button" value="1" data-counter>
+<script>
+  document.addEventListener('click', function(event) {
+    if (event.target.dataset.counter != undefined) { // if the attribute exists...
+      event.target.value++;
+    }
+  });
+</script>
+```
+
+Toggler: \
+```html
+<button data-toggle-id="subscribe-mail">Show the subscription form</button>
+<form id="subscribe-mail" hidden>Your mail: <input type="email"></form>
+<script>
+  document.addEventListener('click', function(event) {
+    let id = event.target.dataset.toggleId;
+    if (!id) return;
+    let elem = document.getElementById(id);
+    elem.hidden = !elem.hidden;
+  });
+</script>
+```
+
+Disadvantages of event delegation:
+1. If somewhere is stopPropagation() - you cannot catch event (of course is you don't capture);
+2. CPU load, since all events are handling vy this top-level handler.
 

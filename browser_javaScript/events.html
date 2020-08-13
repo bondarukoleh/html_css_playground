@@ -44,11 +44,11 @@
       width: 400px;
       height: 200px;
     }
-    #thrird1 {
+    #third1 {
       width: 300px;
       height: 100px;
     }
-    #first1, #second1, #thrird1 {
+    #first1, #second1, #third1 {
       padding: 50px;
     }
     #rect p {
@@ -140,7 +140,7 @@
     First
     <div id="second1" class="border">
         Second
-        <div id="thrird1" class="border">
+        <div id="third1" class="border">
             Third
         </div>
     </div>
@@ -153,18 +153,18 @@
       first1.addEventListener('click', function (e) {
         this.style.backgroundColor = 'red'
         alert('first click event fired')
-        // e.stopPropagation()
+        e.stopPropagation()
       }, tunnel_1)
       second1.addEventListener('click', function (e) {
         this.style.backgroundColor = 'yellow'
         alert('second click event fired')
-        // e.stopPropagation()
+        e.stopPropagation()
       }, tunnel_1)
       third1.addEventListener('click', function (e) {
         this.style.backgroundColor = 'green'
         alert('third click event fired')
-        // e.stopPropagation()
-      }, tunnel_1)
+        e.stopPropagation()
+      }, true)
 
 </script>
 <input type="text" id="ifNotZero" placeholder="Only zerovs allowed">
