@@ -218,7 +218,7 @@ This click handler increases all values of all elements that have attribute data
 </script>
 ```
 
-Toggler: \
+Toggler: 
 ```html
 <button data-toggle-id="subscribe-mail">Show the subscription form</button>
 <form id="subscribe-mail" hidden>Your mail: <input type="email"></form>
@@ -234,5 +234,37 @@ Toggler: \
 
 Disadvantages of event delegation:
 1. If somewhere is stopPropagation() - you cannot catch event (of course is you don't capture);
-2. CPU load, since all events are handling vy this top-level handler.
+2. CPU load, since all events are handling via this top-level handler.
+
+
+### Browser default actions
+Many events have certain actions performed by the browser automatically. \
+e.g. link click - navigation to its URL, form submit button – submission to the serve,  mouse button over a text 
+selects the text;
+
+#### Preventing browser actions
+Two ways to prevent default browser action:
+* There’s a method `event.preventDefault()`;
+* If handler added using on\<event> (not by addEventListener), returning `false` - default action won't happened;
+```html
+<a href="/" onclick="return false">Click here</a>
+<a href="/" onclick="event.preventDefault()">here</a>
+```
+
+> Returning `false` from a handler is an exception. In all other cases, return value from handler is ignored.
+
+#### The “passive” handler option
+The addEventListener's `passive: true` option signals the browser that the handler is not going to call preventDefault().
+Why that may be needed?
+
+There are some events like *touchmove* on mobile devices (when the user moves their finger across the screen),
+that cause scrolling by default, but that scrolling can be prevented using preventDefault() in the handler.
+
+So when the browser detects such event, it will fire all handlers that could prevent that scrolling, and only after that
+it can proceed with scrolling, it coast time and effort. But we can tell browser that he can do his default stuff in parallels with our handlers - because we won't mess with the default.
+
+#### event.defaultPrevented
+It can help us to figure out if default behavior was canceled or not. e.g. we have onclick for some menu, and for whole
+document, in document onclick handler we can check if default behavior was canceled already - we can do nothing.
+
 
