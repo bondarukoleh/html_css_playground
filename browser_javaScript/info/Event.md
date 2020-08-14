@@ -264,7 +264,81 @@ So when the browser detects such event, it will fire all handlers that could pre
 it can proceed with scrolling, it coast time and effort. But we can tell browser that he can do his default stuff in parallels with our handlers - because we won't mess with the default.
 
 #### event.defaultPrevented
-It can help us to figure out if default behavior was canceled or not. e.g. we have onclick for some menu, and for whole
-document, in document onclick handler we can check if default behavior was canceled already - we can do nothing.
+It can help us to figure out if default behavior was canceled or not. e.g. we have onclick for some menu, and for a 
+whole document, in a document onclick handler we can check if default behavior was canceled already - we can do nothing.
+
+### Dispatching custom events
+We can not only assign handlers, but also generate events from JavaScript, custom and build-in.
+
+#### Event constructor
+We can use build in [Event](https://dom.spec.whatwg.org/#event) class.
+```js
+let event = new Event(type, {options});
+```
+ * **type** – event type, string e.g. "click", or custom "myEvent";
+ * **options** – the object with two optional properties:
+    * bubbles: true/false *(default)* – if true, then the event bubbles.
+    * cancelable: true/false *(default)* – if true, then the “default action” may be prevented.
+
+#### dispatchEvent
+After an event object is created, we should “run” it on an element using the call `elem.dispatchEvent(event)`. \
+If the event was created with the bubbles flag, then it bubbles. \
+```html
+<button id="elem" onclick="alert('Click!');">Autoclick</button>
+<script>
+  let event = new Event("click");
+  elem.dispatchEvent(event);
+</script>
+```
+**event.isTrusted** - property is `true` for events that come from real user actions and `false` for script-generated events. \
+We should use *addEventListener* to catch custom events, because there no *elem.onMyCustomEvent* property.
+
+#### UI Events
+UIEvent, FocusEvent, MouseEvent, WheelEvent, KeyboardEvent, etc. \
+Full list of event classes [here](https://www.w3.org/TR/uievents/) \
+We should use them instead `new Event()` to create events if we want them to fire, because it allows specifying some 
+properties, like clientX/clientY for a click. \
+```js
+let event = new MouseEvent("click", {
+  bubbles: true,
+  cancelable: true,
+  clientX: 100,
+  clientY: 100
+});
+```
+Technically, we can work around by assigning to `new Event('click')` directly  - `event.clientX=100`, but it's a hack.
+
+#### Custom events
+For them - use `new CustomEvent()`. Same as Event, but as a second argument object beside expected properties - there
+is `detail` where we can add anything we want.
+
+```html
+<h1 id="elem">Hello for John!</h1>
+
+<script>
+  elem.addEventListener("hello", function(event) {
+    console.log(event.detail.name);
+  });
+
+  elem.dispatchEvent(new CustomEvent("hello", {
+    detail: { name: "John" }, // anything I want in detail
+  }));
+</script>
+```
+
+#### preventDefault() for custom events.
+There no default behavior on a custom event, but if you call `customEvent.preventDefault()` - this handler returns false, 
+which you can use to understand do you need to continue or not. 
+> {cancelable: true} - DON"T forget this if you plan to prevent you custom event!
+
+#### Events-in-events are synchronous
+Usually events are processed in a `queue`. \
+When **browser is processing** "onclick", and a "mousemove" occurs, corresponding "mousemove" handlers **will be called
+after "onclick" processing is finished**.
+
+**Exception**: when **one event is initiated from within another one**. When dispatchEvent, or some function that 
+triggers another handler is called from some handler - it's postponed - new triggered dispatched event handler is on
+a stack immediately. If you want to get rid of these situations, either put call that triggers another event to the end,
+or wrap it to 0 setTimeout to make it async, and it will run after all sync code in JS is done.
 
 

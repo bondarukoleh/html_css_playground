@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div id="some">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci asperiores autem ex fuga odio, quis sit velit!
+  Facere fuga neque odio perspiciatis praesentium quasi, quis rem soluta veniam vero voluptate.
+</div>
+</body>
+<script>
+  some.addEventListener('customEvent', (e) => {
+    if(confirm("Do you want to fire event")){
+      alert("Event fired")
+    } else {
+      console.dir(e.detail)
+      e.preventDefault();
+    }
+  })
+
+ const event = new CustomEvent('customEvent', {cancelable: true, detail: {myStuff: 123, another: 111}})
+  const result = some.dispatchEvent(event);
+  if(!result) {
+    alert("We have 'false' from dispatchEvent")
+  }
+</script>
+</html>
