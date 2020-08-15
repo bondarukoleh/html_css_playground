@@ -341,4 +341,33 @@ triggers another handler is called from some handler - it's postponed - new trig
 a stack immediately. If you want to get rid of these situations, either put call that triggers another event to the end,
 or wrap it to 0 setTimeout to make it async, and it will run after all sync code in JS is done.
 
+### Mouse events
+**Event order**: \
+Simple click - mousedown > mouseup > click. Double click - mousedown >mouseup > click > dbclick;
+ 
+Click events mostly has a **button property**: \
+Left button (primary) - 0, Middle button (auxillary) - 1, Right button (secondary) - 2, X1 button (back) - 3, X2 button
+(forward) - 4;
 
+> The outdated event.which (1 - left, 2 -middle, 3 - right) is deprecated;
+
+**Modifiers**: shift, alt, ctrl and meta: \
+All mouse events include the information about pressed modifier keys, e.g. `event.metaKey: true`.
+shiftKey: Shift, altKey: Alt (or Opt for Mac), ctrlKey: Ctrl, metaKey: Cmd for Mac.
+> Don't forget about mobile devices - when you rely main functions on keyboards.
+
+**Coordinates: clientX/Y, pageX/Y:** \
+All mouse events provide coordinates in two flavours:
+* Window-relative: clientX and clientY;
+* Document-relative: pageX and pageY;
+Document-relative coordinates `**pageX/Y**` are counted from the left-upper corner of the document, and
+`**do not change**` when the page is scrolled, while `**clientX/Y**` are counted from the current window left-upper
+corner. When the page is scrolled, `**they change**`.
+
+To disable some default actions like selecting the text on double click, or coping - return false from handlers. 
+```html
+<div ondblclick="alert('Click!')" onmousedown="return false"> Double-click me </div> <!-- Won't select --> 
+<div oncopy="return false"> Try to copy </div> <!-- Won't copy --> 
+```
+
+### Moving the mouse: mouseover/out, mouseenter/leave

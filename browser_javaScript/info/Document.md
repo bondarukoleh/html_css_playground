@@ -627,7 +627,7 @@ document.body.style.overflow = "hidden";
 ```
 
 ### Coordinates
-Most JavaScript methods deal with one of two coordinate systems:
+Most JavaScript methods deal with one of two coordinates systems:
  * **Relative to the window** – similar to position:fixed, calculated from the window top/left edge. we’ll call these
   coordinates as `clientX/clientY`.
  * **Relative to the document** – similar to position:absolute in the document root, calculated from the document
