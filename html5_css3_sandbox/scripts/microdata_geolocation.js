@@ -3,35 +3,33 @@ const source1 = document.querySelector('#source1')
 const source2 = document.querySelector('#source2')
 const target = document.querySelector('#targetDiv')
 const outerTarget = document.querySelector('#dagAndDropDiv')
-const wtf = document.querySelector('#wtf')
 
 source1.addEventListener('dragstart', function (e) {
   this.style.border = "3px dotted #fff";
   e.dataTransfer.setData('sourcedata', 'Source1 inner Data')
   e.dataTransfer.setData('sourceElemId', this.id)
   e.dataTransfer.setData('text', this.innerText)
-}, false);
+});
 
 source1.addEventListener('dragend', function (e) {
   this.style.border = ""
-}, false);
+});
 
 source2.addEventListener('dragstart', function (e) {
   this.style.border = "3px dotted #fff";
   e.dataTransfer.setData('sourcedata', 'Source2 inner data')
   e.dataTransfer.setData('sourceElemId', this.id)
   e.dataTransfer.setData('text', this.innerText)
-}, false);
+});
 
 source2.addEventListener('dragend', function (e) {
   this.style.border = ""
-}, false);
+});
 
 target.addEventListener('dragover', function (e) {
   e.preventDefault();
-  this.classList.add('dragovered')
-  return false;
-}, false);
+  this.classList.add('dragovered');
+});
 
 target.addEventListener('drop', function (e) {
   e.preventDefault();
@@ -43,32 +41,27 @@ target.addEventListener('drop', function (e) {
   innerDataP.setAttribute('id', 'innerDataP' + e.dataTransfer.getData('sourceElemId'))
   innerDataP.innerText = 'Inner data from elem: "' + gotSourceData + '" \n Elem text: "' + gottext + '".'
   this.appendChild(innerDataP)
-  return false;
-}, false);
+});
 
 target.addEventListener('dragend', function (e) {
   this.classList.remove('dragovered')
-}, false);
+});
 
 target.addEventListener('dragleave', function (e) {
   this.classList.remove('dragovered')
-}, false);
+});
 
 target.addEventListener('dragstart', function (e) {
-  console.log(e.dataTransfer.getData('sourceElemId'))
   this.removeChild(document.getElementById('innerDataP' + e.dataTransfer.getData('sourceElemId')))
-}, false);
+});
 
 outerTarget.addEventListener('dragover', function (e) {
   e.preventDefault();
-  return false;
-}, false);
+});
 
 outerTarget.addEventListener('drop', function (e) {
-  e.preventDefault();
-  e.stopPropagation();
   this.appendChild(document.getElementById(e.dataTransfer.getData('sourceElemId')));
-}, false)
+})
 
 /*=========================== Geolocation ==========================================*/
 const geolocationUl = document.querySelector('#navGeoLocUL')

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mouse over</title>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+
+    .wrap {
+      display: flex;
+      justify-content: center;
+      width: 700px;
+      height: 700px;
+    }
+
+    #parent {
+      width: 500px;
+      height: 500px;
+      background: #4c6ca0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #child {
+      width: 300px;
+      height: 300px;
+      background: #4c99a0;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div id="parent">
+    <div id="child"></div>
+  </div>
+</div>
+</body>
+
+<script>
+  document.querySelector('#parent').addEventListener('mouseover', (e) => {
+    console.log('Parent mouseover triggered');
+  });
+
+  document.querySelector('#child').addEventListener('mouseover', (e) => {
+    console.log('Child mouseover triggered');
+  });
+
+  document.querySelector('#parent').addEventListener('mouseenter', (e) => {
+    console.log('Parent mouseenter triggered');
+  });
+
+  document.querySelector('#parent').addEventListener('mouseleave', (e) => {
+    console.log('Parent mouseleave triggered');
+  });
+
+  document.querySelector('#child').addEventListener('mouseenter', (e) => {
+    console.log('Child mouseenter triggered');
+  });
+
+  document.querySelector('#child').addEventListener('mouseleave', (e) => {
+    console.log('Child mouseleave triggered');
+  });
+</script>
+</html>

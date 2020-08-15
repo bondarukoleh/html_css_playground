@@ -118,7 +118,7 @@ td.cellIndex – the number of the cell inside the enclosing < tr>.
 Find Element \
 Only document.getElementById, not anyElem.getElementById. \
 `elem.matches(css)` - like some filtering for elements, if it matches css selector -> true.
-`elem.closest(css)` - looks the nearest ancestor that matches the selector. Elem itself also is included in the search.
+`elem.closest(css)` -  returns *itself* or *ancestor* that matches the selector, or *null*.
 `elemA.contains(elemB)` returns true if elemB is inside elemA (a descendant of elemA) or when elemA==elemB.
 
 Live vs Static collections \ 

@@ -245,7 +245,7 @@ selects the text;
 #### Preventing browser actions
 Two ways to prevent default browser action:
 * There’s a method `event.preventDefault()`;
-* If handler added using on\<event> (not by addEventListener), returning `false` - default action won't happened;
+* If handler added using on\<event> (not by addEventListener), returning `false` - default action won't happen;
 ```html
 <a href="/" onclick="return false">Click here</a>
 <a href="/" onclick="event.preventDefault()">here</a>
@@ -260,8 +260,9 @@ Why that may be needed?
 There are some events like *touchmove* on mobile devices (when the user moves their finger across the screen),
 that cause scrolling by default, but that scrolling can be prevented using preventDefault() in the handler.
 
-So when the browser detects such event, it will fire all handlers that could prevent that scrolling, and only after that
-it can proceed with scrolling, it coast time and effort. But we can tell browser that he can do his default stuff in parallels with our handlers - because we won't mess with the default.
+So when the browser detects such an event, it will fire all handlers that could prevent that scrolling, and only after that
+it can proceed with scrolling, it coasts time and effort. But we can tell the browser that he can do his default stuff in
+parallels with our handlers - because we won't mess with the default.
 
 #### event.defaultPrevented
 It can help us to figure out if default behavior was canceled or not. e.g. we have onclick for some menu, and for a 
@@ -371,3 +372,50 @@ To disable some default actions like selecting the text on double click, or copi
 ```
 
 ### Moving the mouse: mouseover/out, mouseenter/leave
+#### Mouseover/out
+Mouseover/out is a special event that has property *relatedTarget*. \
+* Mouseover: target - where to, relatedTarget - where from;
+* Mouseout: target - where from, relatedTarget - where to;
+
+> relatedTarget can be `null`. Keep in mind when you want to do something like event.relatedTarget.tagName.
+
+If mouse moves very fast - browser cannot track all the path, so sometimes, elements can be missed. But, if browser 
+realized the mouseover event on some element - there will be mouseout for sure.
+
+> Event's are bubbling. If you have mouseover on parent and child, moving mouse to child will fire parent, child,
+> and bubbled parent mouseover again. To avoid such a situation - check relatedTarget, or mouseenter, mouseleave.
+
+> By browser logic, the mouse **cursor may be only over a single element** at any time – the **most nested** one and **top by z-index**.
+
+#### Mouseenter/leave
+They trigger when the mouse pointer enters/leaves the element. Also, have targetElement with same behavior.
+Also, some specialties:
+* **Transitions** inside the element, to/from descendants, **are not counted**.
+* Events mouseenter/mouseleave **do not bubble**.
+
+### Drag'n'Drop with mouse events
+[New spec](https://html.spec.whatwg.org/multipage/dnd.html#dnd) with `dragstart` and `dragend`.
+These events allow us to support such things as dragging a file from OS and dropping it into the browser window. Then
+JS can access the contents.
+
+#### The basic Drag’n’Drop algorithm looks like this:
+* `mousedown` – prepare the element for moving (e.g. create clone, add a class);
+* `mousemove` move it by changing left/top with position:absolute;
+* `mouseup` – perform all actions related to finishing the drag’n’drop.
+
+#### New features of dnd
+* dragstart - moving element picked;
+* dragend - end of the draging, no matter success or canceled;
+* dragenter - when moving element entered target;
+* dragleave - when moving element left target;
+* dragover - when moving element over target;
+* drop - when moving element released over target;
+
+To figure out what element under moving, use `document.elementFromPoint`:
+```js
+moving.hidden = true; // (*) hide the element that we drag
+let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
+moving.hidden = false;
+```
+
+### Pointer events
