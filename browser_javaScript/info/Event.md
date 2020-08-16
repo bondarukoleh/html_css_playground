@@ -419,3 +419,119 @@ moving.hidden = false;
 ```
 
 ### Pointer events
+Mouse events were from the start, but they are not so powerful as touch devices, such as touch in multiple places, so
+Touch events were introduced, but even them were not enough so [Pointer events](https://www.w3.org/TR/pointerevents2/)
+where introduced. \
+Unless you code for IE 10, or Safari 12, there’s no point in using mouse or touch events any more, **us pointer**.
+
+
+|Pointer Event |	Mouse event |
+|:---:|:---:|
+|pointerdown|	mousedown|
+|pointerup|	mouseup|
+|pointermove|	mousemove|
+|pointerover|	mouseover|
+|pointerout|	mouseout|
+|pointerenter|	mouseenter|
+|pointerleave|	mouseleave|
+|pointercancel|	-|
+|gotpointercapture|	-|
+|lostpointercapture|	-|
+
+Additional props in Pointer event:
+* *pointerId* – the unique identifier of the pointer causing the event. Allows us to handle multiple pointers;
+* *pointerType* – the pointing device type, string, one of: “mouse”, “pen” or “touch”.
+* *isPrimary* – true for the primary pointer (the first finger in multi-touch).
+
+For pointers that measure contact area and pressure, e.g. a finger, the additional properties:
+* *width* – the width of the area where the pointer touches the device. For unsupported, e.g. a mouse, it’s always 1.
+* *height* – the height of the area where the pointer touches the device. Where unsupported, it’s always 1.
+* *pressure* – the pressure of the pointer tip, in range from 0 to 1. For unsupported either 0.5 (pressed) or 0.
+* *tangentialPressure* – the normalized tangential pressure.
+* *tiltX, tiltY, twist* – pen-specific properties that describe how the pen is positioned relative the surface.
+These properties aren’t very well supported across devices.
+
+#### Multi touch
+* At the first touch:
+ * `pointerdown` with `isPrimary=true` and some `pointerId`.
+* For the second finger and further touches:
+ * `pointerdown` with `isPrimary=false` and a `different pointerId` for every finger.
+
+#### pointercancel event
+fires when there’s a pointer interaction, but something causes it to be aborted, so no more pointer events are generated.
+Could be: The pointer device hardware was disabled, the device orientation changed (tablet rotated), the browser decided
+to handle the interaction on its own, considering it a mouse gesture or zoom-and-pan action or something else.
+
+Browser can easily decide to use its own dnd implementation, so after pointerdown, pointermove (with moving element) and
+then generate pointercancel - so there will be no more pointermove. We can prefent default browser dnd with:
+* elem.ondragstart = () => false, or {cancelable: true} and preventDefault().
+* For touch devices, there are also touch-related browser actions. We can prevent them by setting 
+'#elem' { touch-action: none } in CSS.
+
+#### Pointer capturing
+We can “bind” all events with some pointerId to a given element. Then all subsequent events with the same pointerId
+will be retargeted to the same element. The browser sets that element as the target and trigger associated handlers,
+no matter where it actually happened.
+
+Related methods are:
+* elem.setPointerCapture(pointerId) – binds the given pointerId to elem.
+* elem.releasePointerCapture(pointerId) – unbinds the given pointerId from elem.
+
+> Binding automatically removed after `pointerup` or `pointercancel` events, or when target removed from the document.
+
+Pointer capturing is used to simplify drag’n’drop kind of interactions. e.g. If you click on slider, you can move mouse
+way out of that element, and still move the slider, right? To understand where you are moving the mouse, we should listen
+for mouse move on the whole document, but now you can bind this `pointerdown` to some elem, and that's it.
+```js
+elem.onpointerdown = function(event) {
+  // retarget all pointer events (until pointerup) to me
+  elem.setPointerCapture(event.pointerId);
+};
+
+elem.onpointermove = function(event) {
+  // move the slider: listen at elem, as all events are retargeted to it
+  let newLeft = event.clientX - slider.getBoundingClientRect().left;
+  elem.style.left = newLeft + 'px';
+};
+```
+There are two associated pointer events:
+* gotpointercapture - fires when an element uses setPointerCapture to enable capturing.
+* lostpointercapture - fires when the capture is released: either explicit with releasePointerCapture, or implicit on
+pointerup/pointercancel.
+
+### Keyboard: keydown and keyup
+Note there are other ways to “input something”, e.g. speech recognition or copy/paste with the mouse. \
+If we want to track any input into an \<input> field, keyboard events - not enough. For that we have event named `input`
+to track changes of an \<input> field. \
+Keyboard events should be used to handle keyboard actions/combinations.
+
+Keyboard event has: 
+* `keydown` and `keyup`;
+* `key` - exactly the symbol that was pressed, **z** if it's presses, **Z** if it's pressed with **shift**;	
+* `code` - key code, no matter shift - it's KeyZ always. Letters do Key<letter>, digits - Digit<number>, and special - 
+"Enter", "Tab", "Backspace", etc.
+
+> Code case matters: "KeyZ", not "keyZ"
+
+Different keyboard layout can cause issue, e.g if US has QWERTY German haz QWERTZ. Letter Y and Z swapped, means 
+event.code KeyZ for US means z for German means y. Weird, right? So there are a couple of rules: 
+* If we want to handle `layout-dependant keys`? Then **event.key** is the way to go.
+* If we want a `hotkey to work` even after a language switch? Then **event.code** may be better.
+ 
+When key is pressed for long time it starts to repeat, for an event that fired that way - `event.repeat` = true.
+
+>Legacy - keypress event, keyCode, charCode, avoid using them. \
+>No event for `Fn` key - it's for OS.
+
+### Scrolling
+Scroll event allows to react on a page or element scrolling, e.g. Show/hide additional controls depending on where in 
+the document the user is, or load more data when the user scrolls down. 
+
+To prevent - either preventDefault on 'scroll', or prevent default on key down up.
+
+Please note two important features of the scroll:
+
+A few things:
+* The scroll is “elastic”. We can scroll a little above the document start or end in some browsers/devices.
+* The scroll is imprecise. When you scroll to the end you  may be in fact 0-50px away from real document bottom. So,
+ “scrolling to the end” should mean it is no more than 100px away the bottom.
