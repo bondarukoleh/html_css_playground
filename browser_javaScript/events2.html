@@ -10,7 +10,7 @@
   <script>function $(selector) { return document.querySelector(selector) }</script>
   <style>
     html {
-      background: url('../../html5_css3_sandbox/imgs/back.png') no-repeat center center fixed;
+      background: url('../html5_css3_sandbox/imgs/back.png') no-repeat center center fixed;
     }
     * {
       margin: 10px;
@@ -80,9 +80,20 @@
   </script>
 
   <script>
+    document.addEventListener('DOMContentLoaded', (e) => {
+      console.log(e.type)
+      console.log(e)
+    })
+
+    window.addEventListener('load', (e) => {
+      console.log(e.type)
+      console.log(e)
+    })
+
     window.addEventListener('beforeunload', (event) => {
-      event.returnValue = `Are you sure you want to leave?`;
-    });
+      // event.returnValue = `Are you sure you want to leave?`; // Doesn't work no more, cannot customize it.
+     event.preventDefault();
+    }, {passive: false});
   </script>
 </body>
 

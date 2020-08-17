@@ -330,7 +330,8 @@ is `detail` where we can add anything we want.
 #### preventDefault() for custom events.
 There no default behavior on a custom event, but if you call `customEvent.preventDefault()` - this handler returns false, 
 which you can use to understand do you need to continue or not. 
-> {cancelable: true} - DON"T forget this if you plan to prevent you custom event!
+> {cancelable: true} - DON"T forget this as an option of your custom event when you are creating it if you plan to
+> prevent you custom event!
 
 #### Events-in-events are synchronous
 Usually events are processed in a `queue`. \

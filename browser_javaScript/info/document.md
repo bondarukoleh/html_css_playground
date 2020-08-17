@@ -679,3 +679,121 @@ function getCoords(elem) {
 
 ---
 ### Page: DOMContentLoaded, load, beforeunload, unload
+The lifecycle of an HTML page has three important events:
+* document event `DOMContentLoaded` – the browser **fully loaded HTML**, **DOM tree is built**, but 
+**external resources** \<img> and stylesheets **may be not yet loaded**. Since DOM is ready - we can assign the handlers. 
+* window event `load` – HTML is loaded with external resources: images, styles etc. Since css and images is ready - we
+know styles and sizes.
+* window event `beforeunload/unload` – the user is leaving the page. We can send some statistics, since we know that
+work on this page is done, or close some popups, or cancel/finish some work.
+
+#### DOMContentLoaded
+Happens on the document object.
+
+**DOMContentLoaded and scripts** \
+When the browser processes an HTML-document and comes across a \<script> tag, it needs to execute before continuing
+building the DOM, because script can modify the DOM, or document.write - so browser cannot say that DOM is built before
+it. But there is a 
+> Scripts that don’t block DOMContentLoaded. `async` attributed or created dynamically `document.createElement('script')`;
+
+**DOMContentLoaded and styles** \
+CSS don't affect the DOM, so DOMContentLoaded doesn't wait for it, but if you in script wait for css to be applied on 
+the element style, then script won't be executed until CSS is loaded.
+ 
+Firefox, Chrome and Opera `autofill` forms on DOMContentLoaded with remembered content.
+
+#### window.onload
+The `load` event on the window object triggers when the `whole page is loaded` including `styles, images and other
+resources`. You can use also window.onload.
+
+#### window.onunload
+When a visitor leaves the page, and ou want to send some statistics there is `navigator.sendBeacon(url, data)`.
+It works in background. 
+```js
+let analyticsData = { /* object with gathered data */ };
+window.addEventListener("unload", function() {
+  navigator.sendBeacon("/analytics", JSON.stringify(analyticsData));
+};
+/* POST, limited by 64kb, and no way to get the responce from server (which is empty in most cases). */
+```
+There’s also a keepalive flag for doing such “after-page-left” requests in fetch method for generic network requests.
+
+#### window.onbeforeunload
+If user wants to leave and you want to stop him to doing that - that's the event you can use.
+```js
+window.onbeforeunload = function() {  return false;}; // and browser will ask you not-customizable question about leaving
+```
+
+#### readyState
+If there is possibility to adding `DOMContentLoaded` handler after DOM is loaded, so it won't be fired at all. There are
+cases when we'd like to know whether DOM ready or not - `document.readyState`. \
+There are 3 possible values:
+* `"loading"` – the document is loading.
+* `"interactive"` – the document was fully read.
+* `"complete"` – the document was fully read and all resources are loaded.
+
+```js
+function work() { /*...*/ }
+if (document.readyState == 'loading') {
+  // loading yet, wait for the event
+  document.addEventListener('DOMContentLoaded', work);
+} else {
+  // DOM is ready!
+  work();
+}
+```
+**readystatechange** \
+readystatechange event fired when readyState has changed, if you need to get it.
+
+The typical process of building page:
+1. initial readyState:loading
+2. readyState:interactive
+3. DOMContentLoaded
+4. iframe onload
+5. img onload
+6. readyState:complete
+7. window onload
+
+### Scripts: async, defer
+Scripts are heavy, blocking DOM and sync scripts cannot reach anything below them in the page. Placing script to the
+bottom of the page still have disadvantages.
+#### defer
+`defer` attribute tells the browser that it should go on working with the page, and load the script “in background”,
+then run the script when it loads. Browser downloads scripts in parallel but executes is the order it was added to the
+page.
+
+* defer **never block the page**.
+* defer **execute when the DOM is ready**, but **before DOMContentLoaded** event.
+> The `defer` attribute is only for external scripts, it's ignored when `<script>` has no `scr` attribute.
+
+#### async
+`async` attribute means that a script is completely independent:
+* Page doesn’t wait for async scripts.
+* DOMContentLoaded and async completely strangers, DOMContentLoaded may fire before or after an async script.
+* Other scripts don’t wait for async scripts.
+* async executes a queue, in order they downloaded, not added to the page.
+ 
+ It's great for third-party functionality, ads, counters.
+ 
+#### Dynamic scripts
+Dynamic script starts loading, as soon as it appended do the document. \
+> **Dynamic scripts behave as “async” by default**
+
+But if you want to make them execute in order - `script.async = false;`
+```js
+let script = document.createElement('script');
+script.src = "/article/script-async-defer/long.js";
+script.async = false;
+document.body.append(script); 
+```
+> Page without scripts should be usable. Make sure that page can exist without the `defer`, so nice thing put loaders
+> instead of loading images, or disabling buttons, etc.
+
+### Resource loading: onload and onerror
+Browser allows us to track the loading of external resources – scripts, iframes, pictures and so on. \
+There are two events for it:
+* onload – successful load;
+* onerror – an error occurred;
+
+#### Loading a script
+
