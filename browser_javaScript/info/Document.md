@@ -1,4 +1,4 @@
-### Browser
+## Browser
 JavaScript can be executed in many platforms nowadays. A platform may be a browser, or a web-server or another host,
 even a “smart” coffee machine. Each of them provides platform-specific functionality. The JavaScript specification 
 calls that a `host environment`. A host environment provides own objects and functions additional to the language core.
@@ -30,7 +30,7 @@ everything except the document`. e.g. navigator object provides information abou
 The location object allows us to read the current URL and can redirect the browser to a new one.
 
 ---
-#### DOM tree
+### DOM tree
 Every tag element is an object. Tags are `element nodes` (or just elements) with their children.
 The text inside elements forms - `text nodes`. A text node contains only a string. It may not have children and is
 always a leaf of the tree.
@@ -56,7 +56,7 @@ text nodes at all. In chrome dev tools, when you select some node in a html - it
 previous selected node - $1 and so on.
 
 ---
-#### Walking the DOM
+### Walking the DOM
 < html> = document.documentElement
 < body> = document.body
 < head> = document.head
@@ -74,7 +74,7 @@ often will show you the "#text" node with "new line" sign. If you need element n
 The parent is available as `parentNode`.
 
 ---
-#### DOM Collections
+### DOM Collections
 DOM collection is not an array, it's an array like object.
 ```js
 // you ca easily make an array from the elements
@@ -89,7 +89,6 @@ We can’t replace a child by something else by assigning childNodes[i] = .... C
 DOM `collections are live with special methods`. \
 By reference to elem.childNodes, and add/remove nodes into DOM, then they appear in the collection automatically.
 
----
 #### Element-only navigation
 Navigation properties listed above refer to all nodes. For instance, in childNodes we can see both text nodes, element nodes, and even comment nodes if there exist.
 
@@ -135,6 +134,7 @@ HTMLCollection only contains Elements Nodes. NodeList contains Element Nodes and
 |getElementsByTagName|	tag or '*'| +| +|HTMLCollection|		
 |getElementsByClassName|	class|	+|	+|HTMLCollection|
 
+---
 ### Node properties: type, tag and contents
 #### DOM node classes
 Different DOM nodes may have different properties. For instance, an element node corresponding to tag < a> has 
@@ -257,7 +257,6 @@ Element.prototype.sayHi = function() {
 };
 ```
 
----
 #### HTML attributes
 Tags have attributes. When the browser parses the HTML to create DOM objects from tags, _**standard** attributes become
 DOM properties_. But that doesn’t happen if the attribute is non-standard. \
@@ -501,6 +500,7 @@ point, like width:50.5px.
  * getComputedStyle requires the full property name, better to ask paddingLeft, instead just padding.
  * Styles applied to :visited links are hidden for security reasons.
 
+---
 ### Element size and scrolling
 > Beware the scrollbar. It takes width of content.
 > Beware The padding-bottom area may be filled with text (if there is a lot of)
@@ -583,6 +583,7 @@ We should use DOM offset/client width/height instead getComputedStyle(elem).widt
  * Second, CSS width/height may be *auto*, and for calculation we need px.
  * Scrollbar. clientWidth/clientHeight takes into account scrollbar, but width/height from style - behave differently.
 
+---
 ### Window sizes and scrolling
 #### Width/height of the window
 We can get *window* height or width from `document.documentElement.clientHeight/clientWidth`
@@ -626,6 +627,7 @@ to interact with it. We can make such change for any element.
 document.body.style.overflow = "hidden";
 ```
 
+---
 ### Coordinates
 Most JavaScript methods deal with one of two coordinates systems:
  * **Relative to the window** – similar to position:fixed, calculated from the window top/left edge. we’ll call these
@@ -674,3 +676,6 @@ function getCoords(elem) {
   };
 }
 ```
+
+---
+### Page: DOMContentLoaded, load, beforeunload, unload
