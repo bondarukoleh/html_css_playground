@@ -796,4 +796,33 @@ There are two events for it:
 * onerror – an error occurred;
 
 #### Loading a script
+If we want to call something from script, and we should do it only after script is loaded `script.onload`
+If script loaded - even if it has programming errors, onload will trigger.
+```js
+let script = document.createElement('script');
+// can load any script, from any domain
+script.src = "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js"
+document.head.append(script);
+script.onload = function() { alert(_); /* the function is available */} ;
+```
 
+#### script.onerror
+If there some **loading errors**.
+> Events onload/onerror track only the loading itself. Errors during script processing and execution are out of scope
+> for these events. To track **script errors**, one can use **window.onerror** global handler.
+
+#### Other resources
+The `load` and `error` events also work for other resources, basically for any resource that has an external `src`.
+```js
+let img = document.createElement('img');
+img.src = "https://js.cx/clipart/train.gif";
+img.onload = function() {
+  alert(`Image loaded, size ${img.width}x${img.height}`);
+};
+img.onerror = function() {
+  alert("Error occurred while loading image");
+};
+```
+Some points for other resources:
+* Img unlike other resources starts loading when get's the `src`, not when appended to the page.
+* For \<iframe>, the `iframe.onload event triggers` when it loads, `not matter there was an error` or not.
