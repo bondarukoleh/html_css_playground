@@ -822,7 +822,28 @@ img.onload = function() {
 img.onerror = function() {
   alert("Error occurred while loading image");
 };
+
+window.onerror = function(message, url, line, col, errorObj) {
+  alert(`${message}\n${url}, ${line}:${col}`);
+};
 ```
 Some points for other resources:
 * Img unlike other resources starts loading when get's the `src`, not when appended to the page.
 * For \<iframe>, the `iframe.onload event triggers` when it loads, `not matter there was an error` or not.
+
+#### Crossorigin policy
+There’s a rule: `scripts from one site can’t access contents of the other site.` e.g. script at https://facebook.com
+can’t read the user’s mailbox at https://gmail.com.
+So one origin (domain/port/protocol triplet), even if it's a subdomain, or just another port, these are different
+origins with no access to each other.
+
+`Allow cross-origin access`, the \<script> tag needs to `have the crossorigin attribute`, also remote server must
+provide special headers.
+
+There are three levels of cross-origin access:
+* *No crossorigin attribute* – access **prohibited**.
+* *crossorigin="anonymous"* – access allowed if server responds with the header **Access-Control-Allow-Origin with _*_ 
+or our _origin_**. Browser does not send authorization information and cookies to remote server.
+* *crossorigin="use-credentials"* – access allowed if the server sends back the header **Access-Control-Allow-Origin
+with our origin** and **Access-Control-Allow-Credentials: true**. Browser sends authorization information and cookies
+to remote server.
